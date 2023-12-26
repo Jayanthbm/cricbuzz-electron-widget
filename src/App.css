@@ -1,0 +1,148 @@
+.cricket-card {
+  width: 300px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 0, 0, .06);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+}
+.cricket-card-title-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cricket-card-title{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.cricket-card-format{
+  font-size: 20px;
+  font-weight: bold;
+}
+.TEST {
+  color: #e90b37;
+}
+
+.T20 {
+  color: #464646;
+}
+
+.cricket-card-subtitle{
+  font-size:12px;
+}
+.cricket-card-toss {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cricket-card-toss-title {
+  color: red;
+}
+
+.cricket-card-status-title{
+  color:green;
+  font-weight: bold;
+  font-size: 13px;
+
+}
+
+.cricket-card-scorecard-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.cricket-card-score{
+  display:flex;
+}
+
+.striker-name{
+  font-weight: bold;
+  color:blue;
+}
+
+.runs{
+  font-weight: bold;
+  font-size:15px;
+  color:brown;
+}
+
+.balls {
+  font-size: 12px;
+  color: gray;
+}
+
+.dots{
+  font-weight: bold;
+  color:red;
+}
+
+.fours{
+  font-weight: bold;
+  color:green;
+}
+
+.sixes{
+  font-weight: bold;
+  color:blue;
+}
+.deleteBtn {
+  color: #fff;
+  border-color: #ff4d4f;
+  background: #ff4d4f;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px #0000000b;
+  cursor: pointer;
+}
+
+.cricket-card-score-teamName{
+  color:brown;
+  font-weight: bold;
+  margin-right:2px;
+}
+
+.cricket-card-score-runs{
+  color:green;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.cricket-card-score-wickets {
+  color: red;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.cricket-card-run-rate-wrapper{
+  display:flex;
+}
+
+.crr{
+  margin-left:2px;
+  color:#3399ff;
+  font-weight: bold;
+  margin-right: 2px;
+}
+.rrr {
+  margin-left: 2px;
+  color: #d0021b;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.cricket-card-batsman-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
