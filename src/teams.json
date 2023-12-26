@@ -1,0 +1,3945 @@
+{
+  "2": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172115/india.jpg",
+    "name": "India",
+    "shortName": "IND"
+  },
+  "3": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172116/pakistan.jpg",
+    "name": "Pakistan",
+    "shortName": "PAK"
+  },
+  "4": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172117/australia.jpg",
+    "name": "Australia",
+    "shortName": "AUS"
+  },
+  "5": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172119/sri-lanka.jpg",
+    "name": "Sri Lanka",
+    "shortName": "SL"
+  },
+  "6": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172120/bangladesh.jpg",
+    "name": "Bangladesh",
+    "shortName": ""
+  },
+  "7": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172121/united-arab-emirates.jpg",
+    "name": "United Arab Emirates",
+    "shortName": "UAE"
+  },
+  "8": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172122/hong-kong.jpg",
+    "name": "Hong Kong",
+    "shortName": ""
+  },
+  "9": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172123/england.jpg",
+    "name": "England",
+    "shortName": "ENG"
+  },
+  "10": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172124/west-indies.jpg",
+    "name": "West Indies",
+    "shortName": "WI"
+  },
+  "11": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172126/south-africa.jpg",
+    "name": "South Africa",
+    "shortName": "RSA"
+  },
+  "12": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172127/zimbabwe.jpg",
+    "name": "Zimbabwe",
+    "shortName": ""
+  },
+  "13": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172128/new-zealand.jpg",
+    "name": "New Zealand",
+    "shortName": "NZ"
+  },
+  "14": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172129/kenya.jpg",
+    "name": "Kenya",
+    "shortName": ""
+  },
+  "15": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172130/united-states.jpg",
+    "name": "United States",
+    "shortName": ""
+  },
+  "23": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172137/scotland.jpg",
+    "name": "Scotland",
+    "shortName": ""
+  },
+  "24": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172138/netherlands.jpg",
+    "name": "Netherlands",
+    "shortName": ""
+  },
+  "25": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172139/bermuda.jpg",
+    "name": "Bermuda",
+    "shortName": ""
+  },
+  "26": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172140/canada.jpg",
+    "name": "Canada",
+    "shortName": ""
+  },
+  "27": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172141/ireland.jpg",
+    "name": "Ireland",
+    "shortName": ""
+  },
+  "44": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172151/uganda.jpg",
+    "name": "Uganda",
+    "shortName": ""
+  },
+  "71": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172168/malaysia.jpg",
+    "name": "Malaysia",
+    "shortName": ""
+  },
+  "72": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172169/nepal.jpg",
+    "name": "Nepal",
+    "shortName": ""
+  },
+  "77": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172171/germany.jpg",
+    "name": "Germany",
+    "shortName": ""
+  },
+  "96": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172188/afghanistan.jpg",
+    "name": "Afghanistan",
+    "shortName": ""
+  },
+  "161": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172229/namibia.jpg",
+    "name": "Namibia",
+    "shortName": ""
+  },
+  "185": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172245/denmark.jpg",
+    "name": "Denmark",
+    "shortName": ""
+  },
+  "190": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172250/singapore.jpg",
+    "name": "Singapore",
+    "shortName": ""
+  },
+  "287": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172336/papua-new-guinea.jpg",
+    "name": "Papua New Guinea",
+    "shortName": ""
+  },
+  "298": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248427/kuwait.jpg",
+    "name": "Kuwait",
+    "shortName": ""
+  },
+  "300": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172349/vanuatu.jpg",
+    "name": "Vanuatu",
+    "shortName": ""
+  },
+  "303": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172352/jersey.jpg",
+    "name": "Jersey",
+    "shortName": ""
+  },
+  "304": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172353/oman.jpg",
+    "name": "Oman",
+    "shortName": ""
+  },
+  "343": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172391/fiji.jpg",
+    "name": "Fiji",
+    "shortName": ""
+  },
+  "527": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172577/italy.jpg",
+    "name": "Italy",
+    "shortName": ""
+  },
+  "529": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172579/botswana.jpg",
+    "name": "Botswana",
+    "shortName": ""
+  },
+  "541": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172592/belgium.jpg",
+    "name": "Belgium",
+    "shortName": ""
+  },
+  "675": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c188163/iran.jpg",
+    "name": "Iran",
+    "shortName": ""
+  },
+
+  "18": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172136/india-senior.jpg",
+    "name": "India Senior",
+    "shortName": ""
+  },
+  "20": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172134/india-green.jpg",
+    "name": "India Green",
+    "shortName": ""
+  },
+  "21": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172135/india-red.jpg",
+    "name": "India Red",
+    "shortName": ""
+  },
+  "36": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172143/india-blue.jpg",
+    "name": "India Blue",
+    "shortName": ""
+  },
+  "41": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172148/sussex.jpg",
+    "name": "Sussex",
+    "shortName": ""
+  },
+  "42": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172149/england-lions.jpg",
+    "name": "England Lions",
+    "shortName": ""
+  },
+  "43": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172150/sri-lanka-a.jpg",
+    "name": "Sri Lanka A",
+    "shortName": ""
+  },
+  "52": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172153/victoria.jpg",
+    "name": "Victoria",
+    "shortName": ""
+  },
+  "53": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172154/act-invitational-xi.jpg",
+    "name": "ACT Invitational XI",
+    "shortName": ""
+  },
+  "54": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172155/india-u19.jpg",
+    "name": "India U19",
+    "shortName": ""
+  },
+  "55": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172157/new-zealand-u19.jpg",
+    "name": "New Zealand U19",
+    "shortName": ""
+  },
+  "56": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172158/pakistan-u19.jpg",
+    "name": "Pakistan U19",
+    "shortName": ""
+  },
+  "57": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172159/south-africa-u19.jpg",
+    "name": "South Africa U19",
+    "shortName": ""
+  },
+  "74": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172170/middlesex.jpg",
+    "name": "Middlesex",
+    "shortName": ""
+  },
+  "78": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334736/india-a.jpg",
+    "name": "India A",
+    "shortName": ""
+  },
+  "79": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172173/australia-a.jpg",
+    "name": "Australia A",
+    "shortName": ""
+  },
+  "80": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172174/new-zealand-a.jpg",
+    "name": "New Zealand A",
+    "shortName": ""
+  },
+  "81": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172175/delhi.jpg",
+    "name": "Delhi",
+    "shortName": ""
+  },
+  "82": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172176/rest-of-india.jpg",
+    "name": "Rest of India",
+    "shortName": ""
+  },
+  "86": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172179/board-presidents-xi.jpg",
+    "name": "Board Presidents XI",
+    "shortName": ""
+  },
+  "87": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172180/western-australia.jpg",
+    "name": "Western Australia",
+    "shortName": ""
+  },
+  "92": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172184/tamil-nadu.jpg",
+    "name": "Tamil Nadu",
+    "shortName": ""
+  },
+  "93": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172185/uttar-pradesh.jpg",
+    "name": "Uttar Pradesh",
+    "shortName": ""
+  },
+  "94": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172186/saurashtra.jpg",
+    "name": "Saurashtra",
+    "shortName": ""
+  },
+  "95": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172187/mumbai.jpg",
+    "name": "Mumbai",
+    "shortName": ""
+  },
+  "119": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172199/somerset.jpg",
+    "name": "Somerset",
+    "shortName": ""
+  },
+  "128": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172203/karnataka.jpg",
+    "name": "Karnataka",
+    "shortName": ""
+  },
+  "129": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172204/australia-u19.jpg",
+    "name": "Australia U19",
+    "shortName": ""
+  },
+  "130": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172205/windward-islands.jpg",
+    "name": "Windward Islands",
+    "shortName": ""
+  },
+  "139": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172206/nottinghamshire.jpg",
+    "name": "Nottinghamshire",
+    "shortName": ""
+  },
+  "140": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172207/warwickshire.jpg",
+    "name": "Warwickshire",
+    "shortName": ""
+  },
+  "141": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172208/durham.jpg",
+    "name": "Durham",
+    "shortName": ""
+  },
+  "142": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172209/northamptonshire.jpg",
+    "name": "Northamptonshire",
+    "shortName": ""
+  },
+  "143": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172210/lancashire.jpg",
+    "name": "Lancashire",
+    "shortName": ""
+  },
+  "144": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172211/derbyshire.jpg",
+    "name": "Derbyshire",
+    "shortName": ""
+  },
+  "145": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172212/leicestershire.jpg",
+    "name": "Leicestershire",
+    "shortName": ""
+  },
+  "146": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172213/yorkshire.jpg",
+    "name": "Yorkshire",
+    "shortName": ""
+  },
+  "147": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172214/worcestershire.jpg",
+    "name": "Worcestershire",
+    "shortName": ""
+  },
+  "148": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172215/surrey.jpg",
+    "name": "Surrey",
+    "shortName": ""
+  },
+  "149": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172216/glamorgan.jpg",
+    "name": "Glamorgan",
+    "shortName": ""
+  },
+  "150": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172217/kent.jpg",
+    "name": "Kent",
+    "shortName": ""
+  },
+  "151": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172218/gloucestershire.jpg",
+    "name": "Gloucestershire",
+    "shortName": ""
+  },
+  "152": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172219/essex.jpg",
+    "name": "Essex",
+    "shortName": ""
+  },
+  "153": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172220/hampshire.jpg",
+    "name": "Hampshire",
+    "shortName": ""
+  },
+  "154": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172221/sri-lanka-cricket-presidents-x.jpg",
+    "name": "Sri Lanka Cricket Presidents XI",
+    "shortName": ""
+  },
+  "158": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172225/south-australia.jpg",
+    "name": "South Australia",
+    "shortName": ""
+  },
+  "160": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172228/east-africa.jpg",
+    "name": "East Africa",
+    "shortName": ""
+  },
+  "162": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172230/assam.jpg",
+    "name": "Assam",
+    "shortName": ""
+  },
+  "163": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172232/gujarat.jpg",
+    "name": "Gujarat",
+    "shortName": ""
+  },
+  "164": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172233/queensland.jpg",
+    "name": "Queensland",
+    "shortName": ""
+  },
+  "165": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172234/england-cricket-board-xi.jpg",
+    "name": "England Cricket Board XI",
+    "shortName": ""
+  },
+  "166": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172235/tasmania.jpg",
+    "name": "Tasmania",
+    "shortName": ""
+  },
+  "167": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172236/madhya-pradesh.jpg",
+    "name": "Madhya Pradesh",
+    "shortName": ""
+  },
+  "168": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248437/nondescripts-cricket-club.jpg",
+    "name": "Nondescripts Cricket Club",
+    "shortName": ""
+  },
+  "170": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172238/baroda.jpg",
+    "name": "Baroda",
+    "shortName": ""
+  },
+  "171": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172239/rajasthan.jpg",
+    "name": "Rajasthan",
+    "shortName": ""
+  },
+  "172": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172240/sri-lanka-u19.jpg",
+    "name": "Sri Lanka U19",
+    "shortName": ""
+  },
+  "173": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172241/england-u19.jpg",
+    "name": "England U19",
+    "shortName": ""
+  },
+  "186": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172246/auckland.jpg",
+    "name": "Auckland",
+    "shortName": ""
+  },
+  "187": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172247/ruhunu.jpg",
+    "name": "Ruhunu",
+    "shortName": ""
+  },
+  "191": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172251/cricket-australia-chairmans-xi.jpg",
+    "name": "Cricket Australia Chairmans XI",
+    "shortName": ""
+  },
+  "200": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172260/haryana.jpg",
+    "name": "Haryana",
+    "shortName": ""
+  },
+  "207": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172267/west-indies-a.jpg",
+    "name": "West Indies A",
+    "shortName": ""
+  },
+  "208": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172268/basnahira-cricket-dundee.jpg",
+    "name": "Basnahira Cricket Dundee",
+    "shortName": ""
+  },
+  "209": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172269/kandurata-warriors.jpg",
+    "name": "Kandurata Warriors",
+    "shortName": ""
+  },
+  "210": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172270/nagenahira-nagas.jpg",
+    "name": "Nagenahira Nagas",
+    "shortName": ""
+  },
+  "211": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172271/ruhuna-royals.jpg",
+    "name": "Ruhuna Royals",
+    "shortName": ""
+  },
+  "212": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172272/uthura-rudras.jpg",
+    "name": "Uthura Rudras",
+    "shortName": ""
+  },
+  "213": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172273/wayamba-united.jpg",
+    "name": "Wayamba United",
+    "shortName": ""
+  },
+  "214": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172274/uva-next.jpg",
+    "name": "Uva Next",
+    "shortName": ""
+  },
+  "220": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172275/west-indies-u19.jpg",
+    "name": "West Indies U19",
+    "shortName": ""
+  },
+  "221": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172276/zimbabwe-u19.jpg",
+    "name": "Zimbabwe U19",
+    "shortName": ""
+  },
+  "222": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172277/papua-new-guinea-u19.jpg",
+    "name": "Papua New Guinea U19",
+    "shortName": ""
+  },
+  "223": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172278/afghanistan-u19.jpg",
+    "name": "Afghanistan U19",
+    "shortName": ""
+  },
+  "224": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172279/bangladesh-u19.jpg",
+    "name": "Bangladesh U19",
+    "shortName": ""
+  },
+  "226": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172280/ireland-u19.jpg",
+    "name": "Ireland U19",
+    "shortName": ""
+  },
+  "228": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172281/scotland-u19.jpg",
+    "name": "Scotland U19",
+    "shortName": ""
+  },
+  "229": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172282/nepal-u19.jpg",
+    "name": "Nepal U19",
+    "shortName": ""
+  },
+  "230": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172283/namibia-u19.jpg",
+    "name": "Namibia U19",
+    "shortName": ""
+  },
+  "231": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172284/india-b.jpg",
+    "name": "India B",
+    "shortName": ""
+  },
+  "232": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172285/bengal.jpg",
+    "name": "Bengal",
+    "shortName": ""
+  },
+  "233": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172286/north-zone.jpg",
+    "name": "North Zone",
+    "shortName": ""
+  },
+  "234": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172287/west-zone.jpg",
+    "name": "West Zone",
+    "shortName": ""
+  },
+  "235": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172288/east-zone.jpg",
+    "name": "East Zone",
+    "shortName": ""
+  },
+  "236": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172289/south-zone.jpg",
+    "name": "South Zone",
+    "shortName": ""
+  },
+  "237": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172290/central-zone.jpg",
+    "name": "Central Zone",
+    "shortName": ""
+  },
+  "238": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172291/pakistan-all-star-xi.jpg",
+    "name": "Pakistan All Star XI",
+    "shortName": ""
+  },
+  "239": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172292/international-world-xi.jpg",
+    "name": "International World XI",
+    "shortName": ""
+  },
+  "240": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172293/mumbai-a.jpg",
+    "name": "Mumbai A",
+    "shortName": ""
+  },
+  "241": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172294/andhra.jpg",
+    "name": "Andhra",
+    "shortName": ""
+  },
+  "242": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172295/hyderabad.jpg",
+    "name": "Hyderabad",
+    "shortName": ""
+  },
+  "243": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172296/jharkhand.jpg",
+    "name": "Jharkhand",
+    "shortName": ""
+  },
+  "244": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172297/kerala.jpg",
+    "name": "Kerala",
+    "shortName": ""
+  },
+  "245": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172298/punjab.jpg",
+    "name": "Punjab",
+    "shortName": ""
+  },
+  "246": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172299/railways.jpg",
+    "name": "Railways",
+    "shortName": ""
+  },
+  "247": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172300/tripura.jpg",
+    "name": "Tripura",
+    "shortName": ""
+  },
+  "248": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172301/vidarbha.jpg",
+    "name": "Vidarbha",
+    "shortName": ""
+  },
+  "249": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172302/odisha.jpg",
+    "name": "Odisha",
+    "shortName": ""
+  },
+  "250": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172303/services.jpg",
+    "name": "Services",
+    "shortName": ""
+  },
+  "251": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172304/himachal-pradesh.jpg",
+    "name": "Himachal Pradesh",
+    "shortName": ""
+  },
+  "252": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172305/jammu-and-kashmir.jpg",
+    "name": "Jammu and Kashmir",
+    "shortName": ""
+  },
+  "253": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172306/goa.jpg",
+    "name": "Goa",
+    "shortName": ""
+  },
+  "254": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172307/maharashtra.jpg",
+    "name": "Maharashtra",
+    "shortName": ""
+  },
+  "261": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172314/unicorns.jpg",
+    "name": "Unicorns",
+    "shortName": ""
+  },
+  "266": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172319/australians.jpg",
+    "name": "Australians",
+    "shortName": ""
+  },
+  "267": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172320/south-african-invitation-xi.jpg",
+    "name": "South African Invitation XI",
+    "shortName": ""
+  },
+  "268": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172321/south-africa-a.jpg",
+    "name": "South Africa A",
+    "shortName": ""
+  },
+  "269": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172322/zimbabwe-xi.jpg",
+    "name": "Zimbabwe XI",
+    "shortName": ""
+  },
+  "272": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/basnahira-greens.jpg",
+    "name": "Basnahira Greens",
+    "shortName": ""
+  },
+  "273": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248459/uthura-yellows.jpg",
+    "name": "Uthura Yellows",
+    "shortName": ""
+  },
+  "274": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172326/kandurata-maroons.jpg",
+    "name": "Kandurata Maroons",
+    "shortName": ""
+  },
+  "275": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248447/ruhuna-reds.jpg",
+    "name": "Ruhuna Reds",
+    "shortName": ""
+  },
+  "276": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172327/indians.jpg",
+    "name": "Indians",
+    "shortName": ""
+  },
+  "277": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172328/western-australia-chairmans-xi.jpg",
+    "name": "Western Australia Chairmans XI",
+    "shortName": ""
+  },
+  "278": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172329/cricket-australia-invitational.jpg",
+    "name": "Cricket Australia Invitational XI",
+    "shortName": ""
+  },
+  "279": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172330/prime-ministers-xi.jpg",
+    "name": "Prime Ministers XI",
+    "shortName": ""
+  },
+  "281": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172331/knights.jpg",
+    "name": "Knights",
+    "shortName": ""
+  },
+  "282": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172332/canada-u19.jpg",
+    "name": "Canada U19",
+    "shortName": ""
+  },
+  "283": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172333/united-arab-emirates-u19.jpg",
+    "name": "United Arab Emirates U19",
+    "shortName": ""
+  },
+  "285": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172334/morocco.jpg",
+    "name": "Morocco",
+    "shortName": ""
+  },
+  "286": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172335/new-zealand-xi.jpg",
+    "name": "New Zealand XI",
+    "shortName": ""
+  },
+  "288": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172337/bangladesh-a.jpg",
+    "name": "Bangladesh A",
+    "shortName": ""
+  },
+  "289": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172338/rest-of-the-world-xi.jpg",
+    "name": "Rest of the World XI",
+    "shortName": ""
+  },
+  "290": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172339/marylebone-cricket-club.jpg",
+    "name": "Marylebone Cricket Club",
+    "shortName": ""
+  },
+  "291": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172340/national-performance-squad.jpg",
+    "name": "National Performance Squad",
+    "shortName": ""
+  },
+  "292": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172341/southern-express.jpg",
+    "name": "Southern Express",
+    "shortName": ""
+  },
+  "293": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172342/lahore-lions.jpg",
+    "name": "Lahore Lions",
+    "shortName": ""
+  },
+  "294": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172343/northern-knights.jpg",
+    "name": "Northern Knights",
+    "shortName": ""
+  },
+  "295": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172344/wicb.jpg",
+    "name": "WICB",
+    "shortName": ""
+  },
+  "296": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172345/mumbai-board-presidents-xi.jpg",
+    "name": "Mumbai Board Presidents XI",
+    "shortName": ""
+  },
+  "297": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172346/west-indians.jpg",
+    "name": "West Indians",
+    "shortName": ""
+  },
+  "299": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172348/south-korea.jpg",
+    "name": "South Korea",
+    "shortName": ""
+  },
+  "301": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172350/australian-legends-xi.jpg",
+    "name": "Australian Legends XI",
+    "shortName": ""
+  },
+  "305": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172354/indian-board-presidents-xi.jpg",
+    "name": "Indian Board Presidents XI",
+    "shortName": ""
+  },
+  "306": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172355/cricket-australia-xi.jpg",
+    "name": "Cricket Australia XI",
+    "shortName": ""
+  },
+  "312": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172362/canterbury.jpg",
+    "name": "Canterbury",
+    "shortName": ""
+  },
+  "313": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172363/central-districts.jpg",
+    "name": "Central Districts",
+    "shortName": ""
+  },
+  "314": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172364/wellington.jpg",
+    "name": "Wellington",
+    "shortName": ""
+  },
+  "315": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172365/india-at20.jpg",
+    "name": "India AT20",
+    "shortName": ""
+  },
+  "316": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172366/sachin-blasters.jpg",
+    "name": "Sachin Blasters",
+    "shortName": ""
+  },
+  "317": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172367/warne-warriors.jpg",
+    "name": "Warne Warriors",
+    "shortName": ""
+  },
+  "323": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172373/bangladesh-cricket-board-xi.jpg",
+    "name": "Bangladesh Cricket Board XI",
+    "shortName": ""
+  },
+  "324": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172374/new-zealand-board-presidents-x.jpg",
+    "name": "New Zealand Board Presidents XI",
+    "shortName": ""
+  },
+  "325": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172375/pakistan-a.jpg",
+    "name": "Pakistan A",
+    "shortName": ""
+  },
+  "326": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172376/fiji-u19.jpg",
+    "name": "Fiji U19",
+    "shortName": ""
+  },
+  "341": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172389/afghanistan-a.jpg",
+    "name": "Afghanistan A",
+    "shortName": ""
+  },
+  "342": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172390/zimbabwe-a.jpg",
+    "name": "Zimbabwe A",
+    "shortName": ""
+  },
+  "347": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172395/himachal-pradesh-cricket-assoc.jpg",
+    "name": "Himachal Pradesh Cricket Association XI",
+    "shortName": ""
+  },
+  "348": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172396/tamil-nadu-cricket-association.jpg",
+    "name": "Tamil Nadu Cricket Association Under 17",
+    "shortName": ""
+  },
+  "349": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172397/mumbai-cricket-association-xi.jpg",
+    "name": "Mumbai Cricket Association XI",
+    "shortName": ""
+  },
+  "350": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172398/west-indies-cricket-board-pres.jpg",
+    "name": "West Indies Cricket Board President XI",
+    "shortName": ""
+  },
+  "352": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248415/island-warriors.jpg",
+    "name": "Island Warriors",
+    "shortName": ""
+  },
+  "353": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172400/kowloon-cantons.jpg",
+    "name": "Kowloon Cantons",
+    "shortName": ""
+  },
+  "354": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248429/lantau-galaxy-riders.jpg",
+    "name": "Lantau Galaxy Riders",
+    "shortName": ""
+  },
+  "363": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172416/mohun-bagan.jpg",
+    "name": "Mohun Bagan",
+    "shortName": ""
+  },
+  "364": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172417/bhowanipore.jpg",
+    "name": "Bhowanipore",
+    "shortName": ""
+  },
+  "365": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172418/sri-lanka-xi.jpg",
+    "name": "Sri Lanka XI",
+    "shortName": ""
+  },
+  "374": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172427/pakistan-cricket-board-patrons.jpg",
+    "name": "Pakistan Cricket Board Patrons XI",
+    "shortName": ""
+  },
+  "375": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172428/chhattisgarh.jpg",
+    "name": "Chhattisgarh",
+    "shortName": ""
+  },
+  "376": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172429/emirates-cricket-board-xi.jpg",
+    "name": "Emirates Cricket Board XI",
+    "shortName": ""
+  },
+  "377": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172430/bcb-select-xi.jpg",
+    "name": "BCB Select XI",
+    "shortName": ""
+  },
+  "380": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172433/south-australia-xi.jpg",
+    "name": "South Australia XI",
+    "shortName": ""
+  },
+  "381": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172434/victoria-xi.jpg",
+    "name": "Victoria XI",
+    "shortName": ""
+  },
+  "384": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172437/thailand.jpg",
+    "name": "Thailand",
+    "shortName": ""
+  },
+  "385": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172438/birmingham-bears.jpg",
+    "name": "Birmingham Bears",
+    "shortName": ""
+  },
+  "386": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172439/malaysia-u19.jpg",
+    "name": "Malaysia U19",
+    "shortName": ""
+  },
+  "387": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172440/singapore-u19.jpg",
+    "name": "Singapore U19",
+    "shortName": ""
+  },
+  "391": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172444/cape-cobras.jpg",
+    "name": "Cape cobras",
+    "shortName": ""
+  },
+  "398": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172451/uwi-vice-chancellors-xi.jpg",
+    "name": "UWI Vice Chancellors XI",
+    "shortName": ""
+  },
+  "402": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172454/north.jpg",
+    "name": "North",
+    "shortName": ""
+  },
+  "403": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172455/south.jpg",
+    "name": "South",
+    "shortName": ""
+  },
+  "404": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248431/mcc-world-xi.jpg",
+    "name": "MCC World XI",
+    "shortName": ""
+  },
+  "405": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172456/india-u23.jpg",
+    "name": "India U23",
+    "shortName": ""
+  },
+  "406": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252360/pakistan-u23.jpg",
+    "name": "Pakistan U23",
+    "shortName": ""
+  },
+  "407": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172458/sri-lanka-u23.jpg",
+    "name": "Sri Lanka U23",
+    "shortName": ""
+  },
+  "408": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252355/bangladesh-u23.jpg",
+    "name": "Bangladesh U23",
+    "shortName": ""
+  },
+  "424": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172474/kenya-u19.jpg",
+    "name": "Kenya U19",
+    "shortName": ""
+  },
+  "425": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172475/world-xi.jpg",
+    "name": "World XI",
+    "shortName": ""
+  },
+  "435": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172485/ireland-a.jpg",
+    "name": "Ireland A",
+    "shortName": ""
+  },
+  "436": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172486/western-australia-xi.jpg",
+    "name": "Western Australia XI",
+    "shortName": ""
+  },
+  "438": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248414/hong-kong-island-united.jpg",
+    "name": "Hong Kong Island United",
+    "shortName": ""
+  },
+  "441": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172489/colombo.jpg",
+    "name": "Colombo",
+    "shortName": ""
+  },
+  "442": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172490/kandy.jpg",
+    "name": "Kandy",
+    "shortName": ""
+  },
+  "443": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172491/galle.jpg",
+    "name": "Galle",
+    "shortName": ""
+  },
+  "444": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172492/dambulla.jpg",
+    "name": "Dambulla",
+    "shortName": ""
+  },
+  "450": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172498/toronto-nationals.jpg",
+    "name": "Toronto Nationals",
+    "shortName": ""
+  },
+  "451": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172499/montreal-tigers.jpg",
+    "name": "Montreal Tigers",
+    "shortName": ""
+  },
+  "452": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172500/edmonton-royals.jpg",
+    "name": "Edmonton Royals",
+    "shortName": ""
+  },
+  "453": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172501/vancouver-knights.jpg",
+    "name": "Vancouver Knights",
+    "shortName": ""
+  },
+  "454": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172502/winnipeg-hawks.jpg",
+    "name": "Winnipeg Hawks",
+    "shortName": ""
+  },
+  "456": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172504/cwi-b-team.jpg",
+    "name": "CWI B Team",
+    "shortName": ""
+  },
+  "460": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172508/bihar.jpg",
+    "name": "Bihar",
+    "shortName": ""
+  },
+  "461": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172509/manipur.jpg",
+    "name": "Manipur",
+    "shortName": ""
+  },
+  "462": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172510/meghalaya.jpg",
+    "name": "Meghalaya",
+    "shortName": ""
+  },
+  "463": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172511/mizoram.jpg",
+    "name": "Mizoram",
+    "shortName": ""
+  },
+  "464": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172512/nagaland.jpg",
+    "name": "Nagaland",
+    "shortName": ""
+  },
+  "465": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172513/puducherry.jpg",
+    "name": "Puducherry",
+    "shortName": ""
+  },
+  "466": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172514/sikkim.jpg",
+    "name": "Sikkim",
+    "shortName": ""
+  },
+  "467": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172515/uttarakhand.jpg",
+    "name": "Uttarakhand",
+    "shortName": ""
+  },
+  "468": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172516/arunachal-pradesh.jpg",
+    "name": "Arunachal Pradesh",
+    "shortName": ""
+  },
+  "469": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172517/hong-kong-u19.jpg",
+    "name": "Hong Kong U19",
+    "shortName": ""
+  },
+  "481": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172529/india-c.jpg",
+    "name": "India C",
+    "shortName": ""
+  },
+  "518": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172568/afghanistan-u23.jpg",
+    "name": "Afghanistan U23",
+    "shortName": ""
+  },
+  "519": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172569/india-u19-a.jpg",
+    "name": "India U19 A",
+    "shortName": ""
+  },
+  "520": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172570/india-u19-b.jpg",
+    "name": "India U19 B",
+    "shortName": ""
+  },
+  "521": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172571/estonia-xi.jpg",
+    "name": "Estonia XI",
+    "shortName": ""
+  },
+  "522": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172572/malta.jpg",
+    "name": "Malta",
+    "shortName": ""
+  },
+  "523": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248450/spain.jpg",
+    "name": "Spain",
+    "shortName": ""
+  },
+  "524": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172574/china.jpg",
+    "name": "China",
+    "shortName": ""
+  },
+  "525": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172575/qatar.jpg",
+    "name": "Qatar",
+    "shortName": ""
+  },
+  "526": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172576/estonia.jpg",
+    "name": "Estonia",
+    "shortName": ""
+  },
+  "528": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/zimbabwe-chairmans-xi.jpg",
+    "name": "Zimbabwe Chairmans XI",
+    "shortName": ""
+  },
+  "531": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172581/ghana.jpg",
+    "name": "Ghana",
+    "shortName": ""
+  },
+  "532": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172583/austria.jpg",
+    "name": "Austria",
+    "shortName": ""
+  },
+  "533": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172584/guernsey.jpg",
+    "name": "Guernsey",
+    "shortName": ""
+  },
+  "534": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248454/sweden.jpg",
+    "name": "Sweden",
+    "shortName": ""
+  },
+  "535": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172586/tanzania.jpg",
+    "name": "Tanzania",
+    "shortName": ""
+  },
+  "536": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248436/nigeria.jpg",
+    "name": "Nigeria",
+    "shortName": ""
+  },
+  "537": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172588/luxembourg.jpg",
+    "name": "Luxembourg",
+    "shortName": ""
+  },
+  "538": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172589/philippines.jpg",
+    "name": "Philippines",
+    "shortName": ""
+  },
+  "539": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172590/france.jpg",
+    "name": "France",
+    "shortName": ""
+  },
+  "540": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172591/belize.jpg",
+    "name": "Belize",
+    "shortName": ""
+  },
+  "542": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172593/peru.jpg",
+    "name": "Peru",
+    "shortName": ""
+  },
+  "543": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172594/bahrain.jpg",
+    "name": "Bahrain",
+    "shortName": ""
+  },
+  "544": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172595/mexico.jpg",
+    "name": "Mexico",
+    "shortName": ""
+  },
+  "545": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172596/samoa.jpg",
+    "name": "Samoa",
+    "shortName": ""
+  },
+  "546": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172597/panama.jpg",
+    "name": "Panama",
+    "shortName": ""
+  },
+  "547": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248418/japan.jpg",
+    "name": "Japan",
+    "shortName": ""
+  },
+  "548": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172600/costa-rica.jpg",
+    "name": "Costa Rica",
+    "shortName": ""
+  },
+  "549": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172601/argentina.jpg",
+    "name": "Argentina",
+    "shortName": ""
+  },
+  "550": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172602/hungary.jpg",
+    "name": "Hungary",
+    "shortName": ""
+  },
+  "551": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172603/mozambique.jpg",
+    "name": "Mozambique",
+    "shortName": ""
+  },
+  "552": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172604/chile.jpg",
+    "name": "Chile",
+    "shortName": ""
+  },
+  "553": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172605/malawi.jpg",
+    "name": "Malawi",
+    "shortName": ""
+  },
+  "554": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172606/israel.jpg",
+    "name": "Israel",
+    "shortName": ""
+  },
+  "555": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172607/bhutan.jpg",
+    "name": "Bhutan",
+    "shortName": ""
+  },
+  "556": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172608/finland.jpg",
+    "name": "Finland",
+    "shortName": ""
+  },
+  "557": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172609/isle-of-man.jpg",
+    "name": "Isle of Man",
+    "shortName": ""
+  },
+  "558": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172610/bulgaria.jpg",
+    "name": "Bulgaria",
+    "shortName": ""
+  },
+  "559": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172611/sierra-leone.jpg",
+    "name": "Sierra Leone",
+    "shortName": ""
+  },
+  "560": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172612/brazil.jpg",
+    "name": "Brazil",
+    "shortName": ""
+  },
+  "561": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172613/czech-republic.jpg",
+    "name": "Czech Republic",
+    "shortName": ""
+  },
+  "562": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172614/saint-helena.jpg",
+    "name": "Saint Helena",
+    "shortName": ""
+  },
+  "563": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172615/maldives.jpg",
+    "name": "Maldives",
+    "shortName": ""
+  },
+  "564": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172616/gibraltar.jpg",
+    "name": "Gibraltar",
+    "shortName": ""
+  },
+  "565": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172617/myanmar.jpg",
+    "name": "Myanmar",
+    "shortName": ""
+  },
+  "566": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172618/indonesia.jpg",
+    "name": "Indonesia",
+    "shortName": ""
+  },
+  "567": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172619/gambia.jpg",
+    "name": "Gambia",
+    "shortName": ""
+  },
+  "568": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172620/swaziland.jpg",
+    "name": "Swaziland",
+    "shortName": ""
+  },
+  "569": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172621/rwanda.jpg",
+    "name": "Rwanda",
+    "shortName": ""
+  },
+  "570": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172622/lesotho.jpg",
+    "name": "Lesotho",
+    "shortName": ""
+  },
+  "571": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172623/saudi-arabia.jpg",
+    "name": "Saudi Arabia",
+    "shortName": ""
+  },
+  "578": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172624/aakash-tigers-mws.jpg",
+    "name": "Aakash Tigers MWS",
+    "shortName": ""
+  },
+  "579": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172625/triumphs-knights-mne.jpg",
+    "name": "Triumphs Knights MNE",
+    "shortName": ""
+  },
+  "580": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172626/eagle-thane-strikers.jpg",
+    "name": "Eagle Thane Strikers",
+    "shortName": ""
+  },
+  "581": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172627/north-mumbai-panthers.jpg",
+    "name": "North Mumbai Panthers",
+    "shortName": ""
+  },
+  "582": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172628/sobo-supersonics.jpg",
+    "name": "SoBo SuperSonics",
+    "shortName": ""
+  },
+  "583": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172629/shivaji-park-lions.jpg",
+    "name": "Shivaji Park Lions",
+    "shortName": ""
+  },
+  "584": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172630/namo-bandra-blasters.jpg",
+    "name": "NaMo Bandra Blasters",
+    "shortName": ""
+  },
+  "585": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172631/arcs-andheri.jpg",
+    "name": "ARCS Andheri",
+    "shortName": ""
+  },
+  "586": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172632/sorath-lions.jpg",
+    "name": "Sorath Lions",
+    "shortName": ""
+  },
+  "587": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172633/gohilwad-gladiators.jpg",
+    "name": "Gohilwad Gladiators",
+    "shortName": ""
+  },
+  "588": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172634/halar-heroes.jpg",
+    "name": "Halar Heroes",
+    "shortName": ""
+  },
+  "589": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172635/zalawad-royals.jpg",
+    "name": "Zalawad Royals",
+    "shortName": ""
+  },
+  "590": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172636/kutch-warriors.jpg",
+    "name": "Kutch Warriors",
+    "shortName": ""
+  },
+  "591": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248398/brampton-wolves.jpg",
+    "name": "Brampton Wolves",
+    "shortName": ""
+  },
+  "593": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248425/kuwait-u19.jpg",
+    "name": "Kuwait U19",
+    "shortName": ""
+  },
+  "595": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c244269/chandigarh.jpg",
+    "name": "Chandigarh",
+    "shortName": ""
+  },
+  "596": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248442/portugal.jpg",
+    "name": "Portugal",
+    "shortName": ""
+  },
+  "603": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248420/japan-u19.jpg",
+    "name": "Japan U19",
+    "shortName": ""
+  },
+  "604": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248435/nigeria-u19.jpg",
+    "name": "Nigeria U19",
+    "shortName": ""
+  },
+  "657": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/ponting-xi.jpg",
+    "name": "Ponting XI",
+    "shortName": ""
+  },
+  "666": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/gilchrist-xi.jpg",
+    "name": "Gilchrist XI",
+    "shortName": ""
+  },
+  "729": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/sri-lanka-cricket-xi.jpg",
+    "name": "Sri Lanka Cricket XI",
+    "shortName": ""
+  },
+  "733": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/wi-holder-xi.jpg",
+    "name": "WI Holder XI",
+    "shortName": ""
+  },
+  "738": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/wi-brathwaite-xi.jpg",
+    "name": "WI Brathwaite XI",
+    "shortName": ""
+  },
+  "743": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-stokes.jpg",
+    "name": "Team Stokes",
+    "shortName": ""
+  },
+  "748": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-buttler.jpg",
+    "name": "Team Buttler",
+    "shortName": ""
+  },
+  "749": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-white.jpg",
+    "name": "Team White",
+    "shortName": ""
+  },
+  "754": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-green.jpg",
+    "name": "Team Green",
+    "shortName": ""
+  },
+  "758": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-morgan.jpg",
+    "name": "Team Morgan",
+    "shortName": ""
+  },
+  "759": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-moeen.jpg",
+    "name": "Team Moeen",
+    "shortName": ""
+  },
+  "763": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-rausa.jpg",
+    "name": "Team Rausa",
+    "shortName": ""
+  },
+  "768": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-caulfield.jpg",
+    "name": "Team Caulfield",
+    "shortName": ""
+  },
+  "770": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-vince.jpg",
+    "name": "Team Vince",
+    "shortName": ""
+  },
+  "779": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/finch-xi.jpg",
+    "name": "Finch XI",
+    "shortName": ""
+  },
+  "784": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/cummins-xi.jpg",
+    "name": "Cummins XI",
+    "shortName": ""
+  },
+  "832": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-root.jpg",
+    "name": "Team Root",
+    "shortName": ""
+  },
+  "843": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202804/bangladesh-emerging-team.jpg",
+    "name": "Bangladesh Emerging Team",
+    "shortName": ""
+  },
+  "872": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-latham.jpg",
+    "name": "Team Latham",
+    "shortName": ""
+  },
+  "876": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/team-williamson.jpg",
+    "name": "Team Williamson",
+    "shortName": ""
+  },
+  "881": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248461/zimbabwe-select-xi.jpg",
+    "name": "Zimbabwe Select XI",
+    "shortName": ""
+  },
+  "886": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/county-select-xi.jpg",
+    "name": "County Select XI",
+    "shortName": ""
+  },
+  "887": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/a1.jpg",
+    "name": "A1",
+    "shortName": ""
+  },
+  "892": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/a2.jpg",
+    "name": "A2",
+    "shortName": ""
+  },
+  "897": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247208/turkey.jpg",
+    "name": "Turkey",
+    "shortName": ""
+  },
+  "903": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248434/mpumalanga-rhinos.jpg",
+    "name": "Mpumalanga Rhinos",
+    "shortName": ""
+  },
+  "908": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248457/tuskers.jpg",
+    "name": "Tuskers",
+    "shortName": ""
+  },
+  "912": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248430/limpopo.jpg",
+    "name": "Limpopo",
+    "shortName": ""
+  },
+  "917": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248460/western-province.jpg",
+    "name": "Western Province",
+    "shortName": ""
+  },
+  "918": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247396/garden-route-badgers.jpg",
+    "name": "Garden Route Badgers",
+    "shortName": ""
+  },
+  "922": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248439/north-west.jpg",
+    "name": "North West",
+    "shortName": ""
+  },
+  "923": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248438/northern-cape.jpg",
+    "name": "Northern Cape",
+    "shortName": ""
+  },
+  "927": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248405/eastern-cape.jpg",
+    "name": "Eastern Cape",
+    "shortName": ""
+  },
+  "928": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248446/rocks.jpg",
+    "name": "Rocks",
+    "shortName": ""
+  },
+  "933": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248407/eastern-storm.jpg",
+    "name": "Eastern Storm",
+    "shortName": ""
+  },
+  "956": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248458/uganda-u19.jpg",
+    "name": "Uganda U19",
+    "shortName": ""
+  },
+  "1018": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248394/bahamas.jpg",
+    "name": "Bahamas",
+    "shortName": ""
+  },
+  "1020": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248399/cayman-islands.jpg",
+    "name": "Cayman Islands",
+    "shortName": ""
+  },
+  "1027": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247201/norway.jpg",
+    "name": "Norway",
+    "shortName": ""
+  },
+  "1041": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247204/romania.jpg",
+    "name": "Romania",
+    "shortName": ""
+  },
+  "1062": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247207/switzerland.jpg",
+    "name": "Switzerland",
+    "shortName": ""
+  },
+  "1067": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247205/serbia.jpg",
+    "name": "Serbia",
+    "shortName": ""
+  },
+  "1069": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247206/slovenia.jpg",
+    "name": "Slovenia",
+    "shortName": ""
+  },
+  "1076": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247197/croatia.jpg",
+    "name": "Croatia",
+    "shortName": ""
+  },
+  "1081": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247199/greece.jpg",
+    "name": "Greece",
+    "shortName": ""
+  },
+  "1111": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247198/cyprus.jpg",
+    "name": "Cyprus",
+    "shortName": ""
+  },
+  "1132": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c341077/cook-islands.jpg",
+    "name": "Cook Islands",
+    "shortName": ""
+  },
+  "1146": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242496/north-east-zone.jpg",
+    "name": "North East Zone",
+    "shortName": ""
+  },
+  "1151": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242497/bhilwara-kings.jpg",
+    "name": "Bhilwara Kings",
+    "shortName": ""
+  },
+  "1153": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242498/manipal-tigers.jpg",
+    "name": "Manipal Tigers",
+    "shortName": ""
+  },
+  "1158": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242500/india-capitals.jpg",
+    "name": "India Capitals",
+    "shortName": ""
+  },
+  "1165": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242501/gujarat-giant.jpg",
+    "name": "Gujarat Giant",
+    "shortName": ""
+  },
+  "1172": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242502/new-zealand-legends.jpg",
+    "name": "New Zealand Legends",
+    "shortName": ""
+  },
+  "1179": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247194/cameroon.jpg",
+    "name": "Cameroon",
+    "shortName": ""
+  },
+  "1209": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248416/isle-of-man-women.jpg",
+    "name": "Isle of Man Women",
+    "shortName": ""
+  },
+  "1265": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248522/mali.jpg",
+    "name": "Mali",
+    "shortName": ""
+  },
+  "1272": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248526/st-helena.jpg",
+    "name": "St Helena",
+    "shortName": ""
+  },
+  "1277": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248523/seychelles.jpg",
+    "name": "Seychelles",
+    "shortName": ""
+  },
+  "1284": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248525/eswatini.jpg",
+    "name": "Eswatini",
+    "shortName": ""
+  },
+  "1447": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254834/cambodia.jpg",
+    "name": "Cambodia",
+    "shortName": ""
+  },
+  "1545": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333483/mauritius.jpg",
+    "name": "Mauritius",
+    "shortName": ""
+  },
+  "1615": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/q1.jpg",
+    "name": "Q1",
+    "shortName": ""
+  },
+  "1622": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/q2.jpg",
+    "name": "Q2",
+    "shortName": ""
+  },
+  "1657": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334735/united-arab-emirates-a.jpg",
+    "name": "United Arab Emirates A",
+    "shortName": ""
+  },
+  "1664": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334737/oman-a.jpg",
+    "name": "Oman A",
+    "shortName": ""
+  },
+  "1759": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349610/boland.jpg",
+    "name": "Boland",
+    "shortName": ""
+  },
+  "1766": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349611/kwazulu-natal-inland.jpg",
+    "name": "KwaZulu-Natal Inland",
+    "shortName": ""
+  },
+  "1768": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349609/south-western-districts.jpg",
+    "name": "South Western Districts",
+    "shortName": ""
+  },
+  "1775": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349602/border.jpg",
+    "name": "Border",
+    "shortName": ""
+  },
+  "1782": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349593/south-africa-emerging-players.jpg",
+    "name": "South Africa Emerging Players",
+    "shortName": ""
+  },
+  "1804": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349598/mongolia.jpg",
+    "name": "Mongolia",
+    "shortName": ""
+  },
+  "1815": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349589/united-states-u19.jpg",
+    "name": "United States U19",
+    "shortName": ""
+  },
+  "1843": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c356645/urbanrisers-hyderabad.jpg",
+    "name": "Urbanrisers Hyderabad",
+    "shortName": ""
+  },
+  "1846": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c356644/southern-super-stars.jpg",
+    "name": "Southern Super Stars",
+    "shortName": ""
+  },
+
+  "58": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225641/chennai-super-kings.jpg",
+    "name": "Chennai Super Kings",
+    "shortName": ""
+  },
+  "59": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225643/royal-challengers-bangalore.jpg",
+    "name": "Royal Challengers Bangalore",
+    "shortName": ""
+  },
+  "61": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225644/delhi-capitals.jpg",
+    "name": "Delhi Capitals",
+    "shortName": ""
+  },
+  "62": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225645/mumbai-indians.jpg",
+    "name": "Mumbai Indians",
+    "shortName": ""
+  },
+  "63": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225646/kolkata-knight-riders.jpg",
+    "name": "Kolkata Knight Riders",
+    "shortName": ""
+  },
+  "64": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225647/rajasthan-royals.jpg",
+    "name": "Rajasthan Royals",
+    "shortName": ""
+  },
+  "65": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225648/punjab-kings.jpg",
+    "name": "Punjab Kings",
+    "shortName": ""
+  },
+  "84": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172178/trinidad-and-tobago.jpg",
+    "name": "Trinidad and Tobago",
+    "shortName": ""
+  },
+  "88": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172181/sialkot-stallions.jpg",
+    "name": "Sialkot Stallions",
+    "shortName": ""
+  },
+  "89": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172182/titans.jpg",
+    "name": "Titans",
+    "shortName": ""
+  },
+  "90": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172183/dolphins.jpg",
+    "name": "Dolphins",
+    "shortName": ""
+  },
+  "101": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172193/cape-cobras.jpg",
+    "name": "Cape Cobras",
+    "shortName": ""
+  },
+  "103": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172195/wayamba-elevens.jpg",
+    "name": "Wayamba Elevens",
+    "shortName": ""
+  },
+  "104": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172196/new-south-wales.jpg",
+    "name": "New South Wales",
+    "shortName": ""
+  },
+  "105": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172197/otago.jpg",
+    "name": "Otago",
+    "shortName": ""
+  },
+  "122": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338073/mangalore-dragons.jpg",
+    "name": "Mangalore Dragons",
+    "shortName": ""
+  },
+  "123": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172201/belagavi-panthers.jpg",
+    "name": "Belagavi Panthers",
+    "shortName": ""
+  },
+  "125": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172202/bijapur-bulls.jpg",
+    "name": "Bijapur Bulls",
+    "shortName": ""
+  },
+  "155": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172222/warriors.jpg",
+    "name": "Warriors",
+    "shortName": ""
+  },
+  "156": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172223/central-stags.jpg",
+    "name": "Central Stags",
+    "shortName": ""
+  },
+  "157": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172224/lions.jpg",
+    "name": "Lions",
+    "shortName": ""
+  },
+  "159": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172227/guyana-amazon-warriors.jpg",
+    "name": "Guyana Amazon Warriors",
+    "shortName": ""
+  },
+  "183": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172242/pune-warriors.jpg",
+    "name": "Pune Warriors",
+    "shortName": ""
+  },
+  "184": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172243/kochi-tuskers-kerala.jpg",
+    "name": "Kochi Tuskers Kerala",
+    "shortName": ""
+  },
+  "192": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172252/sydney-thunder.jpg",
+    "name": "Sydney Thunder",
+    "shortName": ""
+  },
+  "193": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172253/brisbane-heat.jpg",
+    "name": "Brisbane Heat",
+    "shortName": ""
+  },
+  "194": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172254/hobart-hurricanes.jpg",
+    "name": "Hobart Hurricanes",
+    "shortName": ""
+  },
+  "195": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172255/melbourne-renegades.jpg",
+    "name": "Melbourne Renegades",
+    "shortName": "MLR"
+  },
+  "196": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172256/melbourne-stars.jpg",
+    "name": "Melbourne Stars",
+    "shortName": ""
+  },
+  "197": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172257/perth-scorchers.jpg",
+    "name": "Perth Scorchers",
+    "shortName": "PRS"
+  },
+  "198": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172258/sydney-sixers.jpg",
+    "name": "Sydney Sixers",
+    "shortName": ""
+  },
+  "199": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172259/adelaide-strikers.jpg",
+    "name": "Adelaide Strikers",
+    "shortName": ""
+  },
+  "201": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172261/barisal-burners.jpg",
+    "name": "Barisal Burners",
+    "shortName": ""
+  },
+  "202": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172262/chittagong-kings.jpg",
+    "name": "Chittagong Kings",
+    "shortName": ""
+  },
+  "203": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172263/dhaka-gladiators.jpg",
+    "name": "Dhaka Gladiators",
+    "shortName": ""
+  },
+  "204": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172264/duronto-rajshahi.jpg",
+    "name": "Duronto Rajshahi",
+    "shortName": ""
+  },
+  "205": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172265/khulna-royal-bengals.jpg",
+    "name": "Khulna Royal Bengals",
+    "shortName": ""
+  },
+  "206": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172266/sylhet-royals.jpg",
+    "name": "Sylhet Royals",
+    "shortName": ""
+  },
+  "255": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c225649/sunrisers-hyderabad.jpg",
+    "name": "Sunrisers Hyderabad",
+    "shortName": ""
+  },
+  "256": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172309/rangpur-riders.jpg",
+    "name": "Rangpur Riders",
+    "shortName": ""
+  },
+  "262": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c210485/barbados-royals.jpg",
+    "name": "Barbados Royals",
+    "shortName": ""
+  },
+  "263": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172316/saint-lucia-kings.jpg",
+    "name": "Saint Lucia Kings",
+    "shortName": ""
+  },
+  "264": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172317/jamaica-tallawahs.jpg",
+    "name": "Jamaica Tallawahs",
+    "shortName": ""
+  },
+  "265": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172318/antigua-hawksbills.jpg",
+    "name": "Antigua Hawksbills",
+    "shortName": ""
+  },
+  "270": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172324/faisalabad-wolves.jpg",
+    "name": "Faisalabad Wolves",
+    "shortName": ""
+  },
+  "271": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172325/trinbago-knight-riders.jpg",
+    "name": "Trinbago Knight Riders",
+    "shortName": ""
+  },
+  "302": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172351/st-kitts-and-nevis-patriots.jpg",
+    "name": "St Kitts and Nevis Patriots",
+    "shortName": ""
+  },
+  "307": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172356/mysore-warriors.jpg",
+    "name": "Mysore Warriors",
+    "shortName": ""
+  },
+  "308": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172357/bellary-tuskers.jpg",
+    "name": "Bellary Tuskers",
+    "shortName": ""
+  },
+  "309": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338074/shivamogga-lions.jpg",
+    "name": "Shivamogga Lions",
+    "shortName": ""
+  },
+  "310": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172359/hubli-tigers.jpg",
+    "name": "Hubli Tigers",
+    "shortName": ""
+  },
+  "311": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172360/rock-stars.jpg",
+    "name": "Rock Stars",
+    "shortName": ""
+  },
+  "318": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172368/dhaka-dynamites.jpg",
+    "name": "Dhaka Dynamites",
+    "shortName": ""
+  },
+  "319": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172369/comilla-victorians.jpg",
+    "name": "Comilla Victorians",
+    "shortName": ""
+  },
+  "320": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172370/sylhet-super-stars.jpg",
+    "name": "Sylhet Super Stars",
+    "shortName": ""
+  },
+  "321": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172371/chittagong-vikings.jpg",
+    "name": "Chittagong Vikings",
+    "shortName": ""
+  },
+  "322": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172372/barisal-bulls.jpg",
+    "name": "Barisal Bulls",
+    "shortName": ""
+  },
+  "330": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172378/islamabad-united.jpg",
+    "name": "Islamabad United",
+    "shortName": ""
+  },
+  "331": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172379/quetta-gladiators.jpg",
+    "name": "Quetta Gladiators",
+    "shortName": ""
+  },
+  "332": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172380/karachi-kings.jpg",
+    "name": "Karachi Kings",
+    "shortName": ""
+  },
+  "333": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172381/lahore-qalandars.jpg",
+    "name": "Lahore Qalandars",
+    "shortName": ""
+  },
+  "334": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172382/peshawar-zalmi.jpg",
+    "name": "Peshawar Zalmi",
+    "shortName": ""
+  },
+  "335": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172383/libra-legends.jpg",
+    "name": "Libra Legends",
+    "shortName": ""
+  },
+  "336": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172384/gemini-arabians.jpg",
+    "name": "Gemini Arabians",
+    "shortName": ""
+  },
+  "337": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172385/sagittarius-soldiers.jpg",
+    "name": "Sagittarius Soldiers",
+    "shortName": ""
+  },
+  "338": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172386/virgo-super-kings.jpg",
+    "name": "Virgo Super Kings",
+    "shortName": ""
+  },
+  "339": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172387/capricorn-commanders.jpg",
+    "name": "Capricorn Commanders",
+    "shortName": ""
+  },
+  "340": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172388/leo-lions.jpg",
+    "name": "Leo Lions",
+    "shortName": ""
+  },
+  "344": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172392/sagittarius-strikers.jpg",
+    "name": "Sagittarius Strikers",
+    "shortName": ""
+  },
+  "345": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c226174/gujarat-lions.jpg",
+    "name": "Gujarat Lions",
+    "shortName": ""
+  },
+  "346": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c226175/rising-pune-supergiant.jpg",
+    "name": "Rising Pune Supergiant",
+    "shortName": ""
+  },
+  "351": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172399/hung-hom-jd-jaguars.jpg",
+    "name": "Hung Hom JD Jaguars",
+    "shortName": ""
+  },
+  "366": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172419/tuti-patriots.jpg",
+    "name": "TUTI Patriots",
+    "shortName": ""
+  },
+  "367": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172420/chepauk-super-gillies.jpg",
+    "name": "Chepauk Super Gillies",
+    "shortName": ""
+  },
+  "368": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172421/lyca-kovai-kings.jpg",
+    "name": "Lyca Kovai Kings",
+    "shortName": ""
+  },
+  "369": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172422/siechem-madurai-panthers.jpg",
+    "name": "Siechem Madurai Panthers",
+    "shortName": ""
+  },
+  "370": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172423/ruby-kanchi-warriors.jpg",
+    "name": "Ruby Kanchi Warriors",
+    "shortName": ""
+  },
+  "371": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172424/dindigul-dragons.jpg",
+    "name": "Dindigul Dragons",
+    "shortName": ""
+  },
+  "372": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172425/vb-thiruvallur-veerans.jpg",
+    "name": "VB Thiruvallur Veerans",
+    "shortName": ""
+  },
+  "373": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172426/karaikudi-kaalai.jpg",
+    "name": "Karaikudi Kaalai",
+    "shortName": ""
+  },
+  "378": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172431/khulna-titans.jpg",
+    "name": "Khulna Titans",
+    "shortName": ""
+  },
+  "379": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172432/rajshahi-kings.jpg",
+    "name": "Rajshahi Kings",
+    "shortName": ""
+  },
+  "392": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172445/panchkula-kings.jpg",
+    "name": "Panchkula Kings",
+    "shortName": ""
+  },
+  "393": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172446/sirsa-warriors.jpg",
+    "name": "Sirsa Warriors",
+    "shortName": ""
+  },
+  "394": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172447/kurukshetra-tigers.jpg",
+    "name": "Kurukshetra Tigers",
+    "shortName": ""
+  },
+  "395": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172448/hisar-bulls.jpg",
+    "name": "Hisar Bulls",
+    "shortName": ""
+  },
+  "396": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172449/rohtak-blasters.jpg",
+    "name": "Rohtak Blasters",
+    "shortName": ""
+  },
+  "397": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172450/gurugram-gladiators.jpg",
+    "name": "Gurugram Gladiators",
+    "shortName": ""
+  },
+  "399": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172452/city-kaitak.jpg",
+    "name": "City Kaitak",
+    "shortName": ""
+  },
+  "400": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/hki-united.jpg",
+    "name": "HKI United",
+    "shortName": ""
+  },
+  "401": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172453/galaxy-gladiators-lantau.jpg",
+    "name": "Galaxy Gladiators Lantau",
+    "shortName": ""
+  },
+  "410": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172460/ba11sy-trichy.jpg",
+    "name": "Ba11sy Trichy",
+    "shortName": ""
+  },
+  "411": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172461/sikar-bulls.jpg",
+    "name": "Sikar Bulls",
+    "shortName": ""
+  },
+  "412": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172462/udaipur-eagles.jpg",
+    "name": "Udaipur Eagles",
+    "shortName": ""
+  },
+  "413": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172463/jaipur-tigers.jpg",
+    "name": "Jaipur Tigers",
+    "shortName": ""
+  },
+  "414": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172464/jodhpur-lions.jpg",
+    "name": "Jodhpur Lions",
+    "shortName": ""
+  },
+  "415": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172465/bhilwara-wolves.jpg",
+    "name": "Bhilwara Wolves",
+    "shortName": ""
+  },
+  "416": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172466/ajmer-panthers.jpg",
+    "name": "Ajmer Panthers",
+    "shortName": ""
+  },
+  "417": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172467/southern-vipers.jpg",
+    "name": "Southern Vipers",
+    "shortName": ""
+  },
+  "418": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172468/western-storm.jpg",
+    "name": "Western Storm",
+    "shortName": ""
+  },
+  "419": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172469/yorkshire-diamonds.jpg",
+    "name": "Yorkshire Diamonds",
+    "shortName": ""
+  },
+  "420": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172470/lancashire-thunder.jpg",
+    "name": "Lancashire Thunder",
+    "shortName": ""
+  },
+  "421": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172471/loughborough-lightning.jpg",
+    "name": "Loughborough Lightning",
+    "shortName": ""
+  },
+  "422": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172472/surrey-stars.jpg",
+    "name": "Surrey Stars",
+    "shortName": ""
+  },
+  "423": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172473/bengaluru-blasters.jpg",
+    "name": "Bengaluru Blasters",
+    "shortName": ""
+  },
+  "426": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172476/benoni-zalmi.jpg",
+    "name": "Benoni Zalmi",
+    "shortName": ""
+  },
+  "427": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172477/bloem-city-blazers.jpg",
+    "name": "Bloem City Blazers",
+    "shortName": ""
+  },
+  "428": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172478/cape-town-knight-riders.jpg",
+    "name": "Cape Town Knight Riders",
+    "shortName": ""
+  },
+  "429": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334700/durban-qalandars.jpg",
+    "name": "Durban Qalandars",
+    "shortName": ""
+  },
+  "430": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172480/joburg-giants.jpg",
+    "name": "Joburg Giants",
+    "shortName": ""
+  },
+  "431": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172481/nelson-mandela-bay-stars.jpg",
+    "name": "Nelson Mandela Bay Stars",
+    "shortName": ""
+  },
+  "432": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172482/pretoria-mavericks.jpg",
+    "name": "Pretoria Mavericks",
+    "shortName": ""
+  },
+  "433": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172483/stellenbosch-kings.jpg",
+    "name": "Stellenbosch Kings",
+    "shortName": ""
+  },
+  "434": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172484/sylhet-sixers.jpg",
+    "name": "Sylhet Sixers",
+    "shortName": ""
+  },
+  "437": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172487/multan-sultans.jpg",
+    "name": "Multan Sultans",
+    "shortName": ""
+  },
+  "455": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172503/vb-kanchi-veerans.jpg",
+    "name": "VB Kanchi Veerans",
+    "shortName": ""
+  },
+  "457": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172505/india-women-red.jpg",
+    "name": "India Women Red",
+    "shortName": ""
+  },
+  "458": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172506/india-women-blue.jpg",
+    "name": "India Women Blue",
+    "shortName": ""
+  },
+  "459": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172507/india-women-green.jpg",
+    "name": "India Women Green",
+    "shortName": ""
+  },
+  "470": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172518/kabul-zwanan.jpg",
+    "name": "Kabul Zwanan",
+    "shortName": ""
+  },
+  "471": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172519/paktia-panthers.jpg",
+    "name": "Paktia Panthers",
+    "shortName": ""
+  },
+  "472": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172520/kandahar-knights.jpg",
+    "name": "Kandahar Knights",
+    "shortName": ""
+  },
+  "473": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172521/nangarhar-leopards.jpg",
+    "name": "Nangarhar Leopards",
+    "shortName": ""
+  },
+  "474": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172522/balkh-legends.jpg",
+    "name": "Balkh Legends",
+    "shortName": ""
+  },
+  "475": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172523/cape-town-blitz.jpg",
+    "name": "Cape Town Blitz",
+    "shortName": ""
+  },
+  "476": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172524/durban-heat.jpg",
+    "name": "Durban Heat",
+    "shortName": ""
+  },
+  "477": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172525/jozi-stars.jpg",
+    "name": "Jozi Stars",
+    "shortName": ""
+  },
+  "478": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172526/nelson-mandela-bay-giants.jpg",
+    "name": "Nelson Mandela Bay Giants",
+    "shortName": ""
+  },
+  "479": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172527/paarl-rocks.jpg",
+    "name": "Paarl Rocks",
+    "shortName": ""
+  },
+  "480": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172528/tshwane-spartans.jpg",
+    "name": "Tshwane Spartans",
+    "shortName": ""
+  },
+  "510": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172559/bengal-tigers.jpg",
+    "name": "Bengal Tigers",
+    "shortName": ""
+  },
+  "511": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172560/kerala-knights.jpg",
+    "name": "Kerala Knights",
+    "shortName": ""
+  },
+  "512": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201347/maratha-arabians.jpg",
+    "name": "Maratha Arabians",
+    "shortName": ""
+  },
+  "513": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201349/northern-warriors.jpg",
+    "name": "Northern Warriors",
+    "shortName": ""
+  },
+  "514": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172563/pakhtoons.jpg",
+    "name": "Pakhtoons",
+    "shortName": ""
+  },
+  "515": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172565/punjabi-legends.jpg",
+    "name": "Punjabi Legends",
+    "shortName": ""
+  },
+  "516": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172566/rajputs.jpg",
+    "name": "Rajputs",
+    "shortName": ""
+  },
+  "517": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172567/sindhis.jpg",
+    "name": "Sindhis",
+    "shortName": ""
+  },
+  "572": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/amsterdam-knights.jpg",
+    "name": "Amsterdam Knights",
+    "shortName": ""
+  },
+  "573": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/rotterdam-rhinos.jpg",
+    "name": "Rotterdam Rhinos",
+    "shortName": ""
+  },
+  "574": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248408/edinburgh-rocks.jpg",
+    "name": "Edinburgh Rocks",
+    "shortName": ""
+  },
+  "575": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/glasgow-giants.jpg",
+    "name": "Glasgow Giants",
+    "shortName": ""
+  },
+  "576": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/dublin-chiefs.jpg",
+    "name": "Dublin Chiefs",
+    "shortName": ""
+  },
+  "577": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248396/belfast-titans.jpg",
+    "name": "Belfast Titans",
+    "shortName": ""
+  },
+  "597": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201351/deccan-gladiators.jpg",
+    "name": "Deccan Gladiators",
+    "shortName": ""
+  },
+  "598": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201352/delhi-bulls.jpg",
+    "name": "Delhi Bulls",
+    "shortName": ""
+  },
+  "599": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201354/qalandars.jpg",
+    "name": "Qalandars",
+    "shortName": ""
+  },
+  "600": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201353/bangla-tigers.jpg",
+    "name": "Bangla Tigers",
+    "shortName": ""
+  },
+  "601": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201355/team-abu-dhabi.jpg",
+    "name": "Team Abu Dhabi",
+    "shortName": ""
+  },
+  "602": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c201350/pune-devils.jpg",
+    "name": "Pune Devils",
+    "shortName": ""
+  },
+  "605": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202707/oval-invincibles.jpg",
+    "name": "Oval Invincibles",
+    "shortName": ""
+  },
+  "606": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202708/welsh-fire.jpg",
+    "name": "Welsh Fire",
+    "shortName": ""
+  },
+  "607": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202709/birmingham-phoenix.jpg",
+    "name": "Birmingham Phoenix",
+    "shortName": ""
+  },
+  "608": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202696/london-spirit.jpg",
+    "name": "London Spirit",
+    "shortName": ""
+  },
+  "609": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202710/manchester-originals.jpg",
+    "name": "Manchester Originals",
+    "shortName": ""
+  },
+  "610": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202711/northern-superchargers.jpg",
+    "name": "Northern Superchargers",
+    "shortName": ""
+  },
+  "611": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202712/southern-brave.jpg",
+    "name": "Southern Brave",
+    "shortName": ""
+  },
+  "612": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202713/trent-rockets.jpg",
+    "name": "Trent Rockets",
+    "shortName": ""
+  },
+  "621": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248455/sylhet-thunder.jpg",
+    "name": "Sylhet Thunder",
+    "shortName": ""
+  },
+  "622": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248400/chattogram-challengers.jpg",
+    "name": "Chattogram Challengers",
+    "shortName": ""
+  },
+  "623": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248401/cumilla-warriors.jpg",
+    "name": "Cumilla Warriors",
+    "shortName": ""
+  },
+  "624": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248445/rangpur-rangers.jpg",
+    "name": "Rangpur Rangers",
+    "shortName": ""
+  },
+  "625": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/dhaka-platoon.jpg",
+    "name": "Dhaka Platoon",
+    "shortName": ""
+  },
+  "626": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248444/rajshahi-royals.jpg",
+    "name": "Rajshahi Royals",
+    "shortName": ""
+  },
+  "627": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248424/khulna-tigers.jpg",
+    "name": "Khulna Tigers",
+    "shortName": ""
+  },
+  "628": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248409/falcon-hunters.jpg",
+    "name": "Falcon Hunters",
+    "shortName": ""
+  },
+  "629": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/flying-oryx.jpg",
+    "name": "Flying Oryx",
+    "shortName": ""
+  },
+  "630": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248402/desert-riders.jpg",
+    "name": "Desert Riders",
+    "shortName": ""
+  },
+  "631": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248441/pearl-gladiators.jpg",
+    "name": "Pearl Gladiators",
+    "shortName": ""
+  },
+  "632": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/heat-stormers.jpg",
+    "name": "Heat Stormers",
+    "shortName": ""
+  },
+  "633": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/swift-gallopers.jpg",
+    "name": "Swift Gallopers",
+    "shortName": ""
+  },
+  "682": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202784/india-legends.jpg",
+    "name": "India Legends",
+    "shortName": ""
+  },
+  "691": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202785/west-indies-legends.jpg",
+    "name": "West Indies Legends",
+    "shortName": ""
+  },
+  "700": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202786/australia-legends.jpg",
+    "name": "Australia Legends",
+    "shortName": ""
+  },
+  "709": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202787/sri-lanka-legends.jpg",
+    "name": "Sri Lanka Legends",
+    "shortName": ""
+  },
+  "718": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202802/south-africa-legends.jpg",
+    "name": "South Africa Legends",
+    "shortName": ""
+  },
+  "789": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c196089/colombo-kings.jpg",
+    "name": "Colombo Kings",
+    "shortName": ""
+  },
+  "794": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c196090/dambulla-viiking.jpg",
+    "name": "Dambulla Viiking",
+    "shortName": ""
+  },
+  "799": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c219028/galle-gladiators.jpg",
+    "name": "Galle Gladiators",
+    "shortName": ""
+  },
+  "800": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c196091/jaffna-stallions.jpg",
+    "name": "Jaffna Stallions",
+    "shortName": ""
+  },
+  "805": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c196087/kandy-tuskers.jpg",
+    "name": "Kandy Tuskers",
+    "shortName": ""
+  },
+  "807": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c198246/fortune-barishal.jpg",
+    "name": "Fortune Barishal",
+    "shortName": ""
+  },
+  "812": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c198242/gemcon-khulna.jpg",
+    "name": "Gemcon Khulna",
+    "shortName": ""
+  },
+  "817": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c198243/minister-group-rajshahi.jpg",
+    "name": "Minister Group Rajshahi",
+    "shortName": ""
+  },
+  "822": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c198250/gazi-group-chattogram.jpg",
+    "name": "Gazi Group Chattogram",
+    "shortName": ""
+  },
+  "827": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c198252/beximco-dhaka.jpg",
+    "name": "Beximco Dhaka",
+    "shortName": ""
+  },
+  "848": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202783/bangladesh-legends.jpg",
+    "name": "Bangladesh Legends",
+    "shortName": ""
+  },
+  "853": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202782/england-legends.jpg",
+    "name": "England Legends",
+    "shortName": ""
+  },
+  "861": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c206916/idream-tiruppur-tamizhans.jpg",
+    "name": "IDream Tiruppur Tamizhans",
+    "shortName": ""
+  },
+  "866": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c206917/nellai-royal-kings.jpg",
+    "name": "Nellai Royal Kings",
+    "shortName": ""
+  },
+  "867": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c206918/salem-spartans.jpg",
+    "name": "Salem Spartans",
+    "shortName": ""
+  },
+  "941": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c219043/the-chennai-braves.jpg",
+    "name": "The Chennai Braves",
+    "shortName": ""
+  },
+  "943": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333883/colombo-strikers.jpg",
+    "name": "Colombo Strikers",
+    "shortName": ""
+  },
+  "946": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334359/dambulla-aura.jpg",
+    "name": "Dambulla Aura",
+    "shortName": ""
+  },
+  "948": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c219029/jaffna-kings.jpg",
+    "name": "Jaffna Kings",
+    "shortName": ""
+  },
+  "953": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c219032/kandy-warriors.jpg",
+    "name": "Kandy Warriors",
+    "shortName": ""
+  },
+  "966": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c228727/lucknow-super-giants.jpg",
+    "name": "Lucknow Super Giants",
+    "shortName": ""
+  },
+  "971": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c235085/gujarat-titans.jpg",
+    "name": "Gujarat Titans",
+    "shortName": ""
+  },
+  "976": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248433/minister-group-dhaka.jpg",
+    "name": "Minister Group Dhaka",
+    "shortName": ""
+  },
+  "981": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248452/sylhet-sunrisers.jpg",
+    "name": "Sylhet Sunrisers",
+    "shortName": ""
+  },
+  "986": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242518/india-maharajas.jpg",
+    "name": "India Maharajas",
+    "shortName": ""
+  },
+  "991": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248393/asia-lions.jpg",
+    "name": "Asia Lions",
+    "shortName": ""
+  },
+  "996": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c242522/world-giants.jpg",
+    "name": "World Giants",
+    "shortName": ""
+  },
+  "1116": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248423/kandy-falcons.jpg",
+    "name": "Kandy Falcons",
+    "shortName": ""
+  },
+  "1123": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338072/gulbarga-mystics.jpg",
+    "name": "Gulbarga Mystics",
+    "shortName": ""
+  },
+  "1216": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247200/morrisville-samp-army.jpg",
+    "name": "Morrisville Samp Army",
+    "shortName": ""
+  },
+  "1223": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247203/new-york-strikers.jpg",
+    "name": "New York Strikers",
+    "shortName": ""
+  },
+  "1228": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248432/mi-cape-town.jpg",
+    "name": "MI Cape Town",
+    "shortName": ""
+  },
+  "1235": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248440/paarl-royals.jpg",
+    "name": "Paarl Royals",
+    "shortName": ""
+  },
+  "1242": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248403/durban-super-giants.jpg",
+    "name": "Durban Super Giants",
+    "shortName": ""
+  },
+  "1249": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248422/joburg-super-kings.jpg",
+    "name": "Joburg Super Kings",
+    "shortName": ""
+  },
+  "1256": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248451/sunrisers-eastern-cape.jpg",
+    "name": "Sunrisers Eastern Cape",
+    "shortName": ""
+  },
+  "1263": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248443/pretoria-capitals.jpg",
+    "name": "Pretoria Capitals",
+    "shortName": ""
+  },
+  "1291": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248524/nswact.jpg",
+    "name": "NSW/ACT",
+    "shortName": ""
+  },
+  "1298": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249194/dubai-capitals.jpg",
+    "name": "Dubai Capitals",
+    "shortName": ""
+  },
+  "1300": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249195/abu-dhabi-knight-riders.jpg",
+    "name": "Abu Dhabi Knight Riders",
+    "shortName": ""
+  },
+  "1307": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249196/mi-emirates.jpg",
+    "name": "MI Emirates",
+    "shortName": ""
+  },
+  "1312": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249197/sharjah-warriors.jpg",
+    "name": "Sharjah Warriors",
+    "shortName": ""
+  },
+  "1319": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249198/gulf-giants.jpg",
+    "name": "Gulf Giants",
+    "shortName": ""
+  },
+  "1326": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c249199/desert-vipers.jpg",
+    "name": "Desert Vipers",
+    "shortName": ""
+  },
+  "1412": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c253023/sylhet-strikers.jpg",
+    "name": "Sylhet Strikers",
+    "shortName": ""
+  },
+  "1419": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c253024/dhaka-dominators.jpg",
+    "name": "Dhaka Dominators",
+    "shortName": ""
+  },
+  "1461": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254726/delhi-capitals-women.jpg",
+    "name": "Delhi Capitals Women",
+    "shortName": ""
+  },
+  "1465": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254725/royal-challengers-bangalore-wo.jpg",
+    "name": "Royal Challengers Bangalore Women",
+    "shortName": ""
+  },
+  "1468": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254724/mumbai-indians-women.jpg",
+    "name": "Mumbai Indians Women",
+    "shortName": ""
+  },
+  "1472": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254738/up-warriorz.jpg",
+    "name": "UP Warriorz",
+    "shortName": ""
+  },
+  "1479": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254722/gujarat-giants.jpg",
+    "name": "Gujarat Giants",
+    "shortName": ""
+  },
+  "1570": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333484/los-angeles-knight-riders.jpg",
+    "name": "Los Angeles Knight Riders",
+    "shortName": ""
+  },
+  "1573": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334729/mi-new-york.jpg",
+    "name": "MI New York",
+    "shortName": ""
+  },
+  "1577": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333486/texas-super-kings.jpg",
+    "name": "Texas Super Kings",
+    "shortName": ""
+  },
+  "1584": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333487/san-francisco-unicorns.jpg",
+    "name": "San Francisco Unicorns",
+    "shortName": ""
+  },
+  "1591": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333488/washington-freedom.jpg",
+    "name": "Washington Freedom",
+    "shortName": ""
+  },
+  "1594": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333489/seattle-orcas.jpg",
+    "name": "Seattle Orcas",
+    "shortName": ""
+  },
+  "1601": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333882/galle-titans.jpg",
+    "name": "Galle Titans",
+    "shortName": ""
+  },
+  "1608": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333881/b-love-kandy.jpg",
+    "name": "B-Love Kandy",
+    "shortName": ""
+  },
+  "1629": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334524/mississauga-panthers.jpg",
+    "name": "Mississauga Panthers",
+    "shortName": ""
+  },
+  "1633": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334523/surrey-jaguars.jpg",
+    "name": "Surrey Jaguars",
+    "shortName": ""
+  },
+  "1636": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334697/bulawayo-braves.jpg",
+    "name": "Bulawayo Braves",
+    "shortName": ""
+  },
+  "1640": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334696/joburg-buffaloes.jpg",
+    "name": "Joburg Buffaloes",
+    "shortName": ""
+  },
+  "1647": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334693/cape-town-samp-army.jpg",
+    "name": "Cape Town Samp Army",
+    "shortName": ""
+  },
+  "1650": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c334690/harare-hurricanes.jpg",
+    "name": "Harare Hurricanes",
+    "shortName": ""
+  },
+  "1682": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338363/atlanta-riders.jpg",
+    "name": "Atlanta Riders",
+    "shortName": ""
+  },
+  "1685": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338365/california-knights.jpg",
+    "name": "California Knights",
+    "shortName": ""
+  },
+  "1692": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338366/new-york-warriors.jpg",
+    "name": "New York Warriors",
+    "shortName": ""
+  },
+  "1699": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338367/texas-chargers.jpg",
+    "name": "Texas Chargers",
+    "shortName": ""
+  },
+  "1706": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338368/new-jersey-legends.jpg",
+    "name": "New Jersey Legends",
+    "shortName": ""
+  },
+  "1713": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338369/morrisville-unity.jpg",
+    "name": "Morrisville Unity",
+    "shortName": ""
+  },
+  "1724": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340200/jaipur-indians.jpg",
+    "name": "Jaipur Indians",
+    "shortName": ""
+  },
+  "1731": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340201/bhilwara-bulls.jpg",
+    "name": "Bhilwara Bulls",
+    "shortName": ""
+  },
+  "1733": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340202/jaanbaaz-kota-challengers.jpg",
+    "name": "Jaanbaaz Kota Challengers",
+    "shortName": ""
+  },
+  "1740": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340204/udaipur-lakecity-warriors.jpg",
+    "name": "Udaipur Lakecity Warriors",
+    "shortName": ""
+  },
+  "1747": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340209/shekhawati-soldiers-sikar.jpg",
+    "name": "Shekhawati Soldiers Sikar",
+    "shortName": ""
+  },
+  "1752": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c340213/jodhpur-sunrisers.jpg",
+    "name": "Jodhpur Sunrisers",
+    "shortName": ""
+  },
+  "1811": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/pakistan-legends.jpg",
+    "name": "Pakistan Legends",
+    "shortName": ""
+  },
+  "1895": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/durdanto-dhaka.jpg",
+    "name": "Durdanto Dhaka",
+    "shortName": ""
+  },
+
+  "97": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172189/india-women.jpg",
+    "name": "India Women",
+    "shortName": ""
+  },
+  "98": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172190/new-zealand-women.jpg",
+    "name": "New Zealand Women",
+    "shortName": ""
+  },
+  "99": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172191/england-women.jpg",
+    "name": "England Women",
+    "shortName": ""
+  },
+  "100": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172192/australia-women.jpg",
+    "name": "Australia Women",
+    "shortName": ""
+  },
+  "188": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172248/netherlands-women.jpg",
+    "name": "Netherlands Women",
+    "shortName": ""
+  },
+  "189": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172249/ireland-women.jpg",
+    "name": "Ireland Women",
+    "shortName": ""
+  },
+  "257": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172310/west-indies-women.jpg",
+    "name": "West Indies Women",
+    "shortName": ""
+  },
+  "258": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172311/sri-lanka-women.jpg",
+    "name": "Sri Lanka Women",
+    "shortName": ""
+  },
+  "259": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172312/pakistan-women.jpg",
+    "name": "Pakistan Women",
+    "shortName": ""
+  },
+  "260": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172313/south-africa-women.jpg",
+    "name": "South Africa Women",
+    "shortName": ""
+  },
+  "329": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172377/bangladesh-women.jpg",
+    "name": "Bangladesh Women",
+    "shortName": ""
+  },
+  "355": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172401/adelaide-strikers-women.jpg",
+    "name": "Adelaide Strikers Women",
+    "shortName": ""
+  },
+  "356": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172402/brisbane-heat-women.jpg",
+    "name": "Brisbane Heat Women",
+    "shortName": ""
+  },
+  "357": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172403/hobart-hurricanes-women.jpg",
+    "name": "Hobart Hurricanes Women",
+    "shortName": ""
+  },
+  "358": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172404/melbourne-renegades-women.jpg",
+    "name": "Melbourne Renegades Women",
+    "shortName": ""
+  },
+  "359": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172405/melbourne-stars-women.jpg",
+    "name": "Melbourne Stars Women",
+    "shortName": ""
+  },
+  "360": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172406/perth-scorchers-women.jpg",
+    "name": "Perth Scorchers Women",
+    "shortName": ""
+  },
+  "361": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172407/sydney-sixers-women.jpg",
+    "name": "Sydney Sixers Women",
+    "shortName": ""
+  },
+  "362": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172408/sydney-thunder-women.jpg",
+    "name": "Sydney Thunder Women",
+    "shortName": ""
+  },
+  "382": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172435/thailand-women.jpg",
+    "name": "Thailand Women",
+    "shortName": ""
+  },
+  "383": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172436/nepal-women.jpg",
+    "name": "Nepal Women",
+    "shortName": ""
+  },
+  "388": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172441/zimbabwe-women.jpg",
+    "name": "Zimbabwe Women",
+    "shortName": ""
+  },
+  "389": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252366/scotland-women.jpg",
+    "name": "Scotland Women",
+    "shortName": ""
+  },
+  "390": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172443/papua-new-guinea-women.jpg",
+    "name": "Papua New Guinea Women",
+    "shortName": ""
+  },
+  "417": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172467/southern-vipers.jpg",
+    "name": "Southern Vipers",
+    "shortName": ""
+  },
+  "418": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172468/western-storm.jpg",
+    "name": "Western Storm",
+    "shortName": ""
+  },
+  "419": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172469/yorkshire-diamonds.jpg",
+    "name": "Yorkshire Diamonds",
+    "shortName": ""
+  },
+  "420": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172470/lancashire-thunder.jpg",
+    "name": "Lancashire Thunder",
+    "shortName": ""
+  },
+  "421": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172471/loughborough-lightning.jpg",
+    "name": "Loughborough Lightning",
+    "shortName": ""
+  },
+  "422": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172472/surrey-stars.jpg",
+    "name": "Surrey Stars",
+    "shortName": ""
+  },
+  "439": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349592/south-africa-emerging-players.jpg",
+    "name": "South Africa Emerging Players Women",
+    "shortName": ""
+  },
+  "440": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333769/india-a-women.jpg",
+    "name": "India A Women",
+    "shortName": ""
+  },
+  "445": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172493/malaysia-women.jpg",
+    "name": "Malaysia Women",
+    "shortName": ""
+  },
+  "446": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c234641/trailblazers.jpg",
+    "name": "Trailblazers",
+    "shortName": ""
+  },
+  "447": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c234642/supernovas.jpg",
+    "name": "Supernovas",
+    "shortName": ""
+  },
+  "448": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172496/uganda-women.jpg",
+    "name": "Uganda Women",
+    "shortName": ""
+  },
+  "449": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252369/united-arab-emirates-women.jpg",
+    "name": "United Arab Emirates Women",
+    "shortName": ""
+  },
+  "457": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172505/india-women-red.jpg",
+    "name": "India Women Red",
+    "shortName": ""
+  },
+  "458": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172506/india-women-blue.jpg",
+    "name": "India Women Blue",
+    "shortName": ""
+  },
+  "459": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172507/india-women-green.jpg",
+    "name": "India Women Green",
+    "shortName": ""
+  },
+  "482": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172530/samoa-women.jpg",
+    "name": "Samoa Women",
+    "shortName": ""
+  },
+  "483": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172531/tanzania-women.jpg",
+    "name": "Tanzania Women",
+    "shortName": ""
+  },
+  "484": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172532/indonesia-women.jpg",
+    "name": "Indonesia Women",
+    "shortName": ""
+  },
+  "485": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172533/qatar-women.jpg",
+    "name": "Qatar Women",
+    "shortName": ""
+  },
+  "486": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172534/china-women.jpg",
+    "name": "China Women",
+    "shortName": ""
+  },
+  "487": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248419/japan-women.jpg",
+    "name": "Japan Women",
+    "shortName": ""
+  },
+  "488": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172536/botswana-women.jpg",
+    "name": "Botswana Women",
+    "shortName": ""
+  },
+  "489": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172537/argentina-women.jpg",
+    "name": "Argentina Women",
+    "shortName": ""
+  },
+  "490": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172538/sierra-leone-women.jpg",
+    "name": "Sierra Leone Women",
+    "shortName": ""
+  },
+  "491": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172539/brazil-women.jpg",
+    "name": "Brazil Women",
+    "shortName": ""
+  },
+  "492": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172540/france-women.jpg",
+    "name": "France Women",
+    "shortName": ""
+  },
+  "493": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172541/mozambique-women.jpg",
+    "name": "Mozambique Women",
+    "shortName": ""
+  },
+  "494": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172542/zambia-women.jpg",
+    "name": "Zambia Women",
+    "shortName": ""
+  },
+  "495": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172543/malawi-women.jpg",
+    "name": "Malawi Women",
+    "shortName": ""
+  },
+  "496": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172544/belgium-women.jpg",
+    "name": "Belgium Women",
+    "shortName": ""
+  },
+  "497": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172546/chile-women.jpg",
+    "name": "Chile Women",
+    "shortName": ""
+  },
+  "498": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172547/peru-women.jpg",
+    "name": "Peru Women",
+    "shortName": ""
+  },
+  "499": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172548/lesotho-women.jpg",
+    "name": "Lesotho Women",
+    "shortName": ""
+  },
+  "500": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172549/swaziland-women.jpg",
+    "name": "Swaziland Women",
+    "shortName": ""
+  },
+  "501": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172550/kenya-women.jpg",
+    "name": "Kenya Women",
+    "shortName": ""
+  },
+  "502": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172551/hong-kong-women.jpg",
+    "name": "Hong Kong Women",
+    "shortName": ""
+  },
+  "503": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172552/namibia-women.jpg",
+    "name": "Namibia Women",
+    "shortName": ""
+  },
+  "504": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172553/germany-women.jpg",
+    "name": "Germany Women",
+    "shortName": ""
+  },
+  "505": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172554/oman-women.jpg",
+    "name": "Oman Women",
+    "shortName": ""
+  },
+  "506": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172555/vanuatu-women.jpg",
+    "name": "Vanuatu Women",
+    "shortName": ""
+  },
+  "507": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172556/south-korea-women.jpg",
+    "name": "South Korea Women",
+    "shortName": ""
+  },
+  "508": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172557/denmark-women.jpg",
+    "name": "Denmark Women",
+    "shortName": ""
+  },
+  "509": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c172558/singapore-women.jpg",
+    "name": "Singapore Women",
+    "shortName": ""
+  },
+  "530": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c234643/velocity.jpg",
+    "name": "Velocity",
+    "shortName": ""
+  },
+  "592": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c241611/united-states-women.jpg",
+    "name": "United States Women",
+    "shortName": ""
+  },
+  "594": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/india-women-board-president-xi.jpg",
+    "name": "India Women Board President XI",
+    "shortName": ""
+  },
+  "613": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202714/oval-invincibles-women.jpg",
+    "name": "Oval Invincibles Women",
+    "shortName": ""
+  },
+  "614": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202715/welsh-fire-women.jpg",
+    "name": "Welsh Fire Women",
+    "shortName": ""
+  },
+  "615": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202716/birmingham-phoenix-women.jpg",
+    "name": "Birmingham Phoenix Women",
+    "shortName": ""
+  },
+  "616": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202717/london-spirit-women.jpg",
+    "name": "London Spirit Women",
+    "shortName": ""
+  },
+  "617": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202718/manchester-originals-women.jpg",
+    "name": "Manchester Originals Women",
+    "shortName": ""
+  },
+  "618": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202719/trent-rockets-women.jpg",
+    "name": "Trent Rockets Women",
+    "shortName": ""
+  },
+  "619": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202720/northern-superchargers-women.jpg",
+    "name": "Northern Superchargers Women",
+    "shortName": ""
+  },
+  "620": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c202721/southern-brave-women.jpg",
+    "name": "Southern Brave Women",
+    "shortName": ""
+  },
+  "639": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248604/india-c-women.jpg",
+    "name": "India C Women",
+    "shortName": ""
+  },
+  "648": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248603/india-b-women.jpg",
+    "name": "India B Women",
+    "shortName": ""
+  },
+  "720": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248448/rwanda-women.jpg",
+    "name": "Rwanda Women",
+    "shortName": ""
+  },
+  "775": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c274436/austria-women.jpg",
+    "name": "Austria Women",
+    "shortName": ""
+  },
+  "838": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/new-zealand-xi-women.jpg",
+    "name": "New Zealand XI Women",
+    "shortName": ""
+  },
+  "902": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247209/turkey-women.jpg",
+    "name": "Turkey Women",
+    "shortName": ""
+  },
+  "961": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248605/india-d-women.jpg",
+    "name": "India D Women",
+    "shortName": ""
+  },
+  "1011": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c239937/barbados-women.jpg",
+    "name": "Barbados Women",
+    "shortName": ""
+  },
+  "1032": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248421/jersey-women.jpg",
+    "name": "Jersey Women",
+    "shortName": ""
+  },
+  "1034": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248449/spain-women.jpg",
+    "name": "Spain Women",
+    "shortName": ""
+  },
+  "1048": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248453/sweden-women.jpg",
+    "name": "Sweden Women",
+    "shortName": ""
+  },
+  "1055": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c247202/norway-women.jpg",
+    "name": "Norway Women",
+    "shortName": ""
+  },
+  "1083": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248395/bahrain-women.jpg",
+    "name": "Bahrain Women",
+    "shortName": ""
+  },
+  "1090": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248397/bhutan-women.jpg",
+    "name": "Bhutan Women",
+    "shortName": ""
+  },
+  "1097": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248426/kuwait-women.jpg",
+    "name": "Kuwait Women",
+    "shortName": ""
+  },
+  "1104": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248413/guernsey-women.jpg",
+    "name": "Guernsey Women",
+    "shortName": ""
+  },
+  "1125": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248417/italy-women.jpg",
+    "name": "Italy Women",
+    "shortName": ""
+  },
+  "1137": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c241608/barbados-royals-women.jpg",
+    "name": "Barbados Royals Women",
+    "shortName": ""
+  },
+  "1139": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c241610/trinbago-knight-riders-women.jpg",
+    "name": "Trinbago Knight Riders Women",
+    "shortName": ""
+  },
+  "1144": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c241607/guyana-amazon-warriors-women.jpg",
+    "name": "Guyana Amazon Warriors Women",
+    "shortName": ""
+  },
+  "1181": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248411/fiji-women.jpg",
+    "name": "Fiji Women",
+    "shortName": ""
+  },
+  "1188": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/international-xi-women.jpg",
+    "name": "International XI Women",
+    "shortName": ""
+  },
+  "1195": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c248456/trinidad-tobago-women.jpg",
+    "name": "Trinidad & Tobago Women",
+    "shortName": ""
+  },
+  "1200": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/jamaica-women.jpg",
+    "name": "Jamaica Women",
+    "shortName": ""
+  },
+  "1207": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c174284/young-england-women.jpg",
+    "name": "Young England Women",
+    "shortName": ""
+  },
+  "1328": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252350/australia-women-u19.jpg",
+    "name": "Australia Women U19",
+    "shortName": ""
+  },
+  "1335": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252354/bangladesh-women-u19.jpg",
+    "name": "Bangladesh Women U19",
+    "shortName": ""
+  },
+  "1342": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252367/scotland-women-u19.jpg",
+    "name": "Scotland Women U19",
+    "shortName": ""
+  },
+  "1347": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252368/united-arab-emirates-women-u19.jpg",
+    "name": "United Arab Emirates Women U19",
+    "shortName": ""
+  },
+  "1354": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252370/south-africa-women-u19.jpg",
+    "name": "South Africa Women U19",
+    "shortName": ""
+  },
+  "1356": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252371/india-women-u19.jpg",
+    "name": "India Women U19",
+    "shortName": ""
+  },
+  "1361": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252353/sri-lanka-women-u19.jpg",
+    "name": "Sri Lanka Women U19",
+    "shortName": ""
+  },
+  "1363": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252359/pakistan-women-u19.jpg",
+    "name": "Pakistan Women U19",
+    "shortName": ""
+  },
+  "1368": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252361/rwanda-women-u19.jpg",
+    "name": "Rwanda Women U19",
+    "shortName": ""
+  },
+  "1375": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252365/ireland-women-u19.jpg",
+    "name": "Ireland Women U19",
+    "shortName": ""
+  },
+  "1382": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252364/west-indies-women-u19.jpg",
+    "name": "West Indies Women U19",
+    "shortName": ""
+  },
+  "1384": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252362/indonesia-women-u19.jpg",
+    "name": "Indonesia Women U19",
+    "shortName": ""
+  },
+  "1391": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252363/new-zealand-women-u19.jpg",
+    "name": "New Zealand Women U19",
+    "shortName": ""
+  },
+  "1398": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252357/england-women-u19.jpg",
+    "name": "England Women U19",
+    "shortName": ""
+  },
+  "1403": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252356/zimbabwe-women-u19.jpg",
+    "name": "Zimbabwe Women U19",
+    "shortName": ""
+  },
+  "1405": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c252352/united-states-women-u19.jpg",
+    "name": "United States Women U19",
+    "shortName": ""
+  },
+  "1426": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c253473/canada-women.jpg",
+    "name": "Canada Women",
+    "shortName": ""
+  },
+  "1431": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254833/mexico-women.jpg",
+    "name": "Mexico Women",
+    "shortName": ""
+  },
+  "1444": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254832/maldives-women.jpg",
+    "name": "Maldives Women",
+    "shortName": ""
+  },
+  "1454": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254835/cambodia-women.jpg",
+    "name": "Cambodia Women",
+    "shortName": ""
+  },
+  "1461": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254726/delhi-capitals-women.jpg",
+    "name": "Delhi Capitals Women",
+    "shortName": ""
+  },
+  "1465": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254725/royal-challengers-bangalore-wo.jpg",
+    "name": "Royal Challengers Bangalore Women",
+    "shortName": ""
+  },
+  "1468": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254724/mumbai-indians-women.jpg",
+    "name": "Mumbai Indians Women",
+    "shortName": ""
+  },
+  "1472": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254738/up-warriorz.jpg",
+    "name": "UP Warriorz",
+    "shortName": ""
+  },
+  "1479": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c254722/gujarat-giants.jpg",
+    "name": "Gujarat Giants",
+    "shortName": ""
+  },
+  "1482": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c273957/nigeria-women.jpg",
+    "name": "Nigeria Women",
+    "shortName": ""
+  },
+  "1489": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c273958/ghana-women.jpg",
+    "name": "Ghana Women",
+    "shortName": ""
+  },
+  "1493": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c273974/cameroon-women.jpg",
+    "name": "Cameroon Women",
+    "shortName": ""
+  },
+  "1500": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c297979/malta-women.jpg",
+    "name": "Malta Women",
+    "shortName": ""
+  },
+  "1507": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c297980/gibraltar-women.jpg",
+    "name": "Gibraltar Women",
+    "shortName": ""
+  },
+  "1514": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c307469/philippines-women.jpg",
+    "name": "Philippines Women",
+    "shortName": ""
+  },
+  "1517": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c307474/myanmar-women.jpg",
+    "name": "Myanmar Women",
+    "shortName": ""
+  },
+  "1521": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c315349/estonia-women.jpg",
+    "name": "Estonia Women",
+    "shortName": ""
+  },
+  "1528": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c329001/belize-women.jpg",
+    "name": "Belize Women",
+    "shortName": ""
+  },
+  "1531": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c329002/costa-rica-women.jpg",
+    "name": "Costa Rica Women",
+    "shortName": ""
+  },
+  "1535": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c329003/eswatini-women.jpg",
+    "name": "Eswatini Women",
+    "shortName": ""
+  },
+  "1542": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c329024/thailand-a-women.jpg",
+    "name": "Thailand A Women",
+    "shortName": ""
+  },
+  "1549": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333453/bangladesh-a-women.jpg",
+    "name": "Bangladesh A Women",
+    "shortName": ""
+  },
+  "1552": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333455/pakistan-a-women.jpg",
+    "name": "Pakistan A Women",
+    "shortName": ""
+  },
+  "1556": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333456/sri-lanka-a-women.jpg",
+    "name": "Sri Lanka A Women",
+    "shortName": ""
+  },
+  "1563": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c333457/mali-women.jpg",
+    "name": "Mali Women",
+    "shortName": ""
+  },
+  "1668": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338104/greece-women.jpg",
+    "name": "Greece Women",
+    "shortName": ""
+  },
+  "1675": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c338249/romania-women.jpg",
+    "name": "Romania Women",
+    "shortName": ""
+  },
+  "1754": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c341074/cook-islands-women.jpg",
+    "name": "Cook Islands Women",
+    "shortName": ""
+  },
+  "1789": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349600/serbia-women.jpg",
+    "name": "Serbia Women",
+    "shortName": ""
+  },
+  "1794": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349590/luxembourg-women.jpg",
+    "name": "Luxembourg Women",
+    "shortName": ""
+  },
+  "1796": {
+    "flag": "https://static.cricbuzz.com/a/img/v1/72x54/i1/c349599/mongolia-women.jpg",
+    "name": "Mongolia Women",
+    "shortName": ""
+  }
+}

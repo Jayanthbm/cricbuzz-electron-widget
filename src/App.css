@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+*{
+  font-family: 'Open Sans', sans-serif;
+}
 .cricket-card {
-  width: 300px;
+  width: 330px;
   margin-bottom: 30px;
   border: 1px solid rgba(0, 0, 0, .06);
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   color: #000000d9;
   font-size: 14px;
   font-variant: tabular-nums;
@@ -28,7 +33,7 @@
 }
 
 .cricket-card-format{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
 }
 .TEST {
@@ -140,9 +145,8 @@
   margin-right: 2px;
 }
 
-.cricket-card-batsman-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+
+.last-wicket{
+  text-align: center;
+  font-size: 15px;
 }
