@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
+  "description": "Cricbuzz Score Widget",
+  "author": "Jayanthbharadwaj M",
   "homepage": "./",
   "dependencies": {
     "@craco/craco": "^7.1.0",
@@ -17,9 +19,42 @@
   "scripts": {
     "start": "react-scripts start",
     "electron": "npx electron .",
-    "build": "craco build",
+    "rbuild": "craco build",
+    "build": "electron-builder",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "build": {
+    "appId": "com.jayanth.cricbuzz-widget",
+    "productName": "Cricbuzz Widget",
+    "directories": {
+      "output": "ebuild"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "mac": {
+      "icon": "icon.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "linux": {
+      "icon": "icon.png",
+      "target": [
+        "AppImage",
+        "snap",
+        "deb"
+      ]
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +76,7 @@
   },
   "devDependencies": {
     "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
     "webpack-node-externals": "^3.0.0"
   }
 }

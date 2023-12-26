@@ -1,108 +1,69 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import teamsData from "./teams.json";
 const API_URL = "https://www.cricbuzz.com/api/cricket-match/commentary/";
 
-const ScoreComponent = ({ matchId, removeFromFollowList }) => {
-  const [matchInfo, setMatchInfo] = useState(null);
-  const [liveScores, setLiveScores] = useState(null);
-  const [infoLoaded, setInfoLoaded] = useState(false);
-  useEffect(() => {
-    async function fetchMatchInfo() {
-      try {
-        let request = await axios.get(`${API_URL}${matchId}`);
-        let result = request.data;
-        let tmpMatchInfo = {
-          matchFormat: result?.matchHeader?.matchFormat,
-          seriesName: result?.matchHeader?.seriesName,
-          state: result?.matchHeader?.state,
-          status: result?.matchHeader?.status,
-          matchBetween: `${result?.matchHeader?.team1?.shortName} vs ${result?.matchHeader?.team2?.shortName}`,
-          tossWinner: result?.matchHeader?.tossResults?.tossWinnerName,
-          tossDecision: result?.matchHeader?.tossResults?.decision,
-          team1Id: result?.matchHeader?.team1?.id,
-          team1Name: result?.matchHeader?.team1?.shortName,
-          team2Id: result?.matchHeader?.team2?.id,
-          team2Name: result?.matchHeader?.team2?.shortName,
-        };
-        setMatchInfo(tmpMatchInfo);
-        setInfoLoaded(true);
-      } catch (error) {
-        setMatchInfo({});
-        setInfoLoaded(false);
-      }
-    }
-    if (matchId) {
-      fetchMatchInfo();
-    }
-  }, [matchId]);
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+  const intervalId = useRef();
 
   useEffect(() => {
-    let interval;
-    async function fetchLiveScores() {
-      let request = await axios.get(`${API_URL}${matchId}`);
-      let result = request.data;
-      let tmpLiveScores = {
-        teamId: result?.miniscore?.batTeam?.teamId,
-        runs: result?.miniscore?.batTeam?.teamScore,
-        wickets: result?.miniscore?.batTeam?.teamWkts,
-        overs: result?.miniscore?.overs,
-        currentRunRate: result?.miniscore?.currentRunRate,
-        requiredRunRate: result?.miniscore?.requiredRunRate,
-        lastWicket: result?.miniscore?.lastWicket,
-        partnerShip: result?.miniscore?.partnerShip,
-        strikerData: {
-          batName: result?.miniscore?.batsmanStriker?.batName,
-          batRuns: result?.miniscore?.batsmanStriker?.batRuns,
-          batBalls: result?.miniscore?.batsmanStriker?.batBalls,
-          batDots: result?.miniscore?.batsmanStriker?.batDots,
-          batFours: result?.miniscore?.batsmanStriker?.batFours,
-          batSixes: result?.miniscore?.batsmanStriker?.batSixes,
-          batStrikeRate: result?.miniscore?.batsmanStriker?.batStrikeRate,
-          batMins: result?.miniscore?.batsmanStriker?.batMins,
-        },
-        nonStrikerData: {
-          batName: result?.miniscore?.batsmanNonStriker?.batName,
-          batRuns: result?.miniscore?.batsmanNonStriker?.batRuns,
-          batBalls: result?.miniscore?.batsmanNonStriker?.batBalls,
-          batDots: result?.miniscore?.batsmanNonStriker?.batDots,
-          batFours: result?.miniscore?.batsmanNonStriker?.batFours,
-          batSixes: result?.miniscore?.batsmanNonStriker?.batSixes,
-          batStrikeRate: result?.miniscore?.batsmanNonStriker?.batStrikeRate,
-          batMins: result?.miniscore?.batsmanNonStriker?.batMins,
-        },
-        bowlerStriker: {
-          bowlName: result?.miniscore?.bowlerStriker?.bowlName,
-          bowlOvs: result?.miniscore?.bowlerStriker?.bowlOvs,
-          bowlRuns: result?.miniscore?.bowlerStriker?.bowlRuns,
-          bowlWkts: result?.miniscore?.bowlerStriker?.bowlWkts,
-          bowlEcon: result?.miniscore?.bowlerStriker?.bowlEcon,
-          bowlMaidens: result?.miniscore?.bowlerStriker?.bowlMaidens,
-          bowlWides: result?.miniscore?.bowlerStriker?.bowlWides,
-          bowlNoballs: result?.miniscore?.bowlerStriker?.bowlNoballs,
-        },
-        bowlerNonStriker: {
-          bowlName: result?.miniscore?.bowlerNonStriker?.bowlName,
-          bowlOvs: result?.miniscore?.bowlerNonStriker?.bowlOvs,
-          bowlRuns: result?.miniscore?.bowlerNonStriker?.bowlRuns,
-          bowlWkts: result?.miniscore?.bowlerNonStriker?.bowlWkts,
-          bowlEcon: result?.miniscore?.bowlerNonStriker?.bowlEcon,
-          bowlMaidens: result?.miniscore?.bowlerNonStriker?.bowlMaidens,
-          bowlWides: result?.miniscore?.bowlerNonStriker?.bowlWides,
-          bowlNoballs: result?.miniscore?.bowlerNonStriker?.bowlNoballs,
-        },
-      };
-      setLiveScores(tmpLiveScores);
-    }
-    if (infoLoaded) {
-      fetchLiveScores(); // Initial call when infoLoaded is true
-      // interval = setInterval(fetchLiveScores, 5 * 60 * 1000); // Call fetchLiveScores every 5 minutes
-      interval = setInterval(fetchLiveScores, 2 * 1000); // Call fetchLiveScores every 2 seconds
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
     }
 
-    return () => clearInterval(interval);
-  }, [infoLoaded, matchId]);
+    if (delay !== null) {
+      intervalId.current = setInterval(tick, delay);
+      return () => clearInterval(intervalId.current);
+    }
+  }, [delay]);
+
+  return [intervalId.current];
+}
+
+const TestCricketLiveScoreComponent = ({ liveScores, matchInfo }) => {
+  return <div>Test Cricket Live</div>;
+};
+
+const TestCricketCompleteScoreComponent = ({ liveScores, matchInfo }) => {
+  return <div>Test Cricket Complete</div>;
+};
+
+const ODICricketLiveScoreComponent = ({ liveScores, matchInfo }) => {
+  return (
+    <div>
+      ODI Live
+    </div>
+  )
+}
+
+const ODICricketCompleteScoreComponent = ({ liveScores, matchInfo }) => {
+  return <div>ODI Complete</div>;
+}
+
+const T20CricketLiveScoreComponent = ({ liveScores, matchInfo }) => {
+  return (
+    <div>
+      T20 Live
+    </div>
+  );
+}
+
+const T20CricketCompleteScoreComponent = ({ liveScores, matchInfo }) => {
+  return <div>T20 Complete</div>;
+}
+
+const DefaultCricketLiveScoreComponent = ({
+  liveScores,
+  matchInfo,
+  removeFromFollowList,
+  intervalId,
+}) => {
   return (
     <div style={{ marginLeft: 15, marginRight: 15 }}>
       <div className="cricket-card">
@@ -152,14 +113,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             <div className="cricket-card-scorecard-wrapper">
               <div className="cricket-card-score">
                 <div className="cricket-card-score-teamName">
-                  {" "}
-                  {teamsData[liveScores?.teamId]?.shortName ? (
-                    <>
-                      <span>{teamsData[liveScores?.teamId].shortName}</span>
-                    </>
-                  ) : (
-                    <></>
-                  )}
+                  {matchInfo[liveScores?.teamId]}
                 </div>
                 <div className="cricket-card-score-runs">
                   {liveScores?.runs}
@@ -197,10 +151,10 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
                 >
                   <tr>
                     <th>Batter</th>
-                    <th className="runs">R</th>
-                    <th className="balls">B</th>
-                    <th className="fours">4's</th>
-                    <th className="sixes">6's</th>
+                    <th>R</th>
+                    <th>B</th>
+                    <th>4's</th>
+                    <th>6's</th>
                     <th>SR</th>
                     <th>Dots</th>
                     <th>Mins</th>
@@ -292,11 +246,130 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
           </>
         )}
       </div>
-      <button className="deleteBtn" onClick={removeFromFollowList}>
-        {" "}
+      <button
+        className="deleteBtn"
+        onClick={() => {
+          removeFromFollowList();
+          clearInterval(intervalId);
+        }}
+      >
         Unfollow
       </button>
     </div>
+  );
+};
+const ScoreComponent = ({ matchId, removeFromFollowList }) => {
+  const [matchInfo, setMatchInfo] = useState(null);
+  const [liveScores, setLiveScores] = useState(null);
+  const [infoLoaded, setInfoLoaded] = useState(false);
+  const [isMatchComplete, setIsMatchComplete] = useState(false);
+  useEffect(() => {
+    async function fetchMatchInfo() {
+      try {
+        let request = await axios.get(`${API_URL}${matchId}`);
+        let result = request.data;
+        let tmpMatchInfo = {
+          matchFormat: result?.matchHeader?.matchFormat,
+          seriesName: result?.matchHeader?.seriesName,
+          state: result?.matchHeader?.state,
+          status: result?.matchHeader?.status,
+          matchBetween: `${result?.matchHeader?.team1?.shortName} vs ${result?.matchHeader?.team2?.shortName}`,
+          tossWinner: result?.matchHeader?.tossResults?.tossWinnerName,
+          tossDecision: result?.matchHeader?.tossResults?.decision,
+          team1Id: result?.matchHeader?.team1?.id,
+          team1Name: result?.matchHeader?.team1?.shortName,
+          team2Id: result?.matchHeader?.team2?.id,
+          team2Name: result?.matchHeader?.team2?.shortName,
+          [`${result?.matchHeader?.team1?.id}`]:
+            result?.matchHeader?.team1?.shortName,
+          [`${result?.matchHeader?.team2?.id}`]:
+            result?.matchHeader?.team2?.shortName,
+        };
+        setMatchInfo(tmpMatchInfo);
+        setInfoLoaded(true);
+        setIsMatchComplete(result?.matchHeader?.complete);
+      } catch (error) {
+        setMatchInfo({});
+        setInfoLoaded(false);
+      }
+    }
+    if (matchId) {
+      fetchMatchInfo();
+    }
+  }, [matchId]);
+
+  async function fetchLiveScores() {
+    console.log("fetching live scores");
+    let request = await axios.get(`${API_URL}${matchId}`);
+    let result = request.data;
+    let tmpLiveScores = {
+      teamId: result?.miniscore?.batTeam?.teamId,
+      runs: result?.miniscore?.batTeam?.teamScore,
+      wickets: result?.miniscore?.batTeam?.teamWkts,
+      overs: result?.miniscore?.overs,
+      currentRunRate: result?.miniscore?.currentRunRate,
+      requiredRunRate: result?.miniscore?.requiredRunRate,
+      lastWicket: result?.miniscore?.lastWicket,
+      partnerShip: result?.miniscore?.partnerShip,
+      strikerData: {
+        batName: result?.miniscore?.batsmanStriker?.batName,
+        batRuns: result?.miniscore?.batsmanStriker?.batRuns,
+        batBalls: result?.miniscore?.batsmanStriker?.batBalls,
+        batDots: result?.miniscore?.batsmanStriker?.batDots,
+        batFours: result?.miniscore?.batsmanStriker?.batFours,
+        batSixes: result?.miniscore?.batsmanStriker?.batSixes,
+        batStrikeRate: result?.miniscore?.batsmanStriker?.batStrikeRate,
+        batMins: result?.miniscore?.batsmanStriker?.batMins,
+      },
+      nonStrikerData: {
+        batName: result?.miniscore?.batsmanNonStriker?.batName,
+        batRuns: result?.miniscore?.batsmanNonStriker?.batRuns,
+        batBalls: result?.miniscore?.batsmanNonStriker?.batBalls,
+        batDots: result?.miniscore?.batsmanNonStriker?.batDots,
+        batFours: result?.miniscore?.batsmanNonStriker?.batFours,
+        batSixes: result?.miniscore?.batsmanNonStriker?.batSixes,
+        batStrikeRate: result?.miniscore?.batsmanNonStriker?.batStrikeRate,
+        batMins: result?.miniscore?.batsmanNonStriker?.batMins,
+      },
+      bowlerStriker: {
+        bowlName: result?.miniscore?.bowlerStriker?.bowlName,
+        bowlOvs: result?.miniscore?.bowlerStriker?.bowlOvs,
+        bowlRuns: result?.miniscore?.bowlerStriker?.bowlRuns,
+        bowlWkts: result?.miniscore?.bowlerStriker?.bowlWkts,
+        bowlEcon: result?.miniscore?.bowlerStriker?.bowlEcon,
+        bowlMaidens: result?.miniscore?.bowlerStriker?.bowlMaidens,
+        bowlWides: result?.miniscore?.bowlerStriker?.bowlWides,
+        bowlNoballs: result?.miniscore?.bowlerStriker?.bowlNoballs,
+      },
+      bowlerNonStriker: {
+        bowlName: result?.miniscore?.bowlerNonStriker?.bowlName,
+        bowlOvs: result?.miniscore?.bowlerNonStriker?.bowlOvs,
+        bowlRuns: result?.miniscore?.bowlerNonStriker?.bowlRuns,
+        bowlWkts: result?.miniscore?.bowlerNonStriker?.bowlWkts,
+        bowlEcon: result?.miniscore?.bowlerNonStriker?.bowlEcon,
+        bowlMaidens: result?.miniscore?.bowlerNonStriker?.bowlMaidens,
+        bowlWides: result?.miniscore?.bowlerNonStriker?.bowlWides,
+        bowlNoballs: result?.miniscore?.bowlerNonStriker?.bowlNoballs,
+      },
+    };
+
+    setIsMatchComplete(result?.matchHeader?.complete);
+
+    setLiveScores(tmpLiveScores);
+    if (result?.matchHeader?.complete) {
+      return clearInterval(intervalId);
+    }
+    return;
+  }
+
+  const [intervalId] = useInterval(fetchLiveScores, infoLoaded ? 2000 : null);
+  return (
+    <DefaultCricketLiveScoreComponent
+      matchInfo={matchInfo}
+      liveScores={liveScores}
+      removeFromFollowList={removeFromFollowList}
+      intervalId={intervalId}
+    />
   );
 };
 function App() {
