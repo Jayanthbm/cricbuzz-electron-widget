@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
 
-*{
+* {
   font-family: 'Open Sans', sans-serif !important;
   font-size: 14px;
 }
+
 .cricket-card {
   width: 330px;
   border: 1px solid rgba(0, 0, 0, .06);
   box-sizing: border-box;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding-top: 2px;
-  padding-left:10px;
+  padding-top: 5px;
+  padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 .cricket-card-title-wrapper {
@@ -22,17 +24,18 @@
   align-items: center;
 }
 
-.cricket-card-title{
+.cricket-card-title {
   display: flex;
   align-items: center;
   font-weight: bold;
   font-size: 14px;
 }
 
-.cricket-card-format{
+.cricket-card-format {
   font-size: 12px;
   font-weight: bold;
 }
+
 .TEST {
   color: #e90b37;
 }
@@ -41,9 +44,10 @@
   color: #464646;
 }
 
-.cricket-card-subtitle{
-  font-size:10px;
+.cricket-card-subtitle {
+  font-size: 10px;
 }
+
 .cricket-card-toss {
   font-size: 12px;
   font-weight: bold;
@@ -53,21 +57,23 @@
   color: red;
 }
 
-.cricket-card-status-title{
-  color:green;
+.cricket-card-status-title {
+  color: green;
   font-weight: bold;
   font-size: 12px;
 
 }
 
-.cricket-card-scorecard-wrapper{
+.cricket-card-scorecard-wrapper {
   display: flex;
   justify-content: space-between;
 }
-.cricket-card-score{
-  display:flex;
+
+.cricket-card-score {
+  display: flex;
   font-size: 14px;
 }
+
 .cricket-card-score-teamName {
   color: brown;
   font-weight: bold;
@@ -115,13 +121,21 @@
   color: rgb(124, 54, 54);
 }
 
-.striker-name{
+.striker-name {
   font-weight: bold;
-  color:rgba(0, 0, 255, 0.568);
+  color: rgba(0, 0, 255, 0.568);
 }
 
 .last-wicket {
   text-align: center;
+}
+
+.deleteBtnWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .deleteBtn {
@@ -131,4 +145,127 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
   box-shadow: 0 2px #0000000b;
   cursor: pointer;
+}
+
+.last-wicket {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.batting-cards-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.batting-card {
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 130px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.player-info {
+  margin-bottom: 10px;
+}
+
+.player-name {
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-name:hover {
+  overflow: visible;
+  white-space: normal;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.runs-balls {
+  font-size: 14px;
+}
+
+.strike-rate {
+  font-size: 12px;
+  color: #555;
+}
+
+.count {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.percentage {
+  font-size: 12px;
+  color: #777;
+}
+
+.more-stats {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.run-percentage {
+  color: orange;
+  font-weight: bold;
+}
+
+.followNewBtn {
+  color: #000;
+  border-color: #2ec20d;
+  background: #2ec20d;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px #0000000b;
+  cursor: pointer;
+}
+
+.followFewBtn {
+  color: #fff;
+  border-color: #0e1271;
+  background: #0e1271;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px #0000000b;
+  cursor: pointer;
+}
+
+.com-wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.over-wrapper {
+  display: flex;
+  background: #3399ff;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.over-number {
+  font-weight: bold;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.event {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 10px;
 }

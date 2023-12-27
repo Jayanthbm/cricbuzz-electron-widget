@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import teamsData from "./teams.json";
+import cheerio from "cheerio";
+import { ReactComponent as ExpandLess } from "./expand_less.svg";
+import { ReactComponent as ExpandMore } from "./expand_more.svg";
+
 const API_URL = "https://www.cricbuzz.com/api/cricket-match/commentary/";
 
 function useInterval(callback, delay) {
@@ -26,15 +30,35 @@ function useInterval(callback, delay) {
   return [intervalId.current];
 }
 
-
 const CricketCardTitle = ({ flag1, team1, flag2, team2 }) => {
   return (
     <div className="cricket-card-title">
       {flag1 !== "" && <img src={flag1} width={25} height={18} alt="Flag" />}
-      <span>{team1}</span>
-      <span>vs</span>
+      <span
+        style={{
+          marginLeft: 3,
+          marginRight: 3,
+        }}
+      >
+        {team1}
+      </span>
+      <span
+        style={{
+          marginLeft: 3,
+          marginRight: 10,
+        }}
+      >
+        vs
+      </span>
       {flag2 !== "" && <img src={flag2} width={25} height={18} alt="Flag" />}
-      <span>{team2}</span>
+      <span
+        style={{
+          marginLeft: 3,
+          marginRight: 3,
+        }}
+      >
+        {team2}
+      </span>
     </div>
   );
 };
@@ -60,25 +84,30 @@ const CrikcetCardToss = ({ tossWinner, tossDecision }) => {
 
 const MatchStatus = ({ status }) => {
   return <div className="cricket-card-status-title">{status}</div>;
-}
+};
 
-const CricketScoreCard = ({
-  batTeamName,
-  runs,
-  wickets,
-  overs,
-  crr,
-  rrr,
-}) => {
-  if (batTeamName && runs && wickets) {
-    return (
+const CricketScoreCard = ({ crr, rrr, matchScoreDetails }) => {
+  return (
+    <>
       <div className="cricket-card-scorecard-wrapper">
-        <div className="cricket-card-score">
-          <div className="cricket-card-score-teamName">{batTeamName}</div>
-          <div className="cricket-card-score-runs">{runs}</div>
-          <div> / </div>
-          <div className="cricket-card-score-wickets">{wickets}</div>
-          <div className="cricket-card-score-overs">({overs})</div>
+        <div>
+          {matchScoreDetails?.inningsScoreList?.map((inning, index) => {
+            return (
+              <div className="cricket-card-score" key={index}>
+                <div className="cricket-card-score-teamName">
+                  {inning.batTeamName}
+                </div>
+                <div className="cricket-card-score-runs">{inning.score}</div>
+                <div> / </div>
+                <div className="cricket-card-score-wickets">
+                  {inning.wickets}
+                </div>
+                <div className="cricket-card-score-overs">({inning.overs})</div>
+                {inning.isDeclared === true && <p>Declared</p>}
+                {inning.isFollowOn === true && <p>Follow On</p>}
+              </div>
+            );
+          })}
         </div>
         <div className="cricket-card-run-rate-wrapper">
           <>
@@ -91,9 +120,8 @@ const CricketScoreCard = ({
           )}
         </div>
       </div>
-    );
-  }
-  return <></>;
+    </>
+  );
 };
 
 const PartnershipCard = ({ runs, balls }) => {
@@ -103,14 +131,180 @@ const PartnershipCard = ({ runs, balls }) => {
       <span className="balls">({balls}) </span>
     </div>
   );
-}
+};
+
+const calculatePercentage = (value, total) => {
+  if (value === 0 || total === 0) {
+    return "0%";
+  }
+  return ((value / total) * 100).toFixed(2) + "%";
+};
+const BattingCard = ({ strikerData, nonStrikerData, runs }) => {
+  const formatTime = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return hours > 0
+      ? `${hours}h ${remainingMinutes}m`
+      : `${remainingMinutes}m`;
+  };
+
+  const [showOtherStats, setShowOtherStats] = useState(false);
+  const renderCard = (data) => {
+    const dotPercentage = calculatePercentage(data.batDots, data.batBalls);
+    const fourPercentage = calculatePercentage(data.batFours * 4, data.batRuns);
+    const sixPercentage = calculatePercentage(data.batSixes * 6, data.batRuns);
+    const boundaryPercentage = calculatePercentage(
+      data.batFours * 4 + data.batSixes * 6,
+      data.batRuns
+    );
+    const timeInHours =
+      data.batMins > 60 ? formatTime(data.batMins) : data.batMins + "m";
+    const runPercentage = calculatePercentage(data.batRuns, runs);
+
+    return (
+      <div className="batting-card">
+        <div className="player-info">
+          <div className="player-name">{data.batName}</div>
+          <div className="runs-balls">
+            Runs: {data.batRuns} ({data.batBalls})
+          </div>
+          <div className="run-percentage">{runPercentage} Scored</div>
+          <div className="strike-rate">Strike Rate: {data.batStrikeRate}</div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="strike-rate">
+              Fours: <span className="count">{data.batFours}</span>
+            </div>
+            <div className="strike-rate">
+              Sixes: <span className="count">{data.batSixes}</span>
+            </div>
+            <div className="strike-rate">
+              Dots: <span className="count">{data.batDots}</span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="more-stats"
+          onClick={() => setShowOtherStats(!showOtherStats)}
+        >
+          More Stats
+          {showOtherStats ? <ExpandLess /> : <ExpandMore />}
+        </div>
+        {showOtherStats && (
+          <div className="mins">
+            Fours: <span className="count">{fourPercentage}</span>
+            <br />
+            Sixes: <span className="count">{sixPercentage}</span>
+            <br />
+            Dots: <span className="count">{dotPercentage}</span>
+            <br />
+            Boundaries: <span className="count">{boundaryPercentage}</span>
+            <br />
+            Time Spent: <span className="count">{timeInHours}</span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="batting-cards-container">
+      {renderCard(strikerData)}
+      {renderCard(nonStrikerData)}
+    </div>
+  );
+};
+
+const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs }) => {
+  const renderCard = (data) => {
+    const wicketPercentage = calculatePercentage(data.bowlWkts, wickets);
+    const runPercentage = calculatePercentage(data.bowlRuns, runs);
+    return (
+      <div className="batting-card">
+        <div className="player-info">
+          <div className="player-name">{data.bowlName}</div>
+          <div className="runs-balls">Wickets: {data.bowlWkts}</div>
+          <div className="run-percentage">{wicketPercentage} Taken</div>
+          <div className="runs-balls">Runs Conceded: {data.bowlRuns}</div>
+          <div className="run-percentage">{runPercentage} Conceded</div>
+          <div className="strike-rate">Overs: {data.bowlOvs}</div>
+          <div className="strike-rate">Economy: {data.bowlEcon}</div>
+          <div className="strike-rate">Maidens: {data.bowlMaidens}</div>
+          <div className="strike-rate">Wides: {data.bowlWides}</div>
+          <div className="strike-rate">No Balls: {data.bowlNoballs}</div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="batting-cards-container">
+      {renderCard(bowlerStriker)}
+      {renderCard(bowlerNonStriker)}
+    </div>
+  );
+};
 
 const LastWicketDataCard = ({ lastWicket }) => {
-  return <p className="last-wicket">{lastWicket}</p>;
-}
+  return (
+    <div
+      style={{
+        marginTop: 10,
+        marginBottom: 5,
+      }}
+    >
+      <span>Last Wicket :</span>
+      <span className="last-wicket">{lastWicket}</span>
+    </div>
+  );
+};
+
+const PlayerOfTheMatchCard = ({ fullName }) => {
+  return (
+    <div>
+      <span>Player of the Match :</span>
+      <div className="player-of-the-match">{fullName}</div>
+    </div>
+  );
+};
+
+const LastCommentCard = ({ commentText, event, overNumber }) => {
+  // console.log("EVENT", event);
+  const EVENTS = {
+    NONE: "",
+    "over-break": "Over Completed",
+    SIX: "It's a SIX!!",
+    FOUR: "It's a FOUR!",
+    MAIDEN_OVER: "It's a MAIDEN OVER!!",
+    HIGHSCORING_OVER: "It's a HIGHSCORING OVER!!",
+    TEAM_FIFTY: "Team FIFTY",
+    PARTNERSHIP: "",
+    WICKET: "Its a WICKET!!",
+  };
+  return (
+    <div className="com-wrapper">
+      <div
+        style={{
+          fontWeight: 600,
+        }}
+      >
+        Latest Commentary
+      </div>
+      <div className="over-wrapper">
+        <div className="over-number">{overNumber}</div>
+        <div className="event">
+          {event?.split(",").map((e, i) => EVENTS[e] || "")}
+        </div>
+      </div>
+      <div>{commentText}</div>
+    </div>
+  );
+};
 const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [isMatchComplete, setIsMatchComplete] = useState(true);
   const [matchData, setMatchData] = useState({});
+  const [matchState, setMatchState] = useState("Preview");
+  const [showBatingDetails, setShowBatingDetails] = useState(false);
+  const [showBowlingDetails, setShowBowlingDetails] = useState(false);
   useEffect(() => {
     async function fetchMatchInfo() {
       try {
@@ -165,6 +359,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             batSixes: result?.miniscore?.batsmanStriker?.batSixes,
             batStrikeRate: result?.miniscore?.batsmanStriker?.batStrikeRate,
             batMins: result?.miniscore?.batsmanStriker?.batMins,
+            batId: result?.miniscore?.batsmanStriker?.batId,
           },
           nonStrikerData: {
             batName: result?.miniscore?.batsmanNonStriker?.batName,
@@ -175,6 +370,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             batSixes: result?.miniscore?.batsmanNonStriker?.batSixes,
             batStrikeRate: result?.miniscore?.batsmanNonStriker?.batStrikeRate,
             batMins: result?.miniscore?.batsmanNonStriker?.batMins,
+            batId: result?.miniscore?.batsmanNonStriker?.batId,
           },
           bowlerStriker: {
             bowlName: result?.miniscore?.bowlerStriker?.bowlName,
@@ -185,6 +381,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             bowlMaidens: result?.miniscore?.bowlerStriker?.bowlMaidens,
             bowlWides: result?.miniscore?.bowlerStriker?.bowlWides,
             bowlNoballs: result?.miniscore?.bowlerStriker?.bowlNoballs,
+            bowlId: result?.miniscore?.bowlerStriker?.bowlId,
           },
           bowlerNonStriker: {
             bowlName: result?.miniscore?.bowlerNonStriker?.bowlName,
@@ -195,13 +392,15 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             bowlMaidens: result?.miniscore?.bowlerNonStriker?.bowlMaidens,
             bowlWides: result?.miniscore?.bowlerNonStriker?.bowlWides,
             bowlNoballs: result?.miniscore?.bowlerNonStriker?.bowlNoballs,
+            bowlId: result?.miniscore?.bowlerNonStriker?.bowlId,
           },
           latestPerformance: result?.miniscore?.latestPerformance,
           matchScoreDetails: result?.miniscore?.matchScoreDetails,
           matchUdrs: result?.miniscore?.matchUdrs,
+          commentaryList: result?.commentaryList[0],
         };
         setMatchData(tmpMatchInfo);
-        setIsMatchComplete(result?.matchHeader?.complete);
+        setMatchState(result?.matchHeader?.state);
       } catch (error) {
         console.log(error);
         setMatchData(null);
@@ -213,7 +412,6 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   }, [matchId]);
 
   async function fetchLiveScores() {
-    console.log("fetching live scores");
     let request = await axios.get(`${API_URL}${matchId}`);
     let result = request.data;
     let tmpLiveScores = {
@@ -299,9 +497,10 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
       latestPerformance: result?.miniscore?.latestPerformance,
       matchScoreDetails: result?.miniscore?.matchScoreDetails,
       matchUdrs: result?.miniscore?.matchUdrs,
+      commentaryList: result?.commentaryList[0],
     };
 
-    setIsMatchComplete(result?.matchHeader?.complete);
+    setMatchState(result?.matchHeader?.state);
     setMatchData(tmpLiveScores);
     if (result?.matchHeader?.complete) {
       return clearInterval(intervalId);
@@ -309,12 +508,28 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
     return;
   }
 
+  const MATCH_STATES = {
+    Preview: 2,
+    "Innings Break": 2,
+    Complete: -1,
+    Stumps: 2,
+    "In Progress": 2,
+  };
+  useEffect(() => {
+    if (MATCH_STATES[matchState]) {
+      setIsMatchComplete(MATCH_STATES[matchState] !== -1 ? false : true);
+    } else {
+      setIsMatchComplete(false);
+    }
+  }, [matchState]);
   const [intervalId] = useInterval(
     fetchLiveScores,
     !isMatchComplete ? 2000 : null
   );
   return (
-    <div style={{ marginLeft: 15, marginRight: 15 }}>
+    <div
+      style={{ marginLeft: 15, marginRight: 15, marginTop: 3, marginBottom: 3 }}
+    >
       <div className="cricket-card">
         <div className="cricket-card-title-wrapper">
           <CricketCardTitle
@@ -326,147 +541,158 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
           <CricketMatchFormat matchFormat={matchData?.matchFormat} />
         </div>
         <CricketCardSubtitle subtitle={matchData?.seriesName} />
-        <CrikcetCardToss
-          tossWinner={matchData?.tossWinner}
-          tossDecision={matchData?.tossDecision}
-        />
-        <MatchStatus status={matchData?.status} />
-        <CricketScoreCard
-          batTeamName={matchData[matchData?.batTeamId]}
-          runs={matchData?.runs}
-          wickets={matchData?.wickets}
-          overs={matchData?.overs}
-          crr={matchData.currentRunRate}
-          rrr={matchData.requiredRunRate}
-          isMatchComplete={isMatchComplete}
-        />
-        {!isMatchComplete && (
-          <PartnershipCard
-            runs={matchData?.partnerShip?.runs}
-            balls={matchData?.partnerShip?.balls}
+        {matchState !== "Preview" && (
+          <CrikcetCardToss
+            tossWinner={matchData?.tossWinner}
+            tossDecision={matchData?.tossDecision}
           />
         )}
 
-        {matchData && (
+        <MatchStatus status={matchData?.status} />
+        {matchState !== "Preview" && (
+          <CricketScoreCard
+            crr={matchData.currentRunRate}
+            rrr={matchData.requiredRunRate}
+            matchScoreDetails={matchData?.matchScoreDetails}
+          />
+        )}
+        {matchState !== "Preview" && (
           <>
-            <div className="cricket-card-batsman-wrapper">
-              <table>
-                <thead
-                  style={{
-                    background: "#ecebeb",
-                  }}
-                >
-                  <tr>
-                    <th>Batter</th>
-                    <th>R</th>
-                    <th>B</th>
-                    <th>4's</th>
-                    <th>6's</th>
-                    <th>SR</th>
-                    <th>Dots</th>
-                    <th>Mins</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span className="striker-name">
-                        {matchData?.strikerData?.batName}
-                      </span>
-                    </td>
-                    <td>{matchData?.strikerData?.batRuns}</td>
-                    <td>{matchData?.strikerData?.batBalls}</td>
-                    <td>{matchData?.strikerData?.batFours}</td>
-                    <td>{matchData?.strikerData?.batSixes}</td>
-                    <td>{matchData?.strikerData?.batStrikeRate}</td>
-                    <td>{matchData?.strikerData?.batDots}</td>
-                    <td>{matchData?.strikerData?.batMins}</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="non-striker-name">
-                        {matchData?.nonStrikerData?.batName}
-                      </span>
-                    </td>
-                    <td>{matchData?.nonStrikerData?.batRuns}</td>
-                    <td>{matchData?.nonStrikerData?.batBalls}</td>
-                    <td>{matchData?.nonStrikerData?.batFours}</td>
-                    <td>{matchData?.nonStrikerData?.batSixes}</td>
-                    <td>{matchData?.nonStrikerData?.batStrikeRate}</td>
-                    <td>{matchData?.nonStrikerData?.batDots}</td>
-                    <td>{matchData?.nonStrikerData?.batMins}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="cricket-card-bowler-wrapper">
-              <table>
-                <thead
-                  style={{
-                    background: "#ecebeb",
-                  }}
-                >
-                  <tr>
-                    <th>Bowler</th>
-                    <th>Ov</th>
-                    <th>RN</th>
-                    <th>WK</th>
-                    <th>EC</th>
-                    <th>M</th>
-                    <th>WD</th>
-                    <th>NB</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span className="striker-name">
-                        {matchData?.bowlerStriker?.bowlName}
-                      </span>
-                    </td>
-                    <td>{matchData?.bowlerStriker?.bowlOvs}</td>
-                    <td>{matchData?.bowlerStriker?.bowlRuns}</td>
-                    <td>{matchData?.bowlerStriker?.bowlWkts}</td>
-                    <td>{matchData?.bowlerStriker?.bowlEcon}</td>
-                    <td>{matchData?.bowlerStriker?.bowlMaidens}</td>
-                    <td>{matchData?.bowlerStriker?.bowlWides}</td>
-                    <td>{matchData?.bowlerStriker?.bowlNoballs}</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span className="non-striker-name">
-                        {matchData?.bowlerNonStriker?.bowlName}
-                      </span>
-                    </td>
-                    <td>{matchData?.bowlerNonStriker?.bowlOvs}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlRuns}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlWkts}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlEcon}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlMaidens}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlWides}</td>
-                    <td>{matchData?.bowlerNonStriker?.bowlNoballs}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
             {!isMatchComplete && (
-              <LastWicketDataCard lastWicket={matchData?.lastWicket} />
+              <PartnershipCard
+                runs={matchData?.partnerShip?.runs}
+                balls={matchData?.partnerShip?.balls}
+              />
             )}
           </>
         )}
+
+        {isMatchComplete && (
+          <PlayerOfTheMatchCard
+            name={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.name
+            }
+            fullName={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.fullName
+            }
+            captain={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.captain
+            }
+            id={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.id
+            }
+            keeper={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.keeper
+            }
+            nickName={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.nickName
+            }
+            substitute={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.substitute
+            }
+            teamName={
+              matchData?.playersOfTheMatch &&
+              matchData?.playersOfTheMatch[0]?.team1Name
+            }
+          />
+        )}
+
+        {!isMatchComplete && (
+          <>
+            <div
+              className="more-stats"
+              onClick={() => setShowBatingDetails(!showBatingDetails)}
+            >
+              {showBatingDetails ? "Hide" : "Show"} More Bating Details
+              {showBatingDetails ? <ExpandLess /> : <ExpandMore />}
+            </div>
+            {showBatingDetails ? (
+              <BattingCard
+                strikerData={matchData?.strikerData}
+                nonStrikerData={matchData?.nonStrikerData}
+                matchFormat={matchData?.matchFormat}
+                runs={matchData?.runs}
+              />
+            ) : (
+              <div>
+                <b>
+                  {matchData?.strikerData?.batName} -{" "}
+                  {matchData?.strikerData?.batRuns}(
+                  {matchData?.strikerData?.batBalls})
+                </b>
+                <br />
+                {matchData?.nonStrikerData?.batName} -{" "}
+                {matchData?.nonStrikerData?.batRuns}(
+                {matchData?.nonStrikerData?.batBalls})
+              </div>
+            )}
+          </>
+        )}
+        {!isMatchComplete && (
+          <>
+            <div
+              className="more-stats"
+              onClick={() => setShowBowlingDetails(!showBowlingDetails)}
+            >
+              {showBowlingDetails ? "Hide" : "Show"} More Bowling Details
+              {showBowlingDetails ? <ExpandLess /> : <ExpandMore />}
+            </div>
+            {showBowlingDetails ? (
+              <BowlingCard
+                bowlerStriker={matchData?.bowlerStriker}
+                bowlerNonStriker={matchData?.bowlerNonStriker}
+                matchFormat={matchData?.matchFormat}
+                runs={matchData?.runs}
+                wickets={matchData?.wickets}
+              />
+            ) : (
+              <div>
+                <b>
+                  {matchData?.bowlerStriker?.bowlName} -{" "}
+                  {matchData?.bowlerStriker?.bowlRuns} -{" "}
+                  {matchData?.bowlerStriker?.bowlWkts}
+                </b>
+                <br />
+                {matchData?.bowlerNonStriker?.bowlName} -{" "}
+                {matchData?.bowlerNonStriker?.bowlRuns} -{" "}
+                {matchData?.bowlerNonStriker?.bowlWkts}
+              </div>
+            )}
+          </>
+        )}
+        {!isMatchComplete && (
+          <LastCommentCard
+            commentText={matchData?.commentaryList?.commText}
+            event={matchData?.commentaryList?.event}
+            overNumber={matchData?.commentaryList?.overNumber}
+          />
+        )}
+        {!isMatchComplete && matchData?.lastWicket && (
+          <LastWicketDataCard lastWicket={matchData?.lastWicket} />
+        )}
+        <div className="deleteBtnWrapper">
+          <button
+            className="deleteBtn"
+            onClick={() => {
+              removeFromFollowList();
+              clearInterval(intervalId);
+            }}
+          >
+            Unfollow
+          </button>
+        </div>
       </div>
-      <button
-        className="deleteBtn"
-        onClick={() => {
-          removeFromFollowList();
-          clearInterval(intervalId);
-        }}
-      >
-        Unfollow
-      </button>
     </div>
   );
 };
+
 function App() {
   const [matchIds, setMatchIds] = useState([]);
   const [tempMatchId, setTempMatchId] = useState("");
@@ -485,6 +711,34 @@ function App() {
     const newMatchIds = matchIds.filter((_, i) => i !== index);
     setMatchIds(newMatchIds);
     localStorage.setItem("matches", JSON.stringify(newMatchIds));
+  }
+
+  async function getLiveMatches() {
+    const LIVE_API_URL =
+      "https://cors-anywhere.herokuapp.com/https://www.cricbuzz.com/api/html/homepage-scag";
+    try {
+      let query = await axios.get(LIVE_API_URL);
+      let result = query.data;
+      const $ = cheerio.load(result);
+      const links = $('a[href^="/live-cricket-scores/"]');
+      let tmp = [];
+      for (let i = links.length - 1; i >= 0; i--) {
+        const link = $(links[i]).attr("href");
+        const regex = /\/live-cricket-scores\/(\d+)\/.*$/;
+        const match = link.match(regex);
+        if (match) {
+          const extractedValue = match[1];
+          tmp.push(extractedValue);
+        } else {
+          console.log("No match found");
+        }
+      }
+      const newMatchIds = Array.from(new Set([...matchIds, ...tmp]));
+      setMatchIds(newMatchIds);
+      localStorage.setItem("matches", JSON.stringify(newMatchIds));
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <>
@@ -506,6 +760,7 @@ function App() {
         onChange={(e) => setTempMatchId(e.target.value)}
       />
       <button
+        className="followNewBtn"
         onClick={() => {
           addMatchtoFollowList(tempMatchId);
           setTempMatchId("");
@@ -513,6 +768,18 @@ function App() {
       >
         Follow New Match
       </button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 15,
+          marginBottom: 15,
+        }}
+      >
+        <button className="followFewBtn" onClick={getLiveMatches}>
+          Follow Few Matches
+        </button>
+      </div>
     </>
   );
 }
