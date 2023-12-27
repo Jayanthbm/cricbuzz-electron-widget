@@ -1,10 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
-import teamsData from "./teams.json";
-import cheerio from "cheerio";
 import { ReactComponent as ExpandLess } from "./expand_less.svg";
 import { ReactComponent as ExpandMore } from "./expand_more.svg";
+import teamsData from "./teams.json";
 
 const API_URL = "https://www.cricbuzz.com/api/cricket-match/commentary/";
 
@@ -277,17 +276,16 @@ const PlayerOfTheMatchCard = ({ fullName }) => {
 };
 
 const LastCommentCard = ({ commentText, event, overNumber, lastWicket }) => {
-  // console.log("EVENT", event);
   const EVENTS = {
     NONE: "",
-    "over-break": "Over Completed",
-    SIX: "It's a SIX!!",
+    "over-break": "Over Completed ",
+    SIX: "It's a SIX!! ",
     FOUR: "It's a FOUR!",
-    MAIDEN_OVER: "It's a MAIDEN OVER!!",
-    HIGHSCORING_OVER: "It's a HIGHSCORING OVER!!",
-    TEAM_FIFTY: "Team FIFTY",
+    MAIDEN_OVER: "It's a MAIDEN OVER!! ",
+    HIGHSCORING_OVER: "It's a HIGHSCORING OVER!! ",
+    TEAM_FIFTY: "Team FIFTY ",
     PARTNERSHIP: "",
-    WICKET: "Its a WICKET!!",
+    WICKET: "Its a WICKET!! ",
   };
   const [showComm, setShowComm] = useState(false);
   return (
@@ -330,11 +328,15 @@ const UDRSCard = ({ matchData }) => {
         className="commWrapper"
         onClick={() => setShowUdrsDetails(!showUdrsDetails)}
       >
-        <span style={{
-          color: '#fff',
-          fontWeight: 600,
-          marginLeft:5
-        }}>UDRS</span>
+        <span
+          style={{
+            color: "#fff",
+            fontWeight: 600,
+            marginLeft: 5,
+          }}
+        >
+          UDRS
+        </span>
         {showUdrsDetails ? <ExpandLess /> : <ExpandMore />}
       </div>
       {showUdrsDetails && (
@@ -387,7 +389,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [matchState, setMatchState] = useState("Preview");
   const [showBatingDetails, setShowBatingDetails] = useState(false);
   const [showBowlingDetails, setShowBowlingDetails] = useState(false);
-  const [showLiveScore, setShowLiveScore] = useState(true);
+
   useEffect(() => {
     async function fetchMatchInfo() {
       try {
@@ -591,20 +593,23 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
     return;
   }
 
-  const MATCH_STATES = {
-    Preview: 2,
-    "Innings Break": 2,
-    Complete: -1,
-    Stumps: 2,
-    "In Progress": 2,
-  };
+  const MATCH_STATES = useMemo(
+    () => ({
+      Preview: 2,
+      "Innings Break": 2,
+      Complete: -1,
+      Stumps: 2,
+      "In Progress": 2,
+    }),
+    []
+  );
   useEffect(() => {
     if (MATCH_STATES[matchState]) {
       setIsMatchComplete(MATCH_STATES[matchState] !== -1 ? false : true);
     } else {
       setIsMatchComplete(false);
     }
-  }, [matchState]);
+  }, [matchState, MATCH_STATES]);
   const [intervalId] = useInterval(
     fetchLiveScores,
     !isMatchComplete ? 2000 : null
@@ -805,33 +810,6 @@ function App() {
     localStorage.setItem("matches", JSON.stringify(newMatchIds));
   }
 
-  async function getLiveMatches() {
-    const LIVE_API_URL =
-      "https://cors-anywhere.herokuapp.com/https://www.cricbuzz.com/api/html/homepage-scag";
-    try {
-      let query = await axios.get(LIVE_API_URL);
-      let result = query.data;
-      const $ = cheerio.load(result);
-      const links = $('a[href^="/live-cricket-scores/"]');
-      let tmp = [];
-      for (let i = links.length - 1; i >= 0; i--) {
-        const link = $(links[i]).attr("href");
-        const regex = /\/live-cricket-scores\/(\d+)\/.*$/;
-        const match = link.match(regex);
-        if (match) {
-          const extractedValue = match[1];
-          tmp.push(extractedValue);
-        } else {
-          console.log("No match found");
-        }
-      }
-      const newMatchIds = Array.from(new Set([...matchIds, ...tmp]));
-      setMatchIds(newMatchIds);
-      localStorage.setItem("matches", JSON.stringify(newMatchIds));
-    } catch (error) {
-      console.log(error);
-    }
-  }
   return (
     <>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -860,18 +838,6 @@ function App() {
       >
         Follow New Match
       </button>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 15,
-          marginBottom: 15,
-        }}
-      >
-        <button className="followFewBtn" onClick={getLiveMatches}>
-          Follow Few Matches
-        </button>
-      </div>
     </>
   );
 }

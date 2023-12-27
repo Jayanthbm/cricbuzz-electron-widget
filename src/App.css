@@ -44,11 +44,15 @@
   color: #464646;
 }
 
+.ODI {
+  color: #3399ff;
+}
+
 .cricket-card-subtitle {
   font-size: 10px;
   color: #555;
   font-weight: bold;
-  margin-top:2px;
+  margin-top: 2px;
 }
 
 .cricket-card-toss {
@@ -124,13 +128,10 @@
   color: rgb(124, 54, 54);
 }
 
-.striker-name {
-  font-weight: bold;
-  color: rgba(0, 0, 255, 0.568);
-}
 
 .last-wicket {
   text-align: center;
+  font-weight: bold;
 }
 
 .deleteBtnWrapper {
@@ -149,12 +150,6 @@
   box-shadow: 0 2px #0000000b;
   cursor: pointer;
 }
-
-.last-wicket {
-  text-align: center;
-  font-weight: bold;
-}
-
 
 .batting-cards-container {
   display: flex;
@@ -206,11 +201,6 @@
   margin-right: 1px;
 }
 
-.percentage {
-  font-size: 12px;
-  color: #777;
-}
-
 .more-stats {
   cursor: pointer;
   text-decoration: underline;
@@ -235,14 +225,6 @@
   cursor: pointer;
 }
 
-.followFewBtn {
-  color: #fff;
-  border-color: #0e1271;
-  background: #0e1271;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
-  box-shadow: 0 2px #0000000b;
-  cursor: pointer;
-}
 
 .com-wrapper {
   margin-top: 10px;
@@ -271,10 +253,10 @@
   color: #fff;
   margin-right: 10px;
 }
-.player-of-the-match{
+
+.player-of-the-match {
   font-weight: bold;
 }
-
 
 .commWrapper {
   background: orange;
