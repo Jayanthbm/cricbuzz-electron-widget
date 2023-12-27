@@ -46,6 +46,9 @@
 
 .cricket-card-subtitle {
   font-size: 10px;
+  color: #555;
+  font-weight: bold;
+  margin-top:2px;
 }
 
 .cricket-card-toss {
@@ -184,7 +187,6 @@
 .player-name:hover {
   overflow: visible;
   white-space: normal;
-  background-color: #fff;
   z-index: 1;
 }
 
@@ -268,4 +270,16 @@
   font-weight: bold;
   color: #fff;
   margin-right: 10px;
+}
+.player-of-the-match{
+  font-weight: bold;
+}
+
+
+.commWrapper {
+  background: orange;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

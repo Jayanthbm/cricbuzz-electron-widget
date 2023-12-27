@@ -88,11 +88,11 @@ const MatchStatus = ({ status }) => {
 
 const CricketScoreCard = ({ crr, rrr, matchScoreDetails }) => {
   return (
-    <>
-      <div className="cricket-card-scorecard-wrapper">
-        <div>
-          {matchScoreDetails?.inningsScoreList?.map((inning, index) => {
-            return (
+    <div>
+      {matchScoreDetails?.inningsScoreList?.map((inning, index) => {
+        return (
+          <div className="cricket-card-scorecard-wrapper" key={index}>
+            <div>
               <div className="cricket-card-score" key={index}>
                 <div className="cricket-card-score-teamName">
                   {inning.batTeamName}
@@ -106,21 +106,30 @@ const CricketScoreCard = ({ crr, rrr, matchScoreDetails }) => {
                 {inning.isDeclared === true && <p>Declared</p>}
                 {inning.isFollowOn === true && <p>Follow On</p>}
               </div>
-            );
-          })}
-        </div>
-        <div className="cricket-card-run-rate-wrapper">
-          <>
-            CRR :<span className="crr">{crr}</span>
-          </>
-          {rrr > 0 && (
-            <>
-              RRR :<span className="rrr">{rrr}</span>
-            </>
-          )}
-        </div>
-      </div>
-    </>
+            </div>
+            <div className="cricket-card-run-rate-wrapper">
+              {index === 0 ? (
+                <>
+                  CRR :<span className="crr">{crr}</span>
+                  {rrr > 0 && (
+                    <>
+                      RRR :<span className="rrr">{rrr}</span>
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  RR:
+                  <span className="crr">
+                    {(inning.score / inning.overs).toFixed(2)}
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
@@ -262,12 +271,12 @@ const PlayerOfTheMatchCard = ({ fullName }) => {
   return (
     <div>
       <span>Player of the Match :</span>
-      <div className="player-of-the-match">{fullName}</div>
+      <span className="player-of-the-match">{fullName}</span>
     </div>
   );
 };
 
-const LastCommentCard = ({ commentText, event, overNumber }) => {
+const LastCommentCard = ({ commentText, event, overNumber, lastWicket }) => {
   // console.log("EVENT", event);
   const EVENTS = {
     NONE: "",
@@ -280,22 +289,95 @@ const LastCommentCard = ({ commentText, event, overNumber }) => {
     PARTNERSHIP: "",
     WICKET: "Its a WICKET!!",
   };
+  const [showComm, setShowComm] = useState(false);
   return (
-    <div className="com-wrapper">
-      <div
-        style={{
-          fontWeight: 600,
-        }}
-      >
-        Latest Commentary
-      </div>
-      <div className="over-wrapper">
-        <div className="over-number">{overNumber}</div>
-        <div className="event">
-          {event?.split(",").map((e, i) => EVENTS[e] || "")}
+    <>
+      <div className="com-wrapper">
+        <div className="commWrapper" onClick={() => setShowComm(!showComm)}>
+          <span
+            style={{
+              color: "#fff",
+              fontWeight: 600,
+              marginLeft: 5,
+            }}
+          >
+            Latest Commentary
+          </span>
+          {showComm ? <ExpandLess /> : <ExpandMore />}
         </div>
+        {showComm && (
+          <>
+            <div className="over-wrapper">
+              <div className="over-number">{overNumber}</div>
+              <div className="event">
+                {event?.split(",").map((e, i) => EVENTS[e] || "")}
+              </div>
+            </div>
+            <div>{commentText}</div>
+            <>{lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}</>
+          </>
+        )}
       </div>
-      <div>{commentText}</div>
+    </>
+  );
+};
+
+const UDRSCard = ({ matchData }) => {
+  const [showUdrsDetails, setShowUdrsDetails] = useState(false);
+  return (
+    <div>
+      <div
+        className="commWrapper"
+        onClick={() => setShowUdrsDetails(!showUdrsDetails)}
+      >
+        <span style={{
+          color: '#fff',
+          fontWeight: 600,
+          marginLeft:5
+        }}>UDRS</span>
+        {showUdrsDetails ? <ExpandLess /> : <ExpandMore />}
+      </div>
+      {showUdrsDetails && (
+        <table>
+          <thead>
+            <th></th>
+            <th>Team</th>
+            <th>Rem</th>
+            <th>Successful</th>
+            <th>UnSuccessful</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  src={teamsData[matchData?.matchUdrs.team1Id]?.flag}
+                  width={25}
+                  height={18}
+                  alt="Flag"
+                />
+              </td>
+              <td>{matchData[matchData?.matchUdrs.team1Id]}</td>
+              <td>{matchData?.matchUdrs.team1Remaining}</td>
+              <td>{matchData?.matchUdrs.team1Successful}</td>
+              <td>{matchData?.matchUdrs.team1Unsuccessful}</td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src={teamsData[matchData?.matchUdrs.team2Id]?.flag}
+                  width={25}
+                  height={18}
+                  alt="Flag"
+                />
+              </td>
+              <td>{matchData[matchData?.matchUdrs.team2Id]}</td>
+              <td>{matchData?.matchUdrs.team2Remaining}</td>
+              <td>{matchData?.matchUdrs.team2Successful}</td>
+              <td>{matchData?.matchUdrs.team2Unsuccessful}</td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
@@ -305,6 +387,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [matchState, setMatchState] = useState("Preview");
   const [showBatingDetails, setShowBatingDetails] = useState(false);
   const [showBowlingDetails, setShowBowlingDetails] = useState(false);
+  const [showLiveScore, setShowLiveScore] = useState(true);
   useEffect(() => {
     async function fetchMatchInfo() {
       try {
@@ -549,24 +632,6 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
         )}
 
         <MatchStatus status={matchData?.status} />
-        {matchState !== "Preview" && (
-          <CricketScoreCard
-            crr={matchData.currentRunRate}
-            rrr={matchData.requiredRunRate}
-            matchScoreDetails={matchData?.matchScoreDetails}
-          />
-        )}
-        {matchState !== "Preview" && (
-          <>
-            {!isMatchComplete && (
-              <PartnershipCard
-                runs={matchData?.partnerShip?.runs}
-                balls={matchData?.partnerShip?.balls}
-              />
-            )}
-          </>
-        )}
-
         {isMatchComplete && (
           <PlayerOfTheMatchCard
             name={
@@ -603,80 +668,107 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
             }
           />
         )}
+        {matchState !== "Preview" && (
+          <>
+            <CricketScoreCard
+              crr={matchData.currentRunRate}
+              rrr={matchData.requiredRunRate}
+              matchScoreDetails={matchData?.matchScoreDetails}
+            />
+            <>
+              {!isMatchComplete && (
+                <PartnershipCard
+                  runs={matchData?.partnerShip?.runs}
+                  balls={matchData?.partnerShip?.balls}
+                />
+              )}
+            </>
+            <>
+              {!isMatchComplete && (
+                <>
+                  <div
+                    className="more-stats"
+                    onClick={() => setShowBatingDetails(!showBatingDetails)}
+                  >
+                    {showBatingDetails ? "Hide" : "Show"} More Bating Details
+                    {showBatingDetails ? <ExpandLess /> : <ExpandMore />}
+                  </div>
+                  {showBatingDetails ? (
+                    <BattingCard
+                      strikerData={matchData?.strikerData}
+                      nonStrikerData={matchData?.nonStrikerData}
+                      matchFormat={matchData?.matchFormat}
+                      runs={matchData?.runs}
+                    />
+                  ) : (
+                    <div>
+                      <b>
+                        {matchData?.strikerData?.batName} -{" "}
+                        {matchData?.strikerData?.batRuns}(
+                        {matchData?.strikerData?.batBalls})
+                      </b>
+                      <br />
+                      {matchData?.nonStrikerData?.batName} -{" "}
+                      {matchData?.nonStrikerData?.batRuns}(
+                      {matchData?.nonStrikerData?.batBalls})
+                    </div>
+                  )}
+                </>
+              )}
+            </>
+            <>
+              {!isMatchComplete && (
+                <>
+                  <div
+                    className="more-stats"
+                    onClick={() => setShowBowlingDetails(!showBowlingDetails)}
+                  >
+                    {showBowlingDetails ? "Hide" : "Show"} More Bowling Details
+                    {showBowlingDetails ? <ExpandLess /> : <ExpandMore />}
+                  </div>
+                  {showBowlingDetails ? (
+                    <BowlingCard
+                      bowlerStriker={matchData?.bowlerStriker}
+                      bowlerNonStriker={matchData?.bowlerNonStriker}
+                      matchFormat={matchData?.matchFormat}
+                      runs={matchData?.runs}
+                      wickets={matchData?.wickets}
+                    />
+                  ) : (
+                    <div>
+                      <b>
+                        {matchData?.bowlerStriker?.bowlName} -{" "}
+                        {matchData?.bowlerStriker?.bowlRuns} -{" "}
+                        {matchData?.bowlerStriker?.bowlWkts}
+                      </b>
+                      <br />
+                      {matchData?.bowlerNonStriker?.bowlName} -{" "}
+                      {matchData?.bowlerNonStriker?.bowlRuns} -{" "}
+                      {matchData?.bowlerNonStriker?.bowlWkts}
+                    </div>
+                  )}
+                </>
+              )}
+            </>
 
-        {!isMatchComplete && (
-          <>
-            <div
-              className="more-stats"
-              onClick={() => setShowBatingDetails(!showBatingDetails)}
-            >
-              {showBatingDetails ? "Hide" : "Show"} More Bating Details
-              {showBatingDetails ? <ExpandLess /> : <ExpandMore />}
-            </div>
-            {showBatingDetails ? (
-              <BattingCard
-                strikerData={matchData?.strikerData}
-                nonStrikerData={matchData?.nonStrikerData}
-                matchFormat={matchData?.matchFormat}
-                runs={matchData?.runs}
-              />
-            ) : (
-              <div>
-                <b>
-                  {matchData?.strikerData?.batName} -{" "}
-                  {matchData?.strikerData?.batRuns}(
-                  {matchData?.strikerData?.batBalls})
-                </b>
-                <br />
-                {matchData?.nonStrikerData?.batName} -{" "}
-                {matchData?.nonStrikerData?.batRuns}(
-                {matchData?.nonStrikerData?.batBalls})
-              </div>
-            )}
+            <>
+              {!isMatchComplete && matchData?.matchUdrs && (
+                <UDRSCard matchData={matchData} />
+              )}
+            </>
+            <>
+              {!isMatchComplete && (
+                <LastCommentCard
+                  commentText={matchData?.commentaryList?.commText}
+                  event={matchData?.commentaryList?.event}
+                  overNumber={matchData?.commentaryList?.overNumber}
+                  lastWicket={matchData?.lastWicket}
+                />
+              )}
+            </>
           </>
         )}
-        {!isMatchComplete && (
-          <>
-            <div
-              className="more-stats"
-              onClick={() => setShowBowlingDetails(!showBowlingDetails)}
-            >
-              {showBowlingDetails ? "Hide" : "Show"} More Bowling Details
-              {showBowlingDetails ? <ExpandLess /> : <ExpandMore />}
-            </div>
-            {showBowlingDetails ? (
-              <BowlingCard
-                bowlerStriker={matchData?.bowlerStriker}
-                bowlerNonStriker={matchData?.bowlerNonStriker}
-                matchFormat={matchData?.matchFormat}
-                runs={matchData?.runs}
-                wickets={matchData?.wickets}
-              />
-            ) : (
-              <div>
-                <b>
-                  {matchData?.bowlerStriker?.bowlName} -{" "}
-                  {matchData?.bowlerStriker?.bowlRuns} -{" "}
-                  {matchData?.bowlerStriker?.bowlWkts}
-                </b>
-                <br />
-                {matchData?.bowlerNonStriker?.bowlName} -{" "}
-                {matchData?.bowlerNonStriker?.bowlRuns} -{" "}
-                {matchData?.bowlerNonStriker?.bowlWkts}
-              </div>
-            )}
-          </>
-        )}
-        {!isMatchComplete && (
-          <LastCommentCard
-            commentText={matchData?.commentaryList?.commText}
-            event={matchData?.commentaryList?.event}
-            overNumber={matchData?.commentaryList?.overNumber}
-          />
-        )}
-        {!isMatchComplete && matchData?.lastWicket && (
-          <LastWicketDataCard lastWicket={matchData?.lastWicket} />
-        )}
+
         <div className="deleteBtnWrapper">
           <button
             className="deleteBtn"
