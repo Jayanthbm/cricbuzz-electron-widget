@@ -1,17 +1,11 @@
 import axios from "axios";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./App.css";
 import { ReactComponent as ExpandLess } from "./expand_less.svg";
 import { ReactComponent as ExpandMore } from "./expand_more.svg";
 import teamsData from "./teams.json";
 
 const API_URL = "https://www.cricbuzz.com/api/cricket-match/commentary/";
-
 const MATCH_STATES = {
   Preview: 2,
   "Innings Break": 2,
@@ -19,8 +13,8 @@ const MATCH_STATES = {
   Stumps: 2,
   "In Progress": 2,
   Rain: 2,
+  Toss: 2,
 };
-
 const EVENTS = {
   NONE: "",
   "over-break": "Over Completed ",
@@ -32,19 +26,6 @@ const EVENTS = {
   PARTNERSHIP: "",
   WICKET: "Its a WICKET!! ",
 };
-
-function shouldMatchDataHidden(matchState) {
-  if (matchState === "Preview") {
-    return true;
-  }
-  return false;
-}
-function shouldLiveDataHidden(matchState) {
-  if (matchState === "Preview" || matchState === "Complete") {
-    return true;
-  }
-  return false;
-}
 
 const calculatePercentage = (value, total) => {
   if (value === 0 || total === 0) {
@@ -81,30 +62,42 @@ function useInterval(callback, delay) {
   return [intervalId.current];
 }
 
+const FlagImage = ({ flag, alt }) => {
+  return (
+    flag !== "" && <img src={flag} className="ml-3 mr-3 flag-style" alt={alt} />
+  );
+};
+
+const TitleSpacing = ({ children }) => {
+  return <span className="ml-3 mr-3">{children}</span>;
+};
+
+const TeamInfo = ({ flag, team }) => (
+  <>
+    <FlagImage flag={flag} alt={team} />
+    <TitleSpacing>{team}</TitleSpacing>
+  </>
+);
 const CricketCardTitle = ({ flag1, team1, flag2, team2 }) => {
   return (
-    <div className="cricket-card-title">
-      {flag1 !== "" && <img src={flag1} className="flag-style" alt={team1} />}
-      <span className="title-spacing">{team1}</span>
+    <div className="flex-container align-center bold sz-14">
+      <TeamInfo flag={flag1} team={team1} />
       <span>vs</span>
-      {flag2 !== "" && <img src={flag2} className="flag-style" alt={team2} />}
-      <span className="title-spacing">{team2}</span>
+      <TeamInfo flag={flag2} team={team2} />
     </div>
   );
 };
 
 const CricketMatchFormat = ({ matchFormat }) => {
-  return (
-    <div className={`cricket-card-format ${matchFormat}`}>{matchFormat}</div>
-  );
+  return <div className={`sz-12 bold ${matchFormat}`}>{matchFormat}</div>;
 };
 
 const CricketCardSubtitle = ({ subtitle }) => {
-  return <div className="cricket-card-subtitle">{subtitle}</div>;
+  return <div className="mt-3 bold sz-10 grey">{subtitle}</div>;
 };
 
 const MatchStatus = ({ status }) => {
-  return <div className="cricket-card-status-title">{status}</div>;
+  return <div className="sz-12 bold green">{status}</div>;
 };
 
 const PlayerOfTheMatchCard = ({ playersOfTheMatch, isMatchComplete }) => {
@@ -113,44 +106,42 @@ const PlayerOfTheMatchCard = ({ playersOfTheMatch, isMatchComplete }) => {
   return (
     <div>
       <span>Player of the Match :</span>
-      <span className="player-of-the-match">{fullName}</span>
+      <span className="bold">{fullName}</span>
     </div>
   );
 };
-const CrikcetCardToss = ({ tossWinner, tossDecision,hidden }) => {
+const CrikcetCardToss = ({ tossWinner, tossDecision, hidden }) => {
   if (hidden) return null;
   return (
-    <div className="cricket-card-toss">
-      <span className="cricket-card-toss-title">Toss:</span>
+    <div className="sz-12 bold">
+      <span className="red">Toss:</span>
       {tossWinner ? tossWinner + "(" + tossDecision + ")" : "N/A"}
     </div>
   );
 };
 
 const CricketScoreCard = ({ crr, rrr, matchScoreDetails, hidden }) => {
-  if (hidden) return null;
+  if (hidden || matchScoreDetails === undefined) return null;
   return (
-    <div className="cricket-card-scorecard-wrapper">
+    <div className="cricket-card-scorecard-wrapper pt-5 pb-5 pl-3 pr-3">
       {matchScoreDetails?.inningsScoreList?.map((inning, index) => (
-        <div className="cricket-scores-wrapper" key={index}>
-          <div className="cricket-card-score" key={index}>
-            <div className="cricket-card-score-teamName">
-              {inning.batTeamName}
-            </div>
-            <div className="cricket-card-score-runs">
+        <div className="flex-container justify-between" key={index}>
+          <div className="flex-container sz-14" key={index}>
+            <div className="mr-3 bold brown">{inning.batTeamName}</div>
+            <div className="mr3 bold green">
               {inning.score} / <span className="red">{inning.wickets}</span>
             </div>
-            <div className="cricket-card-score-overs">({inning.overs})</div>
+            <div>({inning.overs})</div>
             {inning.isDeclared && <p>Declared</p>}
             {inning.isFollowOn && <p>Follow On</p>}
           </div>
-          <div className="cricket-card-run-rate-wrapper">
+          <div className="flex-container sz-14">
             {index === 0 && (
               <>
-                CRR :<span className="crr">{crr}</span>
+                CRR :<span className="ml-2 mr-2 bold blue">{crr}</span>
                 {rrr > 0 && (
                   <>
-                    RRR :<span className="rrr">{rrr}</span>
+                    RRR :<span className="ml-2 mr-2 bold red">{rrr}</span>
                   </>
                 )}
               </>
@@ -158,7 +149,7 @@ const CricketScoreCard = ({ crr, rrr, matchScoreDetails, hidden }) => {
             {index !== 0 && (
               <>
                 RR:{" "}
-                <span className="crr">
+                <span className="ml-2 mr-2 bold blue">
                   {(inning.score / inning.overs).toFixed(2)}
                 </span>
               </>
@@ -170,17 +161,17 @@ const CricketScoreCard = ({ crr, rrr, matchScoreDetails, hidden }) => {
   );
 };
 
-const PartnershipCard = ({ runs, balls, oversRemaining,hidden }) => {
+const PartnershipCard = ({ runs, balls, oversRemaining, hidden }) => {
   if (hidden) return null;
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className="flex-container justify-between">
       <span>
-        Partnership: <span className="runs">{runs}</span>
-        <span className="balls">({balls})</span>
+        Partnership: <span className="bold blue">{runs}</span>
+        <span className="bold brown">({balls})</span>
       </span>
       {oversRemaining ? (
         <span>
-          Overs Rem: <span className="runs">{oversRemaining}</span>
+          Overs Rem: <span className="bold blue">{oversRemaining}</span>
         </span>
       ) : null}
     </div>
@@ -213,43 +204,48 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
     const runPercentage = calculatePercentage(batRuns, runs);
     if (batName) {
       return (
-        <div className="batting-card">
-          <div className="player-info">
-            <div className="player-name">{batName}</div>
-            <div className="runs-balls">
+        <div className="batting-card p-10 mb-5 mt-5">
+          <div className="mb-10">
+            <div className="player-name sz-14 bold">{batName}</div>
+            <div className="sz-14">
               Runs: {batRuns} ({batBalls})
             </div>
-            <div className="run-percentage">{runPercentage} Scored</div>
-            <div className="strike-rate">Strike Rate: {batStrikeRate}</div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div className="strike-rate">
-                Fours: <span className="count">{batFours}</span>
+            <div className="orange bold">{runPercentage} Scored</div>
+            <div className="sz-12 grey">Strike Rate: {batStrikeRate}</div>
+            <div style={{ display: "flex", justifyContent: "justify-between" }}>
+              <div className="sz-12 grey">
+                Fours: <span className="sz-12 bold ml-1 mr-1">{batFours}</span>
               </div>
-              <div className="strike-rate">
-                Sixes: <span className="count">{batSixes}</span>
+              <div className="sz-12 grey">
+                Sixes: <span className="sz-12 bold ml-1 mr-1">{batSixes}</span>
               </div>
-              <div className="strike-rate">
-                Dots: <span className="count">{batDots}</span>
+              <div className="sz-12 grey">
+                Dots: <span className="sz-12 bold ml-1 mr-1">{batDots}</span>
               </div>
             </div>
           </div>
           <div
-            className="more-stats"
+            className="flex-container wrap justify-end align-center cursor-pointer more-stats"
             onClick={() => setShowOtherStats(!showOtherStats)}
           >
             More Stats {showOtherStats ? <ExpandLess /> : <ExpandMore />}
           </div>
           {showOtherStats && (
             <div className="mins">
-              Fours: <span className="count">{fourPercentage}</span>
+              Fours:{" "}
+              <span className="sz-12 bold ml-1 mr-1">{fourPercentage}</span>
               <br />
-              Sixes: <span className="count">{sixPercentage}</span>
+              Sixes:{" "}
+              <span className="sz-12 bold ml-1 mr-1">{sixPercentage}</span>
               <br />
-              Dots: <span className="count">{dotPercentage}</span>
+              Dots:{" "}
+              <span className="sz-12 bold ml-1 mr-1">{dotPercentage}</span>
               <br />
-              Boundaries: <span className="count">{boundaryPercentage}</span>
+              Boundaries:{" "}
+              <span className="sz-12 bold ml-1 mr-1">{boundaryPercentage}</span>
               <br />
-              Time Spent: <span className="count">{timeInHours}</span>
+              Time Spent:{" "}
+              <span className="sz-12 bold ml-1 mr-1">{timeInHours}</span>
             </div>
           )}
         </div>
@@ -258,7 +254,7 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
   };
   if (hidden) return null;
   return (
-    <div className="batting-cards-container">
+    <div className="flex-container justify-around">
       {renderCard(strikerData)}
       {renderCard(nonStrikerData)}
     </div>
@@ -266,7 +262,7 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
 };
 
 const SmallBattingCard = ({ strikerData, nonStrikerData, hidden }) => {
-  if(hidden) return null;
+  if (hidden) return null;
   return (
     <>
       <b>
@@ -279,7 +275,13 @@ const SmallBattingCard = ({ strikerData, nonStrikerData, hidden }) => {
   );
 };
 
-const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs, hidden }) => {
+const BowlingCard = ({
+  bowlerStriker,
+  bowlerNonStriker,
+  wickets,
+  runs,
+  hidden,
+}) => {
   const renderCard = (data) => {
     const {
       bowlName,
@@ -294,25 +296,25 @@ const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs, hidden })
     const wicketPercentage = calculatePercentage(bowlWkts, wickets);
     const runPercentage = calculatePercentage(bowlRuns, runs);
     return (
-      <div className="batting-card">
-        <div className="player-info">
-          <div className="player-name">{bowlName}</div>
-          <div className="runs-balls">Wickets: {bowlWkts}</div>
-          <div className="run-percentage">{wicketPercentage} Taken</div>
-          <div className="runs-balls">Runs Conceded: {bowlRuns}</div>
-          <div className="run-percentage">{runPercentage} Conceded</div>
-          <div className="strike-rate">Overs: {bowlOvs}</div>
-          <div className="strike-rate">Economy: {bowlEcon}</div>
-          <div className="strike-rate">Maidens: {bowlMaidens}</div>
-          <div className="strike-rate">Wides: {bowlWides}</div>
-          <div className="strike-rate">No Balls: {bowlNoballs}</div>
+      <div className="batting-card p-10 mb-5 mt-5">
+        <div className="mb-10">
+          <div className="player-name sz-14 bold">{bowlName}</div>
+          <div className="sz-14">Wickets: {bowlWkts}</div>
+          <div className="orange bold">{wicketPercentage} Taken</div>
+          <div className="sz-14">Runs Conceded: {bowlRuns}</div>
+          <div className="orange bold">{runPercentage} Conceded</div>
+          <div className="sz-12 grey">Overs: {bowlOvs}</div>
+          <div className="sz-12 grey">Economy: {bowlEcon}</div>
+          <div className="sz-12 grey">Maidens: {bowlMaidens}</div>
+          <div className="sz-12 grey">Wides: {bowlWides}</div>
+          <div className="sz-12 grey">No Balls: {bowlNoballs}</div>
         </div>
       </div>
     );
   };
   if (hidden) return null;
   return (
-    <div className="batting-cards-container">
+    <div className="flex-container justify-around">
       {renderCard(bowlerStriker)}
       {renderCard(bowlerNonStriker)}
     </div>
@@ -337,7 +339,10 @@ const SmallBowlingCard = ({ bowlerStriker, bowlerNonStriker, hidden }) => {
 const TitleClickonExpand = ({ onClick, title, boolCheck, hidden }) => {
   if (hidden) return null;
   return (
-    <div className="title-container" onClick={onClick}>
+    <div
+      className="flex-container justify-between align-center mt10 mb10 cursor-pointer bg-grey"
+      onClick={onClick}
+    >
       <span
         style={{
           color: "#fff",
@@ -350,10 +355,65 @@ const TitleClickonExpand = ({ onClick, title, boolCheck, hidden }) => {
       {boolCheck ? <ExpandLess /> : <ExpandMore />}
     </div>
   );
-} ;
-const UDRSCard = ({ matchUdrs,flag1,flag2,team1Name,team2Name, hidden}) => {
+};
+
+const UDRSTable = ({ teams }) => (
+  <table className="udrs-table mt10">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Team</th>
+        <th>Remaining</th>
+        <th>Successful</th>
+        <th>Unsuccessful</th>
+      </tr>
+    </thead>
+    <tbody>
+      {teams.map((team, index) => (
+        <tr key={index}>
+          <td>
+            {" "}
+            <FlagImage flag={team.flag} alt={team.teamName} />
+          </td>
+          <td>{team.teamName}</td>
+          <td>{team.teamUdrs?.remaining}</td>
+          <td>{team.teamUdrs?.successful}</td>
+          <td>{team.teamUdrs?.unsuccessful}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
+const UDRSCard = ({
+  matchUdrs,
+  flag1,
+  flag2,
+  team1Name,
+  team2Name,
+  hidden,
+}) => {
   const [showUdrsDetails, setShowUdrsDetails] = useState(false);
   if (hidden || !matchUdrs) return null;
+  const teamsData = [
+    {
+      teamName: team1Name,
+      teamUdrs: {
+        remaining: matchUdrs?.team1Remaining,
+        successful: matchUdrs?.team1Successful,
+        unsuccessful: matchUdrs?.team1Unsuccessful,
+      },
+      flag: flag1,
+    },
+    {
+      teamName: team2Name,
+      teamUdrs: {
+        remaining: matchUdrs?.team2Remaining,
+        successful: matchUdrs?.team2Successful,
+        unsuccessful: matchUdrs?.team2Unsuccessful,
+      },
+      flag: flag2,
+    },
+  ];
   return (
     <>
       <TitleClickonExpand
@@ -361,47 +421,7 @@ const UDRSCard = ({ matchUdrs,flag1,flag2,team1Name,team2Name, hidden}) => {
         title="UDRS"
         boolCheck={showUdrsDetails}
       />
-      {showUdrsDetails && (
-        <table>
-          <thead>
-            <tr key="1">
-              <th></th>
-              <th>Team</th>
-              <th>Rem</th>
-              <th>Successful</th>
-              <th>UnSuccessful</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr key="2">
-              <td>
-                <img
-                  src={flag1}
-                  className="flag-style"
-                  alt={`Flag of ${team1Name}`}
-                />
-              </td>
-              <td>{team1Name}</td>
-              <td>{matchUdrs?.team1Remaining}</td>
-              <td>{matchUdrs?.team1Successful}</td>
-              <td>{matchUdrs?.team1Unsuccessful}</td>
-            </tr>
-            <tr key="3">
-              <td>
-                <img
-                  src={flag2}
-                  className="flag-style"
-                  alt={`Flag of ${team2Name}`}
-                />
-              </td>
-              <td>{team2Name}</td>
-              <td>{matchUdrs?.team2Remaining}</td>
-              <td>{matchUdrs?.team2Successful}</td>
-              <td>{matchUdrs?.team2Unsuccessful}</td>
-            </tr>
-          </tbody>
-        </table>
-      )}
+      {showUdrsDetails && <UDRSTable teams={teamsData} />}
     </>
   );
 };
@@ -409,9 +429,7 @@ const UDRSCard = ({ matchUdrs,flag1,flag2,team1Name,team2Name, hidden}) => {
 const LastCommentCard = ({ commentaryList, lastWicket, hidden }) => {
   const [showComm, setShowComm] = useState(false);
   if (hidden) return null;
-
-  const { commText, event, overNumber } = commentaryList || '';
-
+  const { commText, event, overNumber } = commentaryList || "";
   const generateEventLabels = (events) => {
     return events.map((e, i) => EVENTS[e] || "").join(" ");
   };
@@ -425,14 +443,14 @@ const LastCommentCard = ({ commentaryList, lastWicket, hidden }) => {
       />
       {showComm && (
         <>
-          <div className="over-wrapper">
-            <div className="over-number">{overNumber}</div>
-            <div className="event">
+          <div className="flex-container justify-between align-center over-wrapper">
+            <div className="ml-10 bold white">{overNumber}</div>
+            <div className="mr-10 bold white">
               {generateEventLabels(event?.split(","))}
             </div>
           </div>
           <div>{commText}</div>
-          <>{lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}</>
+          {lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}
         </>
       )}
     </>
@@ -441,114 +459,249 @@ const LastCommentCard = ({ commentaryList, lastWicket, hidden }) => {
 
 const LastWicketDataCard = ({ lastWicket }) => {
   return (
-    <div className="m-t10 m-b5">
-      <span>Last Wicket :</span>
-      <span className="last-wicket">{lastWicket}</span>
+    <div className="mt-10 mb-5">
+      <span>Last Wicket :</span>{" "}
+      <span className="text-center bold">{lastWicket}</span>
     </div>
   );
 };
 
+const CricketCardHeader = ({
+  flag1,
+  team1,
+  flag2,
+  team2,
+  matchFormat,
+  seriesName,
+  status,
+}) => (
+  <>
+    <div className="flex-container justify-between align-center">
+      <CricketCardTitle
+        flag1={flag1}
+        team1={team1}
+        flag2={flag2}
+        team2={team2}
+      />
+      <CricketMatchFormat matchFormat={matchFormat} />
+    </div>
+    <CricketCardSubtitle subtitle={seriesName} />
+    <MatchStatus status={status} />
+  </>
+);
 
+const CricketMatchData = ({
+  matchState,
+  playersOfTheMatch,
+  isMatchComplete,
+  tossWinner,
+  tossDecision,
+  crr,
+  rrr,
+  matchScoreDetails,
+}) => {
+  if (matchState === "Preview") return null;
+  return (
+    <>
+      <PlayerOfTheMatchCard
+        playersOfTheMatch={playersOfTheMatch}
+        isMatchComplete={isMatchComplete}
+      />
+      <CrikcetCardToss tossWinner={tossWinner} tossDecision={tossDecision} />
+      <CricketScoreCard
+        crr={crr}
+        rrr={rrr}
+        matchScoreDetails={matchScoreDetails}
+      />
+    </>
+  );
+};
+const CricketLiveData = ({
+  matchState,
+  partnerShip,
+  oversRem,
+  strikerData,
+  nonStrikerData,
+  matchFormat,
+  runs,
+  bowlerStriker,
+  bowlerNonStriker,
+  wickets,
+  matchUdrs,
+  flag1,
+  flag2,
+  team1Name,
+  team2Name,
+  commentaryList,
+  lastWicket,
+}) => {
+  const [showBatingDetails, setShowBatingDetails] = useState(false);
+  const [showBowlingDetails, setShowBowlingDetails] = useState(false);
+
+  if (
+    matchState === "Preview" ||
+    matchState === "Complete" ||
+    matchState === "Toss"
+  )
+    return null;
+  return (
+    <>
+      <PartnershipCard
+        runs={partnerShip?.runs}
+        balls={partnerShip?.balls}
+        oversRemaining={oversRem}
+      />
+      <TitleClickonExpand
+        onClick={() => setShowBatingDetails(!showBatingDetails)}
+        title="Batting"
+        boolCheck={showBatingDetails}
+      />
+      <SmallBattingCard
+        strikerData={strikerData}
+        nonStrikerData={nonStrikerData}
+        hidden={showBatingDetails}
+      />
+      <BattingCard
+        strikerData={strikerData}
+        nonStrikerData={nonStrikerData}
+        matchFormat={matchFormat}
+        runs={runs}
+        hidden={!showBatingDetails}
+      />
+      <TitleClickonExpand
+        onClick={() => setShowBowlingDetails(!showBowlingDetails)}
+        title="Bowling Stats"
+        boolCheck={showBowlingDetails}
+      />
+      <SmallBowlingCard
+        bowlerStriker={bowlerStriker}
+        bowlerNonStriker={bowlerNonStriker}
+        hidden={showBowlingDetails}
+      />
+      <BowlingCard
+        bowlerStriker={bowlerStriker}
+        bowlerNonStriker={bowlerNonStriker}
+        matchFormat={matchFormat}
+        runs={runs}
+        wickets={wickets}
+        hidden={!showBowlingDetails}
+      />
+      <UDRSCard
+        matchUdrs={matchUdrs}
+        flag1={flag1}
+        flag2={flag2}
+        team1Name={team1Name}
+        team2Name={team2Name}
+      />
+      <LastCommentCard
+        commentaryList={commentaryList}
+        lastWicket={lastWicket}
+      />
+    </>
+  );
+};
 const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [isMatchComplete, setIsMatchComplete] = useState(true);
   const [matchData, setMatchData] = useState({});
   const [matchState, setMatchState] = useState("Preview");
-  const [showBatingDetails, setShowBatingDetails] = useState(false);
-  const [showBowlingDetails, setShowBowlingDetails] = useState(false);
 
   const fetchLiveScores = useCallback(async () => {
-    const { data } = await axios.get(`${API_URL}${matchId}`);
-    const { matchHeader, miniscore, commentaryList } = data;
-    let tmpMatchInfo = {
-      complete: matchHeader?.complete,
-      dayNight: matchHeader?.dayNight,
-      dayNumber: matchHeader?.dayNumber,
-      domestic: matchHeader?.domestic,
-      matchDescription: matchHeader?.matchDescription,
-      matchFormat: matchHeader?.matchFormat,
-      matchCompleteTimestamp: matchHeader?.matchCompleteTimestamp,
-      matchStartTimestamp: matchHeader?.matchStartTimestamp,
-      matchType: matchHeader?.matchType,
-      playersOfTheMatch: matchHeader?.playersOfTheMatch,
-      playersOfTheSeries: matchHeader?.playersOfTheSeries,
-      results: matchHeader?.results,
-      revisedTarget: matchHeader?.revisedTarget,
-      seriesName: matchHeader?.seriesName,
-      state: matchHeader?.state,
-      status: matchHeader?.status,
-      tossWinner: matchHeader?.tossResults?.tossWinnerName,
-      tossDecision: matchHeader?.tossResults?.decision,
-      team1Id: matchHeader?.team1?.id,
-      team1Name: matchHeader?.team1?.shortName,
-      team2Id: matchHeader?.team2?.id,
-      team2Name: matchHeader?.team2?.shortName,
-      [`${matchHeader?.team1?.id}`]: matchHeader?.team1?.shortName,
-      [`${matchHeader?.team2?.id}`]: matchHeader?.team2?.shortName,
-      batTeamId: miniscore?.batTeam?.teamId,
-      runs: miniscore?.batTeam?.teamScore,
-      wickets: miniscore?.batTeam?.teamWkts,
-      currentRunRate: miniscore?.currentRunRate,
-      event: miniscore?.event,
-      inningsId: miniscore?.inningsId,
-      overs: miniscore?.overs,
-      oversRem: miniscore?.oversRem,
-      recentOvsStats: miniscore?.recentOvsStats,
-      remRunsToWin: miniscore?.remRunsToWin,
-      requiredRunRate: miniscore?.requiredRunRate,
-      lastWicket: miniscore?.lastWicket,
-      partnerShip: miniscore?.partnerShip,
-      strikerData: {
-        batName: miniscore?.batsmanStriker?.batName,
-        batRuns: miniscore?.batsmanStriker?.batRuns,
-        batBalls: miniscore?.batsmanStriker?.batBalls,
-        batDots: miniscore?.batsmanStriker?.batDots,
-        batFours: miniscore?.batsmanStriker?.batFours,
-        batSixes: miniscore?.batsmanStriker?.batSixes,
-        batStrikeRate: miniscore?.batsmanStriker?.batStrikeRate,
-        batMins: miniscore?.batsmanStriker?.batMins,
-        batId: miniscore?.batsmanStriker?.batId,
-      },
-      nonStrikerData: {
-        batName: miniscore?.batsmanNonStriker?.batName,
-        batRuns: miniscore?.batsmanNonStriker?.batRuns,
-        batBalls: miniscore?.batsmanNonStriker?.batBalls,
-        batDots: miniscore?.batsmanNonStriker?.batDots,
-        batFours: miniscore?.batsmanNonStriker?.batFours,
-        batSixes: miniscore?.batsmanNonStriker?.batSixes,
-        batStrikeRate: miniscore?.batsmanNonStriker?.batStrikeRate,
-        batMins: miniscore?.batsmanNonStriker?.batMins,
-        batId: miniscore?.batsmanNonStriker?.batId,
-      },
-      bowlerStriker: {
-        bowlName: miniscore?.bowlerStriker?.bowlName,
-        bowlOvs: miniscore?.bowlerStriker?.bowlOvs,
-        bowlRuns: miniscore?.bowlerStriker?.bowlRuns,
-        bowlWkts: miniscore?.bowlerStriker?.bowlWkts,
-        bowlEcon: miniscore?.bowlerStriker?.bowlEcon,
-        bowlMaidens: miniscore?.bowlerStriker?.bowlMaidens,
-        bowlWides: miniscore?.bowlerStriker?.bowlWides,
-        bowlNoballs: miniscore?.bowlerStriker?.bowlNoballs,
-        bowlId: miniscore?.bowlerStriker?.bowlId,
-      },
-      bowlerNonStriker: {
-        bowlName: miniscore?.bowlerNonStriker?.bowlName,
-        bowlOvs: miniscore?.bowlerNonStriker?.bowlOvs,
-        bowlRuns: miniscore?.bowlerNonStriker?.bowlRuns,
-        bowlWkts: miniscore?.bowlerNonStriker?.bowlWkts,
-        bowlEcon: miniscore?.bowlerNonStriker?.bowlEcon,
-        bowlMaidens: miniscore?.bowlerNonStriker?.bowlMaidens,
-        bowlWides: miniscore?.bowlerNonStriker?.bowlWides,
-        bowlNoballs: miniscore?.bowlerNonStriker?.bowlNoballs,
-        bowlId: miniscore?.bowlerNonStriker?.bowlId,
-      },
-      latestPerformance: miniscore?.latestPerformance,
-      matchScoreDetails: miniscore?.matchScoreDetails,
-      matchUdrs: miniscore?.matchUdrs,
-      commentaryList: commentaryList[0],
-    };
-    setMatchData(tmpMatchInfo);
-    setMatchState(matchHeader?.state);
-    return;
+    try {
+      const { data } = await axios.get(`${API_URL}${matchId}`);
+      const { matchHeader, miniscore, commentaryList } = data;
+      let tmpMatchInfo = {
+        complete: matchHeader?.complete,
+        dayNight: matchHeader?.dayNight,
+        dayNumber: matchHeader?.dayNumber,
+        domestic: matchHeader?.domestic,
+        matchDescription: matchHeader?.matchDescription,
+        matchFormat: matchHeader?.matchFormat,
+        matchCompleteTimestamp: matchHeader?.matchCompleteTimestamp,
+        matchStartTimestamp: matchHeader?.matchStartTimestamp,
+        matchType: matchHeader?.matchType,
+        playersOfTheMatch: matchHeader?.playersOfTheMatch,
+        playersOfTheSeries: matchHeader?.playersOfTheSeries,
+        results: matchHeader?.results,
+        revisedTarget: matchHeader?.revisedTarget,
+        seriesName: matchHeader?.seriesName,
+        state: matchHeader?.state,
+        status: matchHeader?.status,
+        tossWinner: matchHeader?.tossResults?.tossWinnerName,
+        tossDecision: matchHeader?.tossResults?.decision,
+        team1Id: matchHeader?.team1?.id,
+        team1Name: matchHeader?.team1?.shortName,
+        team2Id: matchHeader?.team2?.id,
+        team2Name: matchHeader?.team2?.shortName,
+        [`${matchHeader?.team1?.id}`]: matchHeader?.team1?.shortName,
+        [`${matchHeader?.team2?.id}`]: matchHeader?.team2?.shortName,
+        batTeamId: miniscore?.batTeam?.teamId,
+        runs: miniscore?.batTeam?.teamScore,
+        wickets: miniscore?.batTeam?.teamWkts,
+        currentRunRate: miniscore?.currentRunRate,
+        event: miniscore?.event,
+        inningsId: miniscore?.inningsId,
+        overs: miniscore?.overs,
+        oversRem: miniscore?.oversRem,
+        recentOvsStats: miniscore?.recentOvsStats,
+        remRunsToWin: miniscore?.remRunsToWin,
+        requiredRunRate: miniscore?.requiredRunRate,
+        lastWicket: miniscore?.lastWicket,
+        partnerShip: miniscore?.partnerShip,
+        strikerData: {
+          batName: miniscore?.batsmanStriker?.batName,
+          batRuns: miniscore?.batsmanStriker?.batRuns,
+          batBalls: miniscore?.batsmanStriker?.batBalls,
+          batDots: miniscore?.batsmanStriker?.batDots,
+          batFours: miniscore?.batsmanStriker?.batFours,
+          batSixes: miniscore?.batsmanStriker?.batSixes,
+          batStrikeRate: miniscore?.batsmanStriker?.batStrikeRate,
+          batMins: miniscore?.batsmanStriker?.batMins,
+          batId: miniscore?.batsmanStriker?.batId,
+        },
+        nonStrikerData: {
+          batName: miniscore?.batsmanNonStriker?.batName,
+          batRuns: miniscore?.batsmanNonStriker?.batRuns,
+          batBalls: miniscore?.batsmanNonStriker?.batBalls,
+          batDots: miniscore?.batsmanNonStriker?.batDots,
+          batFours: miniscore?.batsmanNonStriker?.batFours,
+          batSixes: miniscore?.batsmanNonStriker?.batSixes,
+          batStrikeRate: miniscore?.batsmanNonStriker?.batStrikeRate,
+          batMins: miniscore?.batsmanNonStriker?.batMins,
+          batId: miniscore?.batsmanNonStriker?.batId,
+        },
+        bowlerStriker: {
+          bowlName: miniscore?.bowlerStriker?.bowlName,
+          bowlOvs: miniscore?.bowlerStriker?.bowlOvs,
+          bowlRuns: miniscore?.bowlerStriker?.bowlRuns,
+          bowlWkts: miniscore?.bowlerStriker?.bowlWkts,
+          bowlEcon: miniscore?.bowlerStriker?.bowlEcon,
+          bowlMaidens: miniscore?.bowlerStriker?.bowlMaidens,
+          bowlWides: miniscore?.bowlerStriker?.bowlWides,
+          bowlNoballs: miniscore?.bowlerStriker?.bowlNoballs,
+          bowlId: miniscore?.bowlerStriker?.bowlId,
+        },
+        bowlerNonStriker: {
+          bowlName: miniscore?.bowlerNonStriker?.bowlName,
+          bowlOvs: miniscore?.bowlerNonStriker?.bowlOvs,
+          bowlRuns: miniscore?.bowlerNonStriker?.bowlRuns,
+          bowlWkts: miniscore?.bowlerNonStriker?.bowlWkts,
+          bowlEcon: miniscore?.bowlerNonStriker?.bowlEcon,
+          bowlMaidens: miniscore?.bowlerNonStriker?.bowlMaidens,
+          bowlWides: miniscore?.bowlerNonStriker?.bowlWides,
+          bowlNoballs: miniscore?.bowlerNonStriker?.bowlNoballs,
+          bowlId: miniscore?.bowlerNonStriker?.bowlId,
+        },
+        latestPerformance: miniscore?.latestPerformance,
+        matchScoreDetails: miniscore?.matchScoreDetails,
+        matchUdrs: miniscore?.matchUdrs,
+        commentaryList: commentaryList[0],
+      };
+      setMatchData(tmpMatchInfo);
+      setMatchState(matchHeader?.state);
+      return;
+    } catch (error) {
+      console.error("Error fetching live scores:", error);
+    }
   }, [matchId]);
 
   useEffect(() => {
@@ -556,7 +709,6 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
       fetchLiveScores();
     }
   }, [matchId, fetchLiveScores]);
-
 
   useEffect(() => {
     if (MATCH_STATES[matchState]) {
@@ -605,94 +757,49 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const flag2 = teamsData[matchData?.team2Id]?.flag;
 
   return (
-    <div className="score-container">
-      <div className="cricket-card">
-        <div className="cricket-card-title-wrapper">
-          <CricketCardTitle
-            flag1={flag1}
-            team1={team1Name}
-            flag2={flag2}
-            team2={team2Name}
-          />
-          <CricketMatchFormat matchFormat={matchFormat} />
-        </div>
-        <CricketCardSubtitle subtitle={seriesName} />
-        <MatchStatus status={status} />
-        <PlayerOfTheMatchCard
+    <div className="ml-15 mr-15 mt-3 mb-3">
+      <div className="pt-5 pb-10 pl-10 pr-10 bg-white cricket-card">
+        <CricketCardHeader
+          flag1={flag1}
+          team1={team1Name}
+          flag2={flag2}
+          team2={team2Name}
+          matchFormat={matchFormat}
+          seriesName={seriesName}
+          status={status}
+        />
+        <CricketMatchData
+          matchState={matchState}
           playersOfTheMatch={playersOfTheMatch}
           isMatchComplete={isMatchComplete}
-        />
-        <CrikcetCardToss
           tossWinner={tossWinner}
           tossDecision={tossDecision}
-          hidden={shouldMatchDataHidden(matchState)}
-        />
-        <CricketScoreCard
           crr={currentRunRate}
           rrr={requiredRunRate}
           matchScoreDetails={matchScoreDetails}
-          hidden={shouldMatchDataHidden(matchState)}
         />
-        <PartnershipCard
-          runs={partnerShip?.runs}
-          balls={partnerShip?.balls}
-          oversRemaining={oversRem}
-          hidden={shouldLiveDataHidden(matchState)}
-        />
-        <TitleClickonExpand
-          onClick={() => setShowBatingDetails(!showBatingDetails)}
-          title="Batting"
-          boolCheck={showBatingDetails}
-          hidden={shouldLiveDataHidden(matchState)}
-        />
-        <BattingCard
+        <CricketLiveData
+          matchState={matchState}
+          partnerShip={partnerShip}
+          oversRem={oversRem}
           strikerData={strikerData}
           nonStrikerData={nonStrikerData}
           matchFormat={matchFormat}
           runs={runs}
-          hidden={!showBatingDetails || shouldLiveDataHidden(matchState)}
-        />
-        <SmallBattingCard
-          strikerData={strikerData}
-          nonStrikerData={nonStrikerData}
-          hidden={showBatingDetails || shouldLiveDataHidden(matchState)}
-        />
-        <TitleClickonExpand
-          onClick={() => setShowBowlingDetails(!showBowlingDetails)}
-          title="Bowling Stats"
-          boolCheck={showBowlingDetails}
-          hidden={shouldLiveDataHidden(matchState)}
-        />
-        <BowlingCard
           bowlerStriker={bowlerStriker}
           bowlerNonStriker={bowlerNonStriker}
-          matchFormat={matchFormat}
-          runs={runs}
           wickets={wickets}
-          hidden={!showBowlingDetails || shouldLiveDataHidden(matchState)}
-        />
-        <SmallBowlingCard
-          bowlerStriker={bowlerStriker}
-          bowlerNonStriker={bowlerNonStriker}
-          hidden={showBowlingDetails || shouldLiveDataHidden(matchState)}
-        />
-        <UDRSCard
           matchUdrs={matchUdrs}
           flag1={flag1}
           flag2={flag2}
           team1Name={team1Name}
           team2Name={team2Name}
-          hidden={shouldLiveDataHidden(matchState)}
-        />
-        <LastCommentCard
           commentaryList={commentaryList}
           lastWicket={lastWicket}
-          hidden={shouldLiveDataHidden(matchState)}
         />
-
-        <div className="deleteBtnWrapper">
+        <div className="flex-container justify-center mt3 mb3">
           <button
-            className="deleteBtn"
+            className="deleteBtn white cursor-pointer"
             onClick={() => {
               removeFromFollowList();
               clearInterval(intervalId);
@@ -754,7 +861,7 @@ function App() {
         onChange={(e) => setTempMatchId(e.target.value)}
       />
       <button
-        className="followNewBtn"
+        className="followNewBtn black cursor-pointer"
         onClick={() => {
           addMatchtoFollowList(tempMatchId);
           setTempMatchId("");
@@ -765,5 +872,4 @@ function App() {
     </>
   );
 }
-
 export default App;
