@@ -1,5 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo} from "react";
 import "./App.css";
 import { ReactComponent as ExpandLess } from "./expand_less.svg";
 import { ReactComponent as ExpandMore } from "./expand_more.svg";
@@ -62,23 +67,26 @@ function useInterval(callback, delay) {
   return [intervalId.current];
 }
 
-const FlagImage = ({ flag, alt }) => {
+const FlagImage = React.memo(({ flag, alt }) => {
   return (
     flag !== "" && <img src={flag} className="ml-3 mr-3 flag-style" alt={alt} />
   );
-};
+});
 
-const TitleSpacing = ({ children }) => {
+const TitleSpacing = React.memo(({ children }) => {
   return <span className="ml-3 mr-3">{children}</span>;
-};
+});
 
-const TeamInfo = ({ flag, team }) => (
-  <>
-    <FlagImage flag={flag} alt={team} />
-    <TitleSpacing>{team}</TitleSpacing>
-  </>
-);
-const CricketCardTitle = ({ flag1, team1, flag2, team2 }) => {
+const TeamInfo = React.memo(({ flag, team }) => {
+  return (
+    <>
+      <FlagImage flag={flag} alt={team} />
+      <TitleSpacing>{team}</TitleSpacing>
+    </>
+  );
+});
+
+const CricketCardTitle = React.memo(({ flag1, team1, flag2, team2 }) => {
   return (
     <div className="flex-container align-center bold sz-14">
       <TeamInfo flag={flag1} team={team1} />
@@ -86,31 +94,31 @@ const CricketCardTitle = ({ flag1, team1, flag2, team2 }) => {
       <TeamInfo flag={flag2} team={team2} />
     </div>
   );
-};
+});
 
-const CricketMatchFormat = ({ matchFormat }) => {
+const CricketMatchFormat = React.memo(({ matchFormat }) => {
   return <div className={`sz-12 bold ${matchFormat}`}>{matchFormat}</div>;
-};
+});
 
-const CricketCardSubtitle = ({ subtitle }) => {
+const CricketCardSubtitle = React.memo(({ subtitle }) => {
   return <div className="mt-3 bold sz-10 grey">{subtitle}</div>;
-};
+});
 
-const MatchStatus = ({ status }) => {
+const MatchStatus = React.memo(({ status }) => {
   return <div className="sz-12 bold green">{status}</div>;
-};
+});
 
-const PlayerOfTheMatchCard = ({ playersOfTheMatch, isMatchComplete }) => {
-  if (!isMatchComplete || !playersOfTheMatch) return null;
-  const { fullName } = playersOfTheMatch[0];
+const PlayerOfTheMatchCard = React.memo(({ fullName, isMatchComplete }) => {
+  if (!isMatchComplete) return null;
   return (
     <div>
-      <span>Player of the Match :</span>
+      <span>Player of the Match : </span>
       <span className="bold">{fullName}</span>
     </div>
   );
-};
-const CrikcetCardToss = ({ tossWinner, tossDecision, hidden }) => {
+});
+
+const CricketCardToss = React.memo(({ tossWinner, tossDecision, hidden }) => {
   if (hidden) return null;
   return (
     <div className="sz-12 bold">
@@ -118,69 +126,72 @@ const CrikcetCardToss = ({ tossWinner, tossDecision, hidden }) => {
       {tossWinner ? tossWinner + "(" + tossDecision + ")" : "N/A"}
     </div>
   );
-};
+});
 
-const CricketScoreCard = ({ crr, rrr, matchScoreDetails, hidden }) => {
-  if (hidden || matchScoreDetails === undefined) return null;
-  return (
-    <div className="cricket-card-scorecard-wrapper pt-5 pb-5 pl-3 pr-3">
-      {matchScoreDetails?.inningsScoreList?.map((inning, index) => (
-        <div className="flex-container justify-between" key={index}>
-          <div className="flex-container sz-14" key={index}>
-            <div className="mr-3 bold brown">{inning.batTeamName}</div>
-            <div className="mr3 bold green">
-              {inning.score} / <span className="red">{inning.wickets}</span>
+const CricketScoreCard = React.memo(
+  ({ crr, rrr, inningsScoreList, hidden }) => {
+    if (hidden || inningsScoreList === undefined) return null;
+    return (
+      <div className="cricket-card-scorecard-wrapper pt-5 pb-5 pl-3 pr-3">
+        {inningsScoreList?.map((inning, index) => (
+          <div className="flex-container justify-between" key={index}>
+            <div className="flex-container sz-14" key={index}>
+              <div className="mr-3 bold brown">{inning.batTeamName}</div>
+              <div className="mr-3 bold green">
+                {inning.score} / <span className="red">{inning.wickets}</span>
+              </div>
+              <div>({inning.overs})</div>
+              {inning.isDeclared && <p>Declared</p>}
+              {inning.isFollowOn && <p>Follow On</p>}
             </div>
-            <div>({inning.overs})</div>
-            {inning.isDeclared && <p>Declared</p>}
-            {inning.isFollowOn && <p>Follow On</p>}
+            <div className="flex-container sz-14">
+              {index === 0 && (
+                <>
+                  CRR :<span className="ml-2 mr-2 bold blue">{crr}</span>
+                  {rrr > 0 && (
+                    <>
+                      RRR :<span className="ml-2 mr-2 bold red">{rrr}</span>
+                    </>
+                  )}
+                </>
+              )}
+              {index !== 0 && (
+                <>
+                  RR:{" "}
+                  <span className="ml-2 mr-2 bold blue">
+                    {(inning.score / inning.overs).toFixed(2)}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-          <div className="flex-container sz-14">
-            {index === 0 && (
-              <>
-                CRR :<span className="ml-2 mr-2 bold blue">{crr}</span>
-                {rrr > 0 && (
-                  <>
-                    RRR :<span className="ml-2 mr-2 bold red">{rrr}</span>
-                  </>
-                )}
-              </>
-            )}
-            {index !== 0 && (
-              <>
-                RR:{" "}
-                <span className="ml-2 mr-2 bold blue">
-                  {(inning.score / inning.overs).toFixed(2)}
-                </span>
-              </>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+        ))}
+      </div>
+    );
+  }
+);
 
-const PartnershipCard = ({ runs, balls, oversRemaining, hidden }) => {
-  if (hidden) return null;
-  return (
-    <div className="flex-container justify-between">
-      <span>
-        Partnership: <span className="bold blue">{runs}</span>
-        <span className="bold brown">({balls})</span>
-      </span>
-      {oversRemaining ? (
+const PartnershipCard = React.memo(
+  ({ runs, balls, oversRemaining, hidden }) => {
+    if (hidden) return null;
+    return (
+      <div className="flex-container justify-between">
         <span>
-          Overs Rem: <span className="bold blue">{oversRemaining}</span>
+          Partnership: <span className="bold blue">{runs}</span>
+          <span className="bold brown">({balls})</span>
         </span>
-      ) : null}
-    </div>
-  );
-};
+        {oversRemaining ? (
+          <span>
+            Overs Rem: <span className="bold blue">{oversRemaining}</span>
+          </span>
+        ) : null}
+      </div>
+    );
+  }
+);
 
-const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
+const BattingCard = React.memo(({ strikerData, nonStrikerData, runs, hidden }) => {
   const [showOtherStats, setShowOtherStats] = useState(false);
-
   const renderCard = (data) => {
     const {
       batName,
@@ -212,7 +223,7 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
             </div>
             <div className="orange bold">{runPercentage} Scored</div>
             <div className="sz-12 grey">Strike Rate: {batStrikeRate}</div>
-            <div style={{ display: "flex", justifyContent: "justify-between" }}>
+            <div className="flex-container">
               <div className="sz-12 grey">
                 Fours: <span className="sz-12 bold ml-1 mr-1">{batFours}</span>
               </div>
@@ -225,7 +236,7 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
             </div>
           </div>
           <div
-            className="flex-container wrap justify-end align-center cursor-pointer more-stats"
+            className="flex-container wrap justify-end align-center blue cursor-pointer underline"
             onClick={() => setShowOtherStats(!showOtherStats)}
           >
             More Stats {showOtherStats ? <ExpandLess /> : <ExpandMore />}
@@ -259,23 +270,36 @@ const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
       {renderCard(nonStrikerData)}
     </div>
   );
-};
+});
 
-const SmallBattingCard = ({ strikerData, nonStrikerData, hidden }) => {
-  if (hidden) return null;
-  return (
-    <>
-      <b>
-        {strikerData?.batName} - {strikerData?.batRuns}({strikerData?.batBalls})
-      </b>
-      <br />
-      {nonStrikerData?.batName} - {nonStrikerData?.batRuns}(
-      {nonStrikerData?.batBalls})
-    </>
-  );
-};
+const SmallBattingCard = React.memo(
+  ({
+    hidden,
+    strikerName,
+    nonStrikerName,
+    strikerRuns,
+    nonStrikerRuns,
+    strikerBalls,
+    nonStrikerBalls,
+  }) => {
+    if (hidden) return null;
+    return (
+      <>
+        <b>
+          {strikerName} - {strikerRuns}({strikerBalls})
+        </b>
+        {nonStrikerName && (
+          <>
+            <br />
+            {nonStrikerName} - {nonStrikerRuns}({nonStrikerBalls})
+          </>
+        )}
+      </>
+    );
+  }
+);
 
-const BowlingCard = ({
+const BowlingCard = React.memo(({
   bowlerStriker,
   bowlerNonStriker,
   wickets,
@@ -319,152 +343,189 @@ const BowlingCard = ({
       {renderCard(bowlerNonStriker)}
     </div>
   );
-};
+});
 
-const SmallBowlingCard = ({ bowlerStriker, bowlerNonStriker, hidden }) => {
-  if (hidden) return null;
-  return (
-    <>
-      <b>
-        {bowlerStriker?.bowlName} - {bowlerStriker?.bowlRuns} -{" "}
-        {bowlerStriker?.bowlWkts}
-      </b>
-      <br />
-      {bowlerNonStriker?.bowlName} - {bowlerNonStriker?.bowlRuns} -{" "}
-      {bowlerNonStriker?.bowlWkts}
-    </>
-  );
-};
+const SmallBowlingCard = React.memo(
+  ({
+    hidden,
+    strikerName,
+    nonStrikerName,
+    strikerRuns,
+    nonStrikerRuns,
+    strikerWickets,
+    nonStrikerWickets,
+  }) => {
+    if (hidden) return null;
 
-const TitleClickonExpand = ({ onClick, title, boolCheck, hidden }) => {
-  if (hidden) return null;
-  return (
-    <div
-      className="flex-container justify-between align-center mt10 mb10 cursor-pointer bg-grey"
-      onClick={onClick}
-    >
-      <span
-        style={{
-          color: "#fff",
-          fontWeight: 600,
-          marginLeft: 5,
-        }}
-      >
-        {title}
-      </span>
-      {boolCheck ? <ExpandLess /> : <ExpandMore />}
-    </div>
-  );
-};
-
-const UDRSTable = ({ teams }) => (
-  <table className="udrs-table mt10">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Team</th>
-        <th>Remaining</th>
-        <th>Successful</th>
-        <th>Unsuccessful</th>
-      </tr>
-    </thead>
-    <tbody>
-      {teams.map((team, index) => (
-        <tr key={index}>
-          <td>
-            {" "}
-            <FlagImage flag={team.flag} alt={team.teamName} />
-          </td>
-          <td>{team.teamName}</td>
-          <td>{team.teamUdrs?.remaining}</td>
-          <td>{team.teamUdrs?.successful}</td>
-          <td>{team.teamUdrs?.unsuccessful}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+    return (
+      <>
+        <b>
+          {strikerName} - {strikerRuns} - {strikerWickets}
+        </b>
+        {nonStrikerName && (
+          <>
+            <br />
+            {nonStrikerName} - {nonStrikerRuns} - {nonStrikerWickets}
+          </>
+        )}
+      </>
+    );
+  }
 );
-const UDRSCard = ({
-  matchUdrs,
-  flag1,
-  flag2,
-  team1Name,
-  team2Name,
-  hidden,
-}) => {
-  const [showUdrsDetails, setShowUdrsDetails] = useState(false);
-  if (hidden || !matchUdrs) return null;
-  const teamsData = [
-    {
-      teamName: team1Name,
-      teamUdrs: {
-        remaining: matchUdrs?.team1Remaining,
-        successful: matchUdrs?.team1Successful,
-        unsuccessful: matchUdrs?.team1Unsuccessful,
-      },
-      flag: flag1,
-    },
-    {
-      teamName: team2Name,
-      teamUdrs: {
-        remaining: matchUdrs?.team2Remaining,
-        successful: matchUdrs?.team2Successful,
-        unsuccessful: matchUdrs?.team2Unsuccessful,
-      },
-      flag: flag2,
-    },
-  ];
+
+
+const TitleClickonExpand = React.memo(
+  ({ onClick, title, boolCheck, hidden }) => {
+    const handleClick = useCallback(() => {
+      onClick(!boolCheck);
+    }, [onClick, boolCheck]);
+
+    if (hidden) return null;
+    return (
+      <div
+        className="flex-container justify-between align-center mt-5 mb-5 cursor-pointer bg-grey"
+        onClick={handleClick}
+      >
+        <span className="ml-5 bold white">{title}</span>
+        {boolCheck ? <ExpandLess /> : <ExpandMore />}
+      </div>
+    );
+  },
+  // Add a custom comparison function for props
+  (prevProps, nextProps) => {
+    return (
+      prevProps.title === nextProps.title &&
+      prevProps.boolCheck === nextProps.boolCheck &&
+      prevProps.hidden === nextProps.hidden
+    );
+  }
+);
+
+const UDRSTable = React.memo(({ teams }) => {
   return (
-    <>
-      <TitleClickonExpand
-        onClick={() => setShowUdrsDetails(!showUdrsDetails)}
-        title="UDRS"
-        boolCheck={showUdrsDetails}
-      />
-      {showUdrsDetails && <UDRSTable teams={teamsData} />}
-    </>
+    <table className="udrs-table mt-10">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Team</th>
+          <th>Remaining</th>
+          <th>Successful</th>
+          <th>Unsuccessful</th>
+        </tr>
+      </thead>
+      <tbody>
+        {teams.map((team, index) => (
+          <tr key={index}>
+            <td>
+              {" "}
+              <FlagImage flag={team.flag} alt={team.teamName} />
+            </td>
+            <td>{team.teamName}</td>
+            <td>{team.teamUdrs?.remaining}</td>
+            <td>{team.teamUdrs?.successful}</td>
+            <td>{team.teamUdrs?.unsuccessful}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
-};
+});
 
-const LastCommentCard = ({ commentaryList, lastWicket, hidden }) => {
-  const [showComm, setShowComm] = useState(false);
-  if (hidden) return null;
-  const { commText, event, overNumber } = commentaryList || "";
-  const generateEventLabels = (events) => {
-    return events.map((e, i) => EVENTS[e] || "").join(" ");
-  };
+const UDRSCard = React.memo(
+  ({
+    flag1,
+    flag2,
+    team1Name,
+    team2Name,
+    hidden,
+    team1Remaining,
+    team2Remaining,
+    team1Successful,
+    team2Successful,
+    team1Unsuccessful,
+    team2Unsuccessful,
+  }) => {
+    const [showUdrsDetails, setShowUdrsDetails] = useState(false);
+    const handleClick = useCallback(() => {
+      setShowUdrsDetails((prev) => !prev);
+    }, []);
 
-  return (
-    <>
-      <TitleClickonExpand
-        onClick={() => setShowComm(!showComm)}
-        title="Latest Commentary"
-        boolCheck={showComm}
-      />
-      {showComm && (
-        <>
-          <div className="flex-container justify-between align-center over-wrapper">
-            <div className="ml-10 bold white">{overNumber}</div>
-            <div className="mr-10 bold white">
-              {generateEventLabels(event?.split(","))}
+    if (hidden) return null;
+    const teamsData = [
+      {
+        teamName: team1Name,
+        teamUdrs: {
+          remaining: team1Remaining,
+          successful: team1Successful,
+          unsuccessful: team1Unsuccessful,
+        },
+        flag: flag1,
+      },
+      {
+        teamName: team2Name,
+        teamUdrs: {
+          remaining: team2Remaining,
+          successful: team2Successful,
+          unsuccessful: team2Unsuccessful,
+        },
+        flag: flag2,
+      },
+    ];
+    return (
+      <>
+        <TitleClickonExpand
+          onClick={handleClick}
+          title="UDRS"
+          boolCheck={showUdrsDetails}
+        />
+        {showUdrsDetails && <UDRSTable teams={teamsData} />}
+      </>
+    );
+  }
+);
+
+const LastCommentCard = React.memo(
+  ({ lastWicket, hidden, commText, event, overNumber }) => {
+    const [showComm, setShowComm] = useState(false);
+    const handleClick = useCallback(() => {
+      setShowComm((prev) => !prev);
+    }, []);
+    const generateEventLabels = useCallback((events) => {
+      return events.map((e, i) => EVENTS[e] || "").join(" ");
+    }, []);
+    if (hidden) return null;
+    return (
+      <>
+        <TitleClickonExpand
+          onClick={handleClick}
+          title="Latest Commentary"
+          boolCheck={showComm}
+        />
+        {showComm && (
+          <>
+            <div className="flex-container justify-between align-center bg-blue">
+              <div className="ml-10 bold white">{overNumber}</div>
+              <div className="mr-10 bold white">
+                {generateEventLabels(event?.split(","))}
+              </div>
             </div>
-          </div>
-          <div>{commText}</div>
-          {lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}
-        </>
-      )}
-    </>
-  );
-};
+            <div>{commText}</div>
+            {lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}
+          </>
+        )}
+      </>
+    );
+  }
+);
 
-const LastWicketDataCard = ({ lastWicket }) => {
+const LastWicketDataCard = React.memo(({ lastWicket }) => {
   return (
     <div className="mt-10 mb-5">
       <span>Last Wicket :</span>{" "}
       <span className="text-center bold">{lastWicket}</span>
     </div>
   );
-};
+});
 
 const CricketCardHeader = ({
   flag1,
@@ -500,18 +561,22 @@ const CricketMatchData = ({
   rrr,
   matchScoreDetails,
 }) => {
+  const memoizedmatchScoreDetails = useMemo(
+    () => matchScoreDetails,
+    [matchScoreDetails]
+  );
   if (matchState === "Preview") return null;
   return (
     <>
       <PlayerOfTheMatchCard
-        playersOfTheMatch={playersOfTheMatch}
+        fullName={playersOfTheMatch && playersOfTheMatch[0]?.fullName}
         isMatchComplete={isMatchComplete}
       />
-      <CrikcetCardToss tossWinner={tossWinner} tossDecision={tossDecision} />
+      <CricketCardToss tossWinner={tossWinner} tossDecision={tossDecision} />
       <CricketScoreCard
         crr={crr}
         rrr={rrr}
-        matchScoreDetails={matchScoreDetails}
+        inningsScoreList={memoizedmatchScoreDetails?.inningsScoreList}
       />
     </>
   );
@@ -537,13 +602,31 @@ const CricketLiveData = ({
 }) => {
   const [showBatingDetails, setShowBatingDetails] = useState(false);
   const [showBowlingDetails, setShowBowlingDetails] = useState(false);
-
+  const memoizedStrikerData = useMemo(() => strikerData, [strikerData]);
+  const memoizedNonStrikerData = useMemo(
+    () => nonStrikerData,
+    [nonStrikerData]
+  );
+  const memoizedbowlerStriker = useMemo(() => bowlerStriker, [bowlerStriker]);
+  const memoizedbowlerNonStriker = useMemo(
+    () => bowlerNonStriker,
+    [bowlerNonStriker]
+  );
+  const memoizedmatchUdrs = useMemo(() => matchUdrs, [matchUdrs]);
+  const memoizedcommentaryList = useMemo(() => commentaryList, [commentaryList]);
+  const handleClick = useCallback(() => {
+    setShowBatingDetails((prev) => !prev);
+  }, []);
+  const handleClick1 = useCallback(() => {
+    setShowBowlingDetails((prev) => !prev);
+  }, []);
   if (
     matchState === "Preview" ||
     matchState === "Complete" ||
     matchState === "Toss"
-  )
+  ) {
     return null;
+  }
   return (
     <>
       <PartnershipCard
@@ -552,31 +635,38 @@ const CricketLiveData = ({
         oversRemaining={oversRem}
       />
       <TitleClickonExpand
-        onClick={() => setShowBatingDetails(!showBatingDetails)}
+        onClick={handleClick}
         title="Batting"
         boolCheck={showBatingDetails}
       />
       <SmallBattingCard
-        strikerData={strikerData}
-        nonStrikerData={nonStrikerData}
+        strikerName={memoizedStrikerData?.batName}
+        nonStrikerName={memoizedNonStrikerData?.batName}
+        strikerRuns={memoizedStrikerData?.batRuns}
+        nonStrikerRuns={memoizedNonStrikerData?.batRuns}
+        strikerBalls={memoizedStrikerData?.batBalls}
+        nonStrikerBalls={memoizedNonStrikerData?.batBalls}
         hidden={showBatingDetails}
       />
       <BattingCard
-        strikerData={strikerData}
-        nonStrikerData={nonStrikerData}
-        matchFormat={matchFormat}
+        strikerData={memoizedStrikerData}
+        nonStrikerData={memoizedNonStrikerData}
         runs={runs}
         hidden={!showBatingDetails}
       />
       <TitleClickonExpand
-        onClick={() => setShowBowlingDetails(!showBowlingDetails)}
+        onClick={handleClick1}
         title="Bowling Stats"
         boolCheck={showBowlingDetails}
       />
       <SmallBowlingCard
-        bowlerStriker={bowlerStriker}
-        bowlerNonStriker={bowlerNonStriker}
-        hidden={showBowlingDetails}
+        strikerName={memoizedbowlerStriker?.bowlName}
+        nonStrikerName={memoizedbowlerNonStriker?.bowlName}
+        strikerRuns={memoizedbowlerStriker?.bowlRuns}
+        nonStrikerRuns={memoizedbowlerNonStriker?.bowlRuns}
+        strikerWickets={memoizedbowlerStriker?.bowlWkts}
+        nonStrikerWickets={memoizedbowlerNonStriker?.bowlWkts}
+        hidden={showBatingDetails}
       />
       <BowlingCard
         bowlerStriker={bowlerStriker}
@@ -587,14 +677,21 @@ const CricketLiveData = ({
         hidden={!showBowlingDetails}
       />
       <UDRSCard
-        matchUdrs={matchUdrs}
         flag1={flag1}
         flag2={flag2}
         team1Name={team1Name}
         team2Name={team2Name}
+        team1Remaining={memoizedmatchUdrs?.team1Remaining}
+        team1Successful={memoizedmatchUdrs?.team1Successful}
+        team1Unsuccessful={memoizedmatchUdrs?.team1Unsuccessful}
+        team2Remaining={memoizedmatchUdrs?.team2Remaining}
+        team2Successful={memoizedmatchUdrs?.team2Successful}
+        team2Unsuccessful={memoizedmatchUdrs?.team2Unsuccessful}
       />
       <LastCommentCard
-        commentaryList={commentaryList}
+        commText={memoizedcommentaryList?.commText}
+        event={memoizedcommentaryList?.event}
+        overNumber={memoizedcommentaryList?.overNumber}
         lastWicket={lastWicket}
       />
     </>
@@ -609,7 +706,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
     try {
       const { data } = await axios.get(`${API_URL}${matchId}`);
       const { matchHeader, miniscore, commentaryList } = data;
-      let tmpMatchInfo = {
+      let matchInfo = {
         complete: matchHeader?.complete,
         dayNight: matchHeader?.dayNight,
         dayNumber: matchHeader?.dayNumber,
@@ -696,7 +793,7 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
         matchUdrs: miniscore?.matchUdrs,
         commentaryList: commentaryList[0],
       };
-      setMatchData(tmpMatchInfo);
+      setMatchData(matchInfo);
       setMatchState(matchHeader?.state);
       return;
     } catch (error) {
@@ -797,9 +894,9 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
           commentaryList={commentaryList}
           lastWicket={lastWicket}
         />
-        <div className="flex-container justify-center mt3 mb3">
+        <div className="flex-container justify-center mt-3 mb-3">
           <button
-            className="deleteBtn white cursor-pointer"
+            className="btn bg-red border-red white cursor-pointer"
             onClick={() => {
               removeFromFollowList();
               clearInterval(intervalId);
@@ -843,7 +940,7 @@ function App() {
 
   return (
     <>
-      <div className="flex-container">
+      <div className="flex-container wrap">
         {matchIds.map((matchId, index) => {
           return (
             <ScoreComponent
@@ -861,7 +958,7 @@ function App() {
         onChange={(e) => setTempMatchId(e.target.value)}
       />
       <button
-        className="followNewBtn black cursor-pointer"
+        className="btn bg-green border-green black cursor-pointer"
         onClick={() => {
           addMatchtoFollowList(tempMatchId);
           setTempMatchId("");
