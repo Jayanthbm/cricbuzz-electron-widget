@@ -72,8 +72,19 @@
 }
 
 .cricket-card-scorecard-wrapper {
+  border: 1px solid #666;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:3px;
+  padding-right: 3px;
+}
+
+.cricket-scores-wrapper {
   display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .cricket-card-score {
@@ -207,7 +218,7 @@
   color: blue;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -226,11 +237,6 @@
 }
 
 
-.com-wrapper {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.01);
-}
 
 .over-wrapper {
   display: flex;
@@ -258,10 +264,46 @@
   font-weight: bold;
 }
 
-.commWrapper {
-  background: orange;
+.title-container {
+  background: #666;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.score-container{
+  margin-left:15px ;
+  margin-right: 15px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.title-spacing {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.flag-style{
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 25px;
+  height: 18px;
+}
+
+.m-t10{
+  margin-top: 10px;
+}
+.m-b5{
+  margin-bottom: 5px;
+}
+
+.red{
+  color: red;
 }

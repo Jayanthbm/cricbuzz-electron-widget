@@ -1,11 +1,63 @@
 import axios from "axios";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import "./App.css";
 import { ReactComponent as ExpandLess } from "./expand_less.svg";
 import { ReactComponent as ExpandMore } from "./expand_more.svg";
 import teamsData from "./teams.json";
 
 const API_URL = "https://www.cricbuzz.com/api/cricket-match/commentary/";
+
+const MATCH_STATES = {
+  Preview: 2,
+  "Innings Break": 2,
+  Complete: -1,
+  Stumps: 2,
+  "In Progress": 2,
+  Rain: 2,
+};
+
+const EVENTS = {
+  NONE: "",
+  "over-break": "Over Completed ",
+  SIX: "It's a SIX!! ",
+  FOUR: "It's a FOUR!",
+  MAIDEN_OVER: "It's a MAIDEN OVER!! ",
+  HIGHSCORING_OVER: "It's a HIGHSCORING OVER!! ",
+  TEAM_FIFTY: "Team FIFTY ",
+  PARTNERSHIP: "",
+  WICKET: "Its a WICKET!! ",
+};
+
+function shouldMatchDataHidden(matchState) {
+  if (matchState === "Preview") {
+    return true;
+  }
+  return false;
+}
+function shouldLiveDataHidden(matchState) {
+  if (matchState === "Preview" || matchState === "Complete") {
+    return true;
+  }
+  return false;
+}
+
+const calculatePercentage = (value, total) => {
+  if (value === 0 || total === 0) {
+    return "0%";
+  }
+  return ((value / total) * 100).toFixed(2) + "%";
+};
+
+const formatTime = (minutes) => {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return hours > 0 ? `${hours}h ${remainingMinutes}m` : `${remainingMinutes}m`;
+};
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -32,32 +84,11 @@ function useInterval(callback, delay) {
 const CricketCardTitle = ({ flag1, team1, flag2, team2 }) => {
   return (
     <div className="cricket-card-title">
-      {flag1 !== "" && <img src={flag1} width={25} height={18} alt="Flag" />}
-      <span
-        style={{
-          marginLeft: 3,
-          marginRight: 3,
-        }}
-      >
-        {team1}
-      </span>
-      <span
-        style={{
-          marginLeft: 3,
-          marginRight: 10,
-        }}
-      >
-        vs
-      </span>
-      {flag2 !== "" && <img src={flag2} width={25} height={18} alt="Flag" />}
-      <span
-        style={{
-          marginLeft: 3,
-          marginRight: 3,
-        }}
-      >
-        {team2}
-      </span>
+      {flag1 !== "" && <img src={flag1} className="flag-style" alt={team1} />}
+      <span className="title-spacing">{team1}</span>
+      <span>vs</span>
+      {flag2 !== "" && <img src={flag2} className="flag-style" alt={team2} />}
+      <span className="title-spacing">{team2}</span>
     </div>
   );
 };
@@ -72,7 +103,22 @@ const CricketCardSubtitle = ({ subtitle }) => {
   return <div className="cricket-card-subtitle">{subtitle}</div>;
 };
 
-const CrikcetCardToss = ({ tossWinner, tossDecision }) => {
+const MatchStatus = ({ status }) => {
+  return <div className="cricket-card-status-title">{status}</div>;
+};
+
+const PlayerOfTheMatchCard = ({ playersOfTheMatch, isMatchComplete }) => {
+  if (!isMatchComplete || !playersOfTheMatch) return null;
+  const { fullName } = playersOfTheMatch[0];
+  return (
+    <div>
+      <span>Player of the Match :</span>
+      <span className="player-of-the-match">{fullName}</span>
+    </div>
+  );
+};
+const CrikcetCardToss = ({ tossWinner, tossDecision,hidden }) => {
+  if (hidden) return null;
   return (
     <div className="cricket-card-toss">
       <span className="cricket-card-toss-title">Toss:</span>
@@ -81,139 +127,136 @@ const CrikcetCardToss = ({ tossWinner, tossDecision }) => {
   );
 };
 
-const MatchStatus = ({ status }) => {
-  return <div className="cricket-card-status-title">{status}</div>;
+const CricketScoreCard = ({ crr, rrr, matchScoreDetails, hidden }) => {
+  if (hidden) return null;
+  return (
+    <div className="cricket-card-scorecard-wrapper">
+      {matchScoreDetails?.inningsScoreList?.map((inning, index) => (
+        <div className="cricket-scores-wrapper" key={index}>
+          <div className="cricket-card-score" key={index}>
+            <div className="cricket-card-score-teamName">
+              {inning.batTeamName}
+            </div>
+            <div className="cricket-card-score-runs">
+              {inning.score} / <span className="red">{inning.wickets}</span>
+            </div>
+            <div className="cricket-card-score-overs">({inning.overs})</div>
+            {inning.isDeclared && <p>Declared</p>}
+            {inning.isFollowOn && <p>Follow On</p>}
+          </div>
+          <div className="cricket-card-run-rate-wrapper">
+            {index === 0 && (
+              <>
+                CRR :<span className="crr">{crr}</span>
+                {rrr > 0 && (
+                  <>
+                    RRR :<span className="rrr">{rrr}</span>
+                  </>
+                )}
+              </>
+            )}
+            {index !== 0 && (
+              <>
+                RR:{" "}
+                <span className="crr">
+                  {(inning.score / inning.overs).toFixed(2)}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
-const CricketScoreCard = ({ crr, rrr, matchScoreDetails }) => {
+const PartnershipCard = ({ runs, balls, oversRemaining,hidden }) => {
+  if (hidden) return null;
   return (
-    <div>
-      {matchScoreDetails?.inningsScoreList?.map((inning, index) => {
-        return (
-          <div className="cricket-card-scorecard-wrapper" key={index}>
-            <div>
-              <div className="cricket-card-score" key={index}>
-                <div className="cricket-card-score-teamName">
-                  {inning.batTeamName}
-                </div>
-                <div className="cricket-card-score-runs">{inning.score}</div>
-                <div> / </div>
-                <div className="cricket-card-score-wickets">
-                  {inning.wickets}
-                </div>
-                <div className="cricket-card-score-overs">({inning.overs})</div>
-                {inning.isDeclared === true && <p>Declared</p>}
-                {inning.isFollowOn === true && <p>Follow On</p>}
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <span>
+        Partnership: <span className="runs">{runs}</span>
+        <span className="balls">({balls})</span>
+      </span>
+      {oversRemaining ? (
+        <span>
+          Overs Rem: <span className="runs">{oversRemaining}</span>
+        </span>
+      ) : null}
+    </div>
+  );
+};
+
+const BattingCard = ({ strikerData, nonStrikerData, runs, hidden }) => {
+  const [showOtherStats, setShowOtherStats] = useState(false);
+
+  const renderCard = (data) => {
+    const {
+      batName,
+      batRuns,
+      batBalls,
+      batStrikeRate,
+      batFours,
+      batSixes,
+      batDots,
+      batMins,
+    } = data;
+
+    const dotPercentage = calculatePercentage(batDots, batBalls);
+    const fourPercentage = calculatePercentage(batFours * 4, batRuns);
+    const sixPercentage = calculatePercentage(batSixes * 6, batRuns);
+    const boundaryPercentage = calculatePercentage(
+      batFours * 4 + batSixes * 6,
+      batRuns
+    );
+    const timeInHours = batMins > 60 ? formatTime(batMins) : batMins + "m";
+    const runPercentage = calculatePercentage(batRuns, runs);
+    if (batName) {
+      return (
+        <div className="batting-card">
+          <div className="player-info">
+            <div className="player-name">{batName}</div>
+            <div className="runs-balls">
+              Runs: {batRuns} ({batBalls})
+            </div>
+            <div className="run-percentage">{runPercentage} Scored</div>
+            <div className="strike-rate">Strike Rate: {batStrikeRate}</div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="strike-rate">
+                Fours: <span className="count">{batFours}</span>
+              </div>
+              <div className="strike-rate">
+                Sixes: <span className="count">{batSixes}</span>
+              </div>
+              <div className="strike-rate">
+                Dots: <span className="count">{batDots}</span>
               </div>
             </div>
-            <div className="cricket-card-run-rate-wrapper">
-              {index === 0 ? (
-                <>
-                  CRR :<span className="crr">{crr}</span>
-                  {rrr > 0 && (
-                    <>
-                      RRR :<span className="rrr">{rrr}</span>
-                    </>
-                  )}
-                </>
-              ) : (
-                <>
-                  RR:
-                  <span className="crr">
-                    {(inning.score / inning.overs).toFixed(2)}
-                  </span>
-                </>
-              )}
-            </div>
           </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const PartnershipCard = ({ runs, balls }) => {
-  return (
-    <div>
-      <span>Partnership :</span> <span className="runs">{runs}</span>
-      <span className="balls">({balls}) </span>
-    </div>
-  );
-};
-
-const calculatePercentage = (value, total) => {
-  if (value === 0 || total === 0) {
-    return "0%";
-  }
-  return ((value / total) * 100).toFixed(2) + "%";
-};
-const BattingCard = ({ strikerData, nonStrikerData, runs }) => {
-  const formatTime = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return hours > 0
-      ? `${hours}h ${remainingMinutes}m`
-      : `${remainingMinutes}m`;
-  };
-
-  const [showOtherStats, setShowOtherStats] = useState(false);
-  const renderCard = (data) => {
-    const dotPercentage = calculatePercentage(data.batDots, data.batBalls);
-    const fourPercentage = calculatePercentage(data.batFours * 4, data.batRuns);
-    const sixPercentage = calculatePercentage(data.batSixes * 6, data.batRuns);
-    const boundaryPercentage = calculatePercentage(
-      data.batFours * 4 + data.batSixes * 6,
-      data.batRuns
-    );
-    const timeInHours =
-      data.batMins > 60 ? formatTime(data.batMins) : data.batMins + "m";
-    const runPercentage = calculatePercentage(data.batRuns, runs);
-
-    return (
-      <div className="batting-card">
-        <div className="player-info">
-          <div className="player-name">{data.batName}</div>
-          <div className="runs-balls">
-            Runs: {data.batRuns} ({data.batBalls})
+          <div
+            className="more-stats"
+            onClick={() => setShowOtherStats(!showOtherStats)}
+          >
+            More Stats {showOtherStats ? <ExpandLess /> : <ExpandMore />}
           </div>
-          <div className="run-percentage">{runPercentage} Scored</div>
-          <div className="strike-rate">Strike Rate: {data.batStrikeRate}</div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div className="strike-rate">
-              Fours: <span className="count">{data.batFours}</span>
+          {showOtherStats && (
+            <div className="mins">
+              Fours: <span className="count">{fourPercentage}</span>
+              <br />
+              Sixes: <span className="count">{sixPercentage}</span>
+              <br />
+              Dots: <span className="count">{dotPercentage}</span>
+              <br />
+              Boundaries: <span className="count">{boundaryPercentage}</span>
+              <br />
+              Time Spent: <span className="count">{timeInHours}</span>
             </div>
-            <div className="strike-rate">
-              Sixes: <span className="count">{data.batSixes}</span>
-            </div>
-            <div className="strike-rate">
-              Dots: <span className="count">{data.batDots}</span>
-            </div>
-          </div>
+          )}
         </div>
-        <div
-          className="more-stats"
-          onClick={() => setShowOtherStats(!showOtherStats)}
-        >
-          More Stats
-          {showOtherStats ? <ExpandLess /> : <ExpandMore />}
-        </div>
-        {showOtherStats && (
-          <div className="mins">
-            Fours: <span className="count">{fourPercentage}</span>
-            <br />
-            Sixes: <span className="count">{sixPercentage}</span>
-            <br />
-            Dots: <span className="count">{dotPercentage}</span>
-            <br />
-            Boundaries: <span className="count">{boundaryPercentage}</span>
-            <br />
-            Time Spent: <span className="count">{timeInHours}</span>
-          </div>
-        )}
-      </div>
-    );
+      );
+    }
   };
-
+  if (hidden) return null;
   return (
     <div className="batting-cards-container">
       {renderCard(strikerData)}
@@ -222,28 +265,52 @@ const BattingCard = ({ strikerData, nonStrikerData, runs }) => {
   );
 };
 
-const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs }) => {
+const SmallBattingCard = ({ strikerData, nonStrikerData, hidden }) => {
+  if(hidden) return null;
+  return (
+    <>
+      <b>
+        {strikerData?.batName} - {strikerData?.batRuns}({strikerData?.batBalls})
+      </b>
+      <br />
+      {nonStrikerData?.batName} - {nonStrikerData?.batRuns}(
+      {nonStrikerData?.batBalls})
+    </>
+  );
+};
+
+const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs, hidden }) => {
   const renderCard = (data) => {
-    const wicketPercentage = calculatePercentage(data.bowlWkts, wickets);
-    const runPercentage = calculatePercentage(data.bowlRuns, runs);
+    const {
+      bowlName,
+      bowlWkts,
+      bowlRuns,
+      bowlOvs,
+      bowlEcon,
+      bowlMaidens,
+      bowlWides,
+      bowlNoballs,
+    } = data;
+    const wicketPercentage = calculatePercentage(bowlWkts, wickets);
+    const runPercentage = calculatePercentage(bowlRuns, runs);
     return (
       <div className="batting-card">
         <div className="player-info">
-          <div className="player-name">{data.bowlName}</div>
-          <div className="runs-balls">Wickets: {data.bowlWkts}</div>
+          <div className="player-name">{bowlName}</div>
+          <div className="runs-balls">Wickets: {bowlWkts}</div>
           <div className="run-percentage">{wicketPercentage} Taken</div>
-          <div className="runs-balls">Runs Conceded: {data.bowlRuns}</div>
+          <div className="runs-balls">Runs Conceded: {bowlRuns}</div>
           <div className="run-percentage">{runPercentage} Conceded</div>
-          <div className="strike-rate">Overs: {data.bowlOvs}</div>
-          <div className="strike-rate">Economy: {data.bowlEcon}</div>
-          <div className="strike-rate">Maidens: {data.bowlMaidens}</div>
-          <div className="strike-rate">Wides: {data.bowlWides}</div>
-          <div className="strike-rate">No Balls: {data.bowlNoballs}</div>
+          <div className="strike-rate">Overs: {bowlOvs}</div>
+          <div className="strike-rate">Economy: {bowlEcon}</div>
+          <div className="strike-rate">Maidens: {bowlMaidens}</div>
+          <div className="strike-rate">Wides: {bowlWides}</div>
+          <div className="strike-rate">No Balls: {bowlNoballs}</div>
         </div>
       </div>
     );
   };
-
+  if (hidden) return null;
   return (
     <div className="batting-cards-container">
       {renderCard(bowlerStriker)}
@@ -252,137 +319,136 @@ const BowlingCard = ({ bowlerStriker, bowlerNonStriker, wickets, runs }) => {
   );
 };
 
+const SmallBowlingCard = ({ bowlerStriker, bowlerNonStriker, hidden }) => {
+  if (hidden) return null;
+  return (
+    <>
+      <b>
+        {bowlerStriker?.bowlName} - {bowlerStriker?.bowlRuns} -{" "}
+        {bowlerStriker?.bowlWkts}
+      </b>
+      <br />
+      {bowlerNonStriker?.bowlName} - {bowlerNonStriker?.bowlRuns} -{" "}
+      {bowlerNonStriker?.bowlWkts}
+    </>
+  );
+};
+
+const TitleClickonExpand = ({ onClick, title, boolCheck, hidden }) => {
+  if (hidden) return null;
+  return (
+    <div className="title-container" onClick={onClick}>
+      <span
+        style={{
+          color: "#fff",
+          fontWeight: 600,
+          marginLeft: 5,
+        }}
+      >
+        {title}
+      </span>
+      {boolCheck ? <ExpandLess /> : <ExpandMore />}
+    </div>
+  );
+} ;
+const UDRSCard = ({ matchUdrs,flag1,flag2,team1Name,team2Name, hidden}) => {
+  const [showUdrsDetails, setShowUdrsDetails] = useState(false);
+  if (hidden || !matchUdrs) return null;
+  return (
+    <>
+      <TitleClickonExpand
+        onClick={() => setShowUdrsDetails(!showUdrsDetails)}
+        title="UDRS"
+        boolCheck={showUdrsDetails}
+      />
+      {showUdrsDetails && (
+        <table>
+          <thead>
+            <tr key="1">
+              <th></th>
+              <th>Team</th>
+              <th>Rem</th>
+              <th>Successful</th>
+              <th>UnSuccessful</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr key="2">
+              <td>
+                <img
+                  src={flag1}
+                  className="flag-style"
+                  alt={`Flag of ${team1Name}`}
+                />
+              </td>
+              <td>{team1Name}</td>
+              <td>{matchUdrs?.team1Remaining}</td>
+              <td>{matchUdrs?.team1Successful}</td>
+              <td>{matchUdrs?.team1Unsuccessful}</td>
+            </tr>
+            <tr key="3">
+              <td>
+                <img
+                  src={flag2}
+                  className="flag-style"
+                  alt={`Flag of ${team2Name}`}
+                />
+              </td>
+              <td>{team2Name}</td>
+              <td>{matchUdrs?.team2Remaining}</td>
+              <td>{matchUdrs?.team2Successful}</td>
+              <td>{matchUdrs?.team2Unsuccessful}</td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+    </>
+  );
+};
+
+const LastCommentCard = ({ commentaryList, lastWicket, hidden }) => {
+  const [showComm, setShowComm] = useState(false);
+  if (hidden) return null;
+
+  const { commText, event, overNumber } = commentaryList || '';
+
+  const generateEventLabels = (events) => {
+    return events.map((e, i) => EVENTS[e] || "").join(" ");
+  };
+
+  return (
+    <>
+      <TitleClickonExpand
+        onClick={() => setShowComm(!showComm)}
+        title="Latest Commentary"
+        boolCheck={showComm}
+      />
+      {showComm && (
+        <>
+          <div className="over-wrapper">
+            <div className="over-number">{overNumber}</div>
+            <div className="event">
+              {generateEventLabels(event?.split(","))}
+            </div>
+          </div>
+          <div>{commText}</div>
+          <>{lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}</>
+        </>
+      )}
+    </>
+  );
+};
+
 const LastWicketDataCard = ({ lastWicket }) => {
   return (
-    <div
-      style={{
-        marginTop: 10,
-        marginBottom: 5,
-      }}
-    >
+    <div className="m-t10 m-b5">
       <span>Last Wicket :</span>
       <span className="last-wicket">{lastWicket}</span>
     </div>
   );
 };
 
-const PlayerOfTheMatchCard = ({ fullName }) => {
-  return (
-    <div>
-      <span>Player of the Match :</span>
-      <span className="player-of-the-match">{fullName}</span>
-    </div>
-  );
-};
 
-const LastCommentCard = ({ commentText, event, overNumber, lastWicket }) => {
-  const EVENTS = {
-    NONE: "",
-    "over-break": "Over Completed ",
-    SIX: "It's a SIX!! ",
-    FOUR: "It's a FOUR!",
-    MAIDEN_OVER: "It's a MAIDEN OVER!! ",
-    HIGHSCORING_OVER: "It's a HIGHSCORING OVER!! ",
-    TEAM_FIFTY: "Team FIFTY ",
-    PARTNERSHIP: "",
-    WICKET: "Its a WICKET!! ",
-  };
-  const [showComm, setShowComm] = useState(false);
-  return (
-    <>
-      <div className="com-wrapper">
-        <div className="commWrapper" onClick={() => setShowComm(!showComm)}>
-          <span
-            style={{
-              color: "#fff",
-              fontWeight: 600,
-              marginLeft: 5,
-            }}
-          >
-            Latest Commentary
-          </span>
-          {showComm ? <ExpandLess /> : <ExpandMore />}
-        </div>
-        {showComm && (
-          <>
-            <div className="over-wrapper">
-              <div className="over-number">{overNumber}</div>
-              <div className="event">
-                {event?.split(",").map((e, i) => EVENTS[e] || "")}
-              </div>
-            </div>
-            <div>{commentText}</div>
-            <>{lastWicket && <LastWicketDataCard lastWicket={lastWicket} />}</>
-          </>
-        )}
-      </div>
-    </>
-  );
-};
-
-const UDRSCard = ({ matchData }) => {
-  const [showUdrsDetails, setShowUdrsDetails] = useState(false);
-  return (
-    <div>
-      <div
-        className="commWrapper"
-        onClick={() => setShowUdrsDetails(!showUdrsDetails)}
-      >
-        <span
-          style={{
-            color: "#fff",
-            fontWeight: 600,
-            marginLeft: 5,
-          }}
-        >
-          UDRS
-        </span>
-        {showUdrsDetails ? <ExpandLess /> : <ExpandMore />}
-      </div>
-      {showUdrsDetails && (
-        <table>
-          <thead>
-            <th></th>
-            <th>Team</th>
-            <th>Rem</th>
-            <th>Successful</th>
-            <th>UnSuccessful</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  src={teamsData[matchData?.matchUdrs.team1Id]?.flag}
-                  width={25}
-                  height={18}
-                  alt="Flag"
-                />
-              </td>
-              <td>{matchData[matchData?.matchUdrs.team1Id]}</td>
-              <td>{matchData?.matchUdrs.team1Remaining}</td>
-              <td>{matchData?.matchUdrs.team1Successful}</td>
-              <td>{matchData?.matchUdrs.team1Unsuccessful}</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={teamsData[matchData?.matchUdrs.team2Id]?.flag}
-                  width={25}
-                  height={18}
-                  alt="Flag"
-                />
-              </td>
-              <td>{matchData[matchData?.matchUdrs.team2Id]}</td>
-              <td>{matchData?.matchUdrs.team2Remaining}</td>
-              <td>{matchData?.matchUdrs.team2Successful}</td>
-              <td>{matchData?.matchUdrs.team2Unsuccessful}</td>
-            </tr>
-          </tbody>
-        </table>
-      )}
-    </div>
-  );
-};
 const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [isMatchComplete, setIsMatchComplete] = useState(true);
   const [matchData, setMatchData] = useState({});
@@ -390,389 +456,239 @@ const ScoreComponent = ({ matchId, removeFromFollowList }) => {
   const [showBatingDetails, setShowBatingDetails] = useState(false);
   const [showBowlingDetails, setShowBowlingDetails] = useState(false);
 
-  useEffect(() => {
-    async function fetchMatchInfo() {
-      try {
-        let request = await axios.get(`${API_URL}${matchId}`);
-        let result = request.data;
-        let tmpMatchInfo = {
-          complete: result?.matchHeader?.complete,
-          dayNight: result?.matchHeader?.dayNight,
-          dayNumber: result?.matchHeader?.dayNumber,
-          domestic: result?.matchHeader?.domestic,
-          matchDescription: result?.matchHeader?.matchDescription,
-          matchFormat: result?.matchHeader?.matchFormat,
-          matchCompleteTimestamp: result?.matchHeader?.matchCompleteTimestamp,
-          matchStartTimestamp: result?.matchHeader?.matchStartTimestamp,
-          matchType: result?.matchHeader?.matchType,
-          playersOfTheMatch: result?.matchHeader?.playersOfTheMatch,
-          playersOfTheSeries: result?.matchHeader?.playersOfTheSeries,
-          results: result?.matchHeader?.results,
-          revisedTarget: result?.matchHeader?.revisedTarget,
-          seriesName: result?.matchHeader?.seriesName,
-          state: result?.matchHeader?.state,
-          status: result?.matchHeader?.status,
-          tossWinner: result?.matchHeader?.tossResults?.tossWinnerName,
-          tossDecision: result?.matchHeader?.tossResults?.decision,
-          team1Id: result?.matchHeader?.team1?.id,
-          team1Name: result?.matchHeader?.team1?.shortName,
-          team2Id: result?.matchHeader?.team2?.id,
-          team2Name: result?.matchHeader?.team2?.shortName,
-          [`${result?.matchHeader?.team1?.id}`]:
-            result?.matchHeader?.team1?.shortName,
-          [`${result?.matchHeader?.team2?.id}`]:
-            result?.matchHeader?.team2?.shortName,
-          batTeamId: result?.miniscore?.batTeam?.teamId,
-          runs: result?.miniscore?.batTeam?.teamScore,
-          wickets: result?.miniscore?.batTeam?.teamWkts,
-          currentRunRate: result?.miniscore?.currentRunRate,
-          event: result?.miniscore?.event,
-          inningsId: result?.miniscore?.inningsId,
-          overs: result?.miniscore?.overs,
-          oversRem: result?.miniscore?.oversRem,
-          recentOvsStats: result?.miniscore?.recentOvsStats,
-          remRunsToWin: result?.miniscore?.remRunsToWin,
-          requiredRunRate: result?.miniscore?.requiredRunRate,
-          lastWicket: result?.miniscore?.lastWicket,
-          partnerShip: result?.miniscore?.partnerShip,
-          strikerData: {
-            batName: result?.miniscore?.batsmanStriker?.batName,
-            batRuns: result?.miniscore?.batsmanStriker?.batRuns,
-            batBalls: result?.miniscore?.batsmanStriker?.batBalls,
-            batDots: result?.miniscore?.batsmanStriker?.batDots,
-            batFours: result?.miniscore?.batsmanStriker?.batFours,
-            batSixes: result?.miniscore?.batsmanStriker?.batSixes,
-            batStrikeRate: result?.miniscore?.batsmanStriker?.batStrikeRate,
-            batMins: result?.miniscore?.batsmanStriker?.batMins,
-            batId: result?.miniscore?.batsmanStriker?.batId,
-          },
-          nonStrikerData: {
-            batName: result?.miniscore?.batsmanNonStriker?.batName,
-            batRuns: result?.miniscore?.batsmanNonStriker?.batRuns,
-            batBalls: result?.miniscore?.batsmanNonStriker?.batBalls,
-            batDots: result?.miniscore?.batsmanNonStriker?.batDots,
-            batFours: result?.miniscore?.batsmanNonStriker?.batFours,
-            batSixes: result?.miniscore?.batsmanNonStriker?.batSixes,
-            batStrikeRate: result?.miniscore?.batsmanNonStriker?.batStrikeRate,
-            batMins: result?.miniscore?.batsmanNonStriker?.batMins,
-            batId: result?.miniscore?.batsmanNonStriker?.batId,
-          },
-          bowlerStriker: {
-            bowlName: result?.miniscore?.bowlerStriker?.bowlName,
-            bowlOvs: result?.miniscore?.bowlerStriker?.bowlOvs,
-            bowlRuns: result?.miniscore?.bowlerStriker?.bowlRuns,
-            bowlWkts: result?.miniscore?.bowlerStriker?.bowlWkts,
-            bowlEcon: result?.miniscore?.bowlerStriker?.bowlEcon,
-            bowlMaidens: result?.miniscore?.bowlerStriker?.bowlMaidens,
-            bowlWides: result?.miniscore?.bowlerStriker?.bowlWides,
-            bowlNoballs: result?.miniscore?.bowlerStriker?.bowlNoballs,
-            bowlId: result?.miniscore?.bowlerStriker?.bowlId,
-          },
-          bowlerNonStriker: {
-            bowlName: result?.miniscore?.bowlerNonStriker?.bowlName,
-            bowlOvs: result?.miniscore?.bowlerNonStriker?.bowlOvs,
-            bowlRuns: result?.miniscore?.bowlerNonStriker?.bowlRuns,
-            bowlWkts: result?.miniscore?.bowlerNonStriker?.bowlWkts,
-            bowlEcon: result?.miniscore?.bowlerNonStriker?.bowlEcon,
-            bowlMaidens: result?.miniscore?.bowlerNonStriker?.bowlMaidens,
-            bowlWides: result?.miniscore?.bowlerNonStriker?.bowlWides,
-            bowlNoballs: result?.miniscore?.bowlerNonStriker?.bowlNoballs,
-            bowlId: result?.miniscore?.bowlerNonStriker?.bowlId,
-          },
-          latestPerformance: result?.miniscore?.latestPerformance,
-          matchScoreDetails: result?.miniscore?.matchScoreDetails,
-          matchUdrs: result?.miniscore?.matchUdrs,
-          commentaryList: result?.commentaryList[0],
-        };
-        setMatchData(tmpMatchInfo);
-        setMatchState(result?.matchHeader?.state);
-      } catch (error) {
-        console.log(error);
-        setMatchData(null);
-      }
-    }
-    if (matchId) {
-      fetchMatchInfo();
-    }
-  }, [matchId]);
-
-  async function fetchLiveScores() {
-    let request = await axios.get(`${API_URL}${matchId}`);
-    let result = request.data;
-    let tmpLiveScores = {
-      complete: result?.matchHeader?.complete,
-      dayNight: result?.matchHeader?.dayNight,
-      dayNumber: result?.matchHeader?.dayNumber,
-      domestic: result?.matchHeader?.domestic,
-      matchDescription: result?.matchHeader?.matchDescription,
-      matchFormat: result?.matchHeader?.matchFormat,
-      matchCompleteTimestamp: result?.matchHeader?.matchCompleteTimestamp,
-      matchStartTimestamp: result?.matchHeader?.matchStartTimestamp,
-      matchType: result?.matchHeader?.matchType,
-      playersOfTheMatch: result?.matchHeader?.playersOfTheMatch,
-      playersOfTheSeries: result?.matchHeader?.playersOfTheSeries,
-      results: result?.matchHeader?.results,
-      revisedTarget: result?.matchHeader?.revisedTarget,
-      seriesName: result?.matchHeader?.seriesName,
-      state: result?.matchHeader?.state,
-      status: result?.matchHeader?.status,
-      tossWinner: result?.matchHeader?.tossResults?.tossWinnerName,
-      tossDecision: result?.matchHeader?.tossResults?.decision,
-      team1Id: result?.matchHeader?.team1?.id,
-      team1Name: result?.matchHeader?.team1?.shortName,
-      team2Id: result?.matchHeader?.team2?.id,
-      team2Name: result?.matchHeader?.team2?.shortName,
-      [`${result?.matchHeader?.team1?.id}`]:
-        result?.matchHeader?.team1?.shortName,
-      [`${result?.matchHeader?.team2?.id}`]:
-        result?.matchHeader?.team2?.shortName,
-      batTeamId: result?.miniscore?.batTeam?.teamId,
-      runs: result?.miniscore?.batTeam?.teamScore,
-      wickets: result?.miniscore?.batTeam?.teamWkts,
-      currentRunRate: result?.miniscore?.currentRunRate,
-      event: result?.miniscore?.event,
-      inningsId: result?.miniscore?.inningsId,
-      overs: result?.miniscore?.overs,
-      oversRem: result?.miniscore?.oversRem,
-      recentOvsStats: result?.miniscore?.recentOvsStats,
-      remRunsToWin: result?.miniscore?.remRunsToWin,
-      requiredRunRate: result?.miniscore?.requiredRunRate,
-      lastWicket: result?.miniscore?.lastWicket,
-      partnerShip: result?.miniscore?.partnerShip,
+  const fetchLiveScores = useCallback(async () => {
+    const { data } = await axios.get(`${API_URL}${matchId}`);
+    const { matchHeader, miniscore, commentaryList } = data;
+    let tmpMatchInfo = {
+      complete: matchHeader?.complete,
+      dayNight: matchHeader?.dayNight,
+      dayNumber: matchHeader?.dayNumber,
+      domestic: matchHeader?.domestic,
+      matchDescription: matchHeader?.matchDescription,
+      matchFormat: matchHeader?.matchFormat,
+      matchCompleteTimestamp: matchHeader?.matchCompleteTimestamp,
+      matchStartTimestamp: matchHeader?.matchStartTimestamp,
+      matchType: matchHeader?.matchType,
+      playersOfTheMatch: matchHeader?.playersOfTheMatch,
+      playersOfTheSeries: matchHeader?.playersOfTheSeries,
+      results: matchHeader?.results,
+      revisedTarget: matchHeader?.revisedTarget,
+      seriesName: matchHeader?.seriesName,
+      state: matchHeader?.state,
+      status: matchHeader?.status,
+      tossWinner: matchHeader?.tossResults?.tossWinnerName,
+      tossDecision: matchHeader?.tossResults?.decision,
+      team1Id: matchHeader?.team1?.id,
+      team1Name: matchHeader?.team1?.shortName,
+      team2Id: matchHeader?.team2?.id,
+      team2Name: matchHeader?.team2?.shortName,
+      [`${matchHeader?.team1?.id}`]: matchHeader?.team1?.shortName,
+      [`${matchHeader?.team2?.id}`]: matchHeader?.team2?.shortName,
+      batTeamId: miniscore?.batTeam?.teamId,
+      runs: miniscore?.batTeam?.teamScore,
+      wickets: miniscore?.batTeam?.teamWkts,
+      currentRunRate: miniscore?.currentRunRate,
+      event: miniscore?.event,
+      inningsId: miniscore?.inningsId,
+      overs: miniscore?.overs,
+      oversRem: miniscore?.oversRem,
+      recentOvsStats: miniscore?.recentOvsStats,
+      remRunsToWin: miniscore?.remRunsToWin,
+      requiredRunRate: miniscore?.requiredRunRate,
+      lastWicket: miniscore?.lastWicket,
+      partnerShip: miniscore?.partnerShip,
       strikerData: {
-        batName: result?.miniscore?.batsmanStriker?.batName,
-        batRuns: result?.miniscore?.batsmanStriker?.batRuns,
-        batBalls: result?.miniscore?.batsmanStriker?.batBalls,
-        batDots: result?.miniscore?.batsmanStriker?.batDots,
-        batFours: result?.miniscore?.batsmanStriker?.batFours,
-        batSixes: result?.miniscore?.batsmanStriker?.batSixes,
-        batStrikeRate: result?.miniscore?.batsmanStriker?.batStrikeRate,
-        batMins: result?.miniscore?.batsmanStriker?.batMins,
+        batName: miniscore?.batsmanStriker?.batName,
+        batRuns: miniscore?.batsmanStriker?.batRuns,
+        batBalls: miniscore?.batsmanStriker?.batBalls,
+        batDots: miniscore?.batsmanStriker?.batDots,
+        batFours: miniscore?.batsmanStriker?.batFours,
+        batSixes: miniscore?.batsmanStriker?.batSixes,
+        batStrikeRate: miniscore?.batsmanStriker?.batStrikeRate,
+        batMins: miniscore?.batsmanStriker?.batMins,
+        batId: miniscore?.batsmanStriker?.batId,
       },
       nonStrikerData: {
-        batName: result?.miniscore?.batsmanNonStriker?.batName,
-        batRuns: result?.miniscore?.batsmanNonStriker?.batRuns,
-        batBalls: result?.miniscore?.batsmanNonStriker?.batBalls,
-        batDots: result?.miniscore?.batsmanNonStriker?.batDots,
-        batFours: result?.miniscore?.batsmanNonStriker?.batFours,
-        batSixes: result?.miniscore?.batsmanNonStriker?.batSixes,
-        batStrikeRate: result?.miniscore?.batsmanNonStriker?.batStrikeRate,
-        batMins: result?.miniscore?.batsmanNonStriker?.batMins,
+        batName: miniscore?.batsmanNonStriker?.batName,
+        batRuns: miniscore?.batsmanNonStriker?.batRuns,
+        batBalls: miniscore?.batsmanNonStriker?.batBalls,
+        batDots: miniscore?.batsmanNonStriker?.batDots,
+        batFours: miniscore?.batsmanNonStriker?.batFours,
+        batSixes: miniscore?.batsmanNonStriker?.batSixes,
+        batStrikeRate: miniscore?.batsmanNonStriker?.batStrikeRate,
+        batMins: miniscore?.batsmanNonStriker?.batMins,
+        batId: miniscore?.batsmanNonStriker?.batId,
       },
       bowlerStriker: {
-        bowlName: result?.miniscore?.bowlerStriker?.bowlName,
-        bowlOvs: result?.miniscore?.bowlerStriker?.bowlOvs,
-        bowlRuns: result?.miniscore?.bowlerStriker?.bowlRuns,
-        bowlWkts: result?.miniscore?.bowlerStriker?.bowlWkts,
-        bowlEcon: result?.miniscore?.bowlerStriker?.bowlEcon,
-        bowlMaidens: result?.miniscore?.bowlerStriker?.bowlMaidens,
-        bowlWides: result?.miniscore?.bowlerStriker?.bowlWides,
-        bowlNoballs: result?.miniscore?.bowlerStriker?.bowlNoballs,
+        bowlName: miniscore?.bowlerStriker?.bowlName,
+        bowlOvs: miniscore?.bowlerStriker?.bowlOvs,
+        bowlRuns: miniscore?.bowlerStriker?.bowlRuns,
+        bowlWkts: miniscore?.bowlerStriker?.bowlWkts,
+        bowlEcon: miniscore?.bowlerStriker?.bowlEcon,
+        bowlMaidens: miniscore?.bowlerStriker?.bowlMaidens,
+        bowlWides: miniscore?.bowlerStriker?.bowlWides,
+        bowlNoballs: miniscore?.bowlerStriker?.bowlNoballs,
+        bowlId: miniscore?.bowlerStriker?.bowlId,
       },
       bowlerNonStriker: {
-        bowlName: result?.miniscore?.bowlerNonStriker?.bowlName,
-        bowlOvs: result?.miniscore?.bowlerNonStriker?.bowlOvs,
-        bowlRuns: result?.miniscore?.bowlerNonStriker?.bowlRuns,
-        bowlWkts: result?.miniscore?.bowlerNonStriker?.bowlWkts,
-        bowlEcon: result?.miniscore?.bowlerNonStriker?.bowlEcon,
-        bowlMaidens: result?.miniscore?.bowlerNonStriker?.bowlMaidens,
-        bowlWides: result?.miniscore?.bowlerNonStriker?.bowlWides,
-        bowlNoballs: result?.miniscore?.bowlerNonStriker?.bowlNoballs,
+        bowlName: miniscore?.bowlerNonStriker?.bowlName,
+        bowlOvs: miniscore?.bowlerNonStriker?.bowlOvs,
+        bowlRuns: miniscore?.bowlerNonStriker?.bowlRuns,
+        bowlWkts: miniscore?.bowlerNonStriker?.bowlWkts,
+        bowlEcon: miniscore?.bowlerNonStriker?.bowlEcon,
+        bowlMaidens: miniscore?.bowlerNonStriker?.bowlMaidens,
+        bowlWides: miniscore?.bowlerNonStriker?.bowlWides,
+        bowlNoballs: miniscore?.bowlerNonStriker?.bowlNoballs,
+        bowlId: miniscore?.bowlerNonStriker?.bowlId,
       },
-      latestPerformance: result?.miniscore?.latestPerformance,
-      matchScoreDetails: result?.miniscore?.matchScoreDetails,
-      matchUdrs: result?.miniscore?.matchUdrs,
-      commentaryList: result?.commentaryList[0],
+      latestPerformance: miniscore?.latestPerformance,
+      matchScoreDetails: miniscore?.matchScoreDetails,
+      matchUdrs: miniscore?.matchUdrs,
+      commentaryList: commentaryList[0],
     };
-
-    setMatchState(result?.matchHeader?.state);
-    setMatchData(tmpLiveScores);
-    if (result?.matchHeader?.complete) {
-      return clearInterval(intervalId);
-    }
+    setMatchData(tmpMatchInfo);
+    setMatchState(matchHeader?.state);
     return;
-  }
+  }, [matchId]);
 
-  const MATCH_STATES = useMemo(
-    () => ({
-      Preview: 2,
-      "Innings Break": 2,
-      Complete: -1,
-      Stumps: 2,
-      "In Progress": 2,
-    }),
-    []
-  );
+  useEffect(() => {
+    if (matchId) {
+      fetchLiveScores();
+    }
+  }, [matchId, fetchLiveScores]);
+
+
   useEffect(() => {
     if (MATCH_STATES[matchState]) {
       setIsMatchComplete(MATCH_STATES[matchState] !== -1 ? false : true);
     } else {
       setIsMatchComplete(false);
     }
-  }, [matchState, MATCH_STATES]);
+  }, [matchState]);
+
   const [intervalId] = useInterval(
     fetchLiveScores,
-    !isMatchComplete ? 2000 : null
+    !isMatchComplete ? 4000 : null
   );
+
+  useEffect(() => {
+    if (isMatchComplete) {
+      return clearInterval(intervalId);
+    }
+  }, [isMatchComplete, intervalId]);
+
+  const {
+    team1Name,
+    team2Name,
+    matchFormat,
+    seriesName,
+    status,
+    tossWinner,
+    tossDecision,
+    currentRunRate,
+    requiredRunRate,
+    matchScoreDetails,
+    partnerShip,
+    oversRem,
+    strikerData,
+    nonStrikerData,
+    runs,
+    bowlerStriker,
+    bowlerNonStriker,
+    wickets,
+    commentaryList,
+    lastWicket,
+    matchUdrs,
+    playersOfTheMatch,
+  } = matchData;
+  const flag1 = teamsData[matchData?.team1Id]?.flag;
+  const flag2 = teamsData[matchData?.team2Id]?.flag;
+
   return (
-    <div
-      style={{ marginLeft: 15, marginRight: 15, marginTop: 3, marginBottom: 3 }}
-    >
+    <div className="score-container">
       <div className="cricket-card">
         <div className="cricket-card-title-wrapper">
           <CricketCardTitle
-            flag1={teamsData[matchData?.team1Id]?.flag}
-            team1={matchData?.team1Name}
-            flag2={teamsData[matchData?.team2Id]?.flag}
-            team2={matchData?.team2Name}
+            flag1={flag1}
+            team1={team1Name}
+            flag2={flag2}
+            team2={team2Name}
           />
-          <CricketMatchFormat matchFormat={matchData?.matchFormat} />
+          <CricketMatchFormat matchFormat={matchFormat} />
         </div>
-        <CricketCardSubtitle subtitle={matchData?.seriesName} />
-        {matchState !== "Preview" && (
-          <CrikcetCardToss
-            tossWinner={matchData?.tossWinner}
-            tossDecision={matchData?.tossDecision}
-          />
-        )}
-
-        <MatchStatus status={matchData?.status} />
-        {isMatchComplete && (
-          <PlayerOfTheMatchCard
-            name={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.name
-            }
-            fullName={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.fullName
-            }
-            captain={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.captain
-            }
-            id={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.id
-            }
-            keeper={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.keeper
-            }
-            nickName={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.nickName
-            }
-            substitute={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.substitute
-            }
-            teamName={
-              matchData?.playersOfTheMatch &&
-              matchData?.playersOfTheMatch[0]?.team1Name
-            }
-          />
-        )}
-        {matchState !== "Preview" && (
-          <>
-            <CricketScoreCard
-              crr={matchData.currentRunRate}
-              rrr={matchData.requiredRunRate}
-              matchScoreDetails={matchData?.matchScoreDetails}
-            />
-            <>
-              {!isMatchComplete && (
-                <PartnershipCard
-                  runs={matchData?.partnerShip?.runs}
-                  balls={matchData?.partnerShip?.balls}
-                />
-              )}
-            </>
-            <>
-              {!isMatchComplete && (
-                <>
-                  <div
-                    className="more-stats"
-                    onClick={() => setShowBatingDetails(!showBatingDetails)}
-                  >
-                    {showBatingDetails ? "Hide" : "Show"} More Bating Details
-                    {showBatingDetails ? <ExpandLess /> : <ExpandMore />}
-                  </div>
-                  {showBatingDetails ? (
-                    <BattingCard
-                      strikerData={matchData?.strikerData}
-                      nonStrikerData={matchData?.nonStrikerData}
-                      matchFormat={matchData?.matchFormat}
-                      runs={matchData?.runs}
-                    />
-                  ) : (
-                    <div>
-                      <b>
-                        {matchData?.strikerData?.batName} -{" "}
-                        {matchData?.strikerData?.batRuns}(
-                        {matchData?.strikerData?.batBalls})
-                      </b>
-                      <br />
-                      {matchData?.nonStrikerData?.batName} -{" "}
-                      {matchData?.nonStrikerData?.batRuns}(
-                      {matchData?.nonStrikerData?.batBalls})
-                    </div>
-                  )}
-                </>
-              )}
-            </>
-            <>
-              {!isMatchComplete && (
-                <>
-                  <div
-                    className="more-stats"
-                    onClick={() => setShowBowlingDetails(!showBowlingDetails)}
-                  >
-                    {showBowlingDetails ? "Hide" : "Show"} More Bowling Details
-                    {showBowlingDetails ? <ExpandLess /> : <ExpandMore />}
-                  </div>
-                  {showBowlingDetails ? (
-                    <BowlingCard
-                      bowlerStriker={matchData?.bowlerStriker}
-                      bowlerNonStriker={matchData?.bowlerNonStriker}
-                      matchFormat={matchData?.matchFormat}
-                      runs={matchData?.runs}
-                      wickets={matchData?.wickets}
-                    />
-                  ) : (
-                    <div>
-                      <b>
-                        {matchData?.bowlerStriker?.bowlName} -{" "}
-                        {matchData?.bowlerStriker?.bowlRuns} -{" "}
-                        {matchData?.bowlerStriker?.bowlWkts}
-                      </b>
-                      <br />
-                      {matchData?.bowlerNonStriker?.bowlName} -{" "}
-                      {matchData?.bowlerNonStriker?.bowlRuns} -{" "}
-                      {matchData?.bowlerNonStriker?.bowlWkts}
-                    </div>
-                  )}
-                </>
-              )}
-            </>
-
-            <>
-              {!isMatchComplete && matchData?.matchUdrs && (
-                <UDRSCard matchData={matchData} />
-              )}
-            </>
-            <>
-              {!isMatchComplete && (
-                <LastCommentCard
-                  commentText={matchData?.commentaryList?.commText}
-                  event={matchData?.commentaryList?.event}
-                  overNumber={matchData?.commentaryList?.overNumber}
-                  lastWicket={matchData?.lastWicket}
-                />
-              )}
-            </>
-          </>
-        )}
+        <CricketCardSubtitle subtitle={seriesName} />
+        <MatchStatus status={status} />
+        <PlayerOfTheMatchCard
+          playersOfTheMatch={playersOfTheMatch}
+          isMatchComplete={isMatchComplete}
+        />
+        <CrikcetCardToss
+          tossWinner={tossWinner}
+          tossDecision={tossDecision}
+          hidden={shouldMatchDataHidden(matchState)}
+        />
+        <CricketScoreCard
+          crr={currentRunRate}
+          rrr={requiredRunRate}
+          matchScoreDetails={matchScoreDetails}
+          hidden={shouldMatchDataHidden(matchState)}
+        />
+        <PartnershipCard
+          runs={partnerShip?.runs}
+          balls={partnerShip?.balls}
+          oversRemaining={oversRem}
+          hidden={shouldLiveDataHidden(matchState)}
+        />
+        <TitleClickonExpand
+          onClick={() => setShowBatingDetails(!showBatingDetails)}
+          title="Batting"
+          boolCheck={showBatingDetails}
+          hidden={shouldLiveDataHidden(matchState)}
+        />
+        <BattingCard
+          strikerData={strikerData}
+          nonStrikerData={nonStrikerData}
+          matchFormat={matchFormat}
+          runs={runs}
+          hidden={!showBatingDetails || shouldLiveDataHidden(matchState)}
+        />
+        <SmallBattingCard
+          strikerData={strikerData}
+          nonStrikerData={nonStrikerData}
+          hidden={showBatingDetails || shouldLiveDataHidden(matchState)}
+        />
+        <TitleClickonExpand
+          onClick={() => setShowBowlingDetails(!showBowlingDetails)}
+          title="Bowling Stats"
+          boolCheck={showBowlingDetails}
+          hidden={shouldLiveDataHidden(matchState)}
+        />
+        <BowlingCard
+          bowlerStriker={bowlerStriker}
+          bowlerNonStriker={bowlerNonStriker}
+          matchFormat={matchFormat}
+          runs={runs}
+          wickets={wickets}
+          hidden={!showBowlingDetails || shouldLiveDataHidden(matchState)}
+        />
+        <SmallBowlingCard
+          bowlerStriker={bowlerStriker}
+          bowlerNonStriker={bowlerNonStriker}
+          hidden={showBowlingDetails || shouldLiveDataHidden(matchState)}
+        />
+        <UDRSCard
+          matchUdrs={matchUdrs}
+          flag1={flag1}
+          flag2={flag2}
+          team1Name={team1Name}
+          team2Name={team2Name}
+          hidden={shouldLiveDataHidden(matchState)}
+        />
+        <LastCommentCard
+          commentaryList={commentaryList}
+          lastWicket={lastWicket}
+          hidden={shouldLiveDataHidden(matchState)}
+        />
 
         <div className="deleteBtnWrapper">
           <button
@@ -799,20 +715,28 @@ function App() {
   }, []);
 
   function addMatchtoFollowList(matchId) {
-    const newMatchIds = Array.from(new Set([...matchIds, matchId]));
-    setMatchIds(newMatchIds);
-    localStorage.setItem("matches", JSON.stringify(newMatchIds));
+    if (!Number.isNaN(Number(matchId))) {
+      const newMatchIds = Array.from(new Set([...matchIds, matchId]));
+      setMatchIds(newMatchIds);
+      localStorage.setItem("matches", JSON.stringify(newMatchIds));
+      setTempMatchId("");
+      return;
+    } else {
+      setTempMatchId("");
+      return;
+    }
   }
 
   function removeFromFollowList(index) {
     const newMatchIds = matchIds.filter((_, i) => i !== index);
     setMatchIds(newMatchIds);
     localStorage.setItem("matches", JSON.stringify(newMatchIds));
+    return;
   }
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className="flex-container">
         {matchIds.map((matchId, index) => {
           return (
             <ScoreComponent
