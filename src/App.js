@@ -450,7 +450,7 @@ const UDRSCard = React.memo(
       setShowUdrsDetails((prev) => !prev);
     }, []);
 
-    if (hidden) return null;
+    if (hidden || !team1Remaining) return null;
     const teamsData = [
       {
         teamName: team1Name,

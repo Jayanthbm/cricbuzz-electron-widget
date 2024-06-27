@@ -1,0 +1,17 @@
+
+
+{
+    "text":"B0$  We're hearing that a B1$, but rain has stopped and B2$. All the sheets have come off, the two on-field umpires are chatting with the ground-staff and we should be resuming soon",
+    "bold": {
+        "formatId": [
+            "B0$",
+            "B1$",
+            "B2$"
+        ],
+        "formatValue": [
+            "22:57 Local Time, 02:57 GMT, 08:27 IST:",
+            "5-over chase for South Africa will be 48",
+            "the covers are being slowly removed"
+        ]
+    }
+}
