@@ -75,7 +75,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^37.1.0",
+    "electron": "^37.3.0",
     "electron-builder": "^26.0.12",
     "webpack-node-externals": "^3.0.0"
   }
